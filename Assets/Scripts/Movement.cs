@@ -2,6 +2,8 @@
 
 public class Movement : MonoBehaviour
 {
+    private Vector3 _movementX;
+    private Vector3 _movementY;
     private Vector3 _moveDirection;
 
     [Header("Parameters")]
@@ -10,35 +12,33 @@ public class Movement : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private InputController inputController;
-    [SerializeField]
-    private CharacterController charController;
+    private CharacterController characterController;
     [SerializeField]
     private Transform headTransform;
 
     private void Awake()
     {
-        inputController.OnMoveInput += MoveTowards;
-        inputController.OnMouseInput += TurnHeadTowards;
+        InputController.OnMoveInput += MoveTowards;
+        InputController.OnTurnInput += TurnHeadTowards;
     }
 
     private void OnDestroy()
     {
-        inputController.OnMoveInput -= MoveTowards;
-        inputController.OnMouseInput -= TurnHeadTowards;
+        InputController.OnMoveInput -= MoveTowards;
+        InputController.OnTurnInput -= TurnHeadTowards;
     }
 
-    private void MoveTowards(Vector3 inputDirection)
+    private void MoveTowards(Vector2 inputDirection)    
     {
-        _moveDirection = inputDirection.magnitude > 1 ? inputDirection.normalized : inputDirection;
-        charController.Move(_moveDirection * speed * Time.deltaTime);
+        _movementX = inputDirection.x * transform.right;
+        _movementY = inputDirection.y * transform.forward;
+        _moveDirection = _movementX + _movementY;
+        characterController.Move(_moveDirection * speed * Time.deltaTime);
     }
 
     private void TurnHeadTowards(Vector2 mouseInput)
     {
-        transform.Rotate(Vector3.up, mouseInput.x);
-        headTransform.Rotate(Vector3.right, mouseInput.y);
-
-        Debug.Log(headTransform.rotation.eulerAngles.x);
+        transform.rotation = Quaternion.Euler(0, mouseInput.x, 0);
+        headTransform.localRotation = Quaternion.Euler(mouseInput.y, 0, 0);
     }
 }

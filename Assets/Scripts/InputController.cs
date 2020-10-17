@@ -3,25 +3,32 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    private Vector3 movementX, movementY;
-    private Vector3 _inputDirection;
+    private Vector2 _inputDirection;
     private Vector2 _mouseInput;
 
-    public event Action<Vector3> OnMoveInput;
-    public event Action<Vector2> OnMouseInput;
-
+    [Header("Player Movement")]
     [SerializeField]
     private float mouseSensitivity;
+    [SerializeField]
+    private float verticalCameraClampValue;
+    [SerializeField]
+    private bool invertY = true;
+
+    private short VerticalRotationSign => invertY ? (short)1 : (short)-1;
+
+    public static event Action<Vector2> OnMoveInput;
+    public static event Action<Vector2> OnTurnInput;
 
     private void Update()
     {
-        movementX = Input.GetAxis("Horizontal") * transform.right;
-        movementY = Input.GetAxis("Vertical") * transform.forward;
-        _inputDirection = movementX + movementY;
+        _inputDirection.x = Input.GetAxis("Horizontal");
+        _inputDirection.y = Input.GetAxis("Vertical");
+        _inputDirection = _inputDirection.magnitude > 1 ? _inputDirection.normalized : _inputDirection;
         OnMoveInput?.Invoke(_inputDirection);
 
-        _mouseInput.x = Input.GetAxis("Mouse X") * mouseSensitivity;
-        _mouseInput.y = Input.GetAxis("Mouse Y") * mouseSensitivity;
-        OnMouseInput?.Invoke(_mouseInput);
+        _mouseInput.x += Input.GetAxis("Mouse X") * mouseSensitivity;
+        _mouseInput.y += VerticalRotationSign * Input.GetAxis("Mouse Y") * mouseSensitivity;
+        _mouseInput.y = Mathf.Clamp(_mouseInput.y, -verticalCameraClampValue, verticalCameraClampValue);
+        OnTurnInput?.Invoke(_mouseInput);
     }
 }
