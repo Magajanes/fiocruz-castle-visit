@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944763c6e8480ff41ae8378f35a67d52, type: 3}
   m_Name: Cylinder
   m_EditorClassIdentifier: 
+  Name: Very cool cylinder
+  Description: This cylinder is something very nice and cool. It has a marvelous
+    story about how it is so cool!
+  Image: {fileID: 0}

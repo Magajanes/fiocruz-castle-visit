@@ -18,9 +18,19 @@ public class InputController : MonoBehaviour
 
     public static event Action<Vector2> OnMoveInput;
     public static event Action<Vector2> OnTurnInput;
+    public static event Action OnInteractionButtonPress;
+    public static event Action OnCloseButtonPress;
 
     private void Update()
     {
+        if (UIManager.CurrentState == UIManager.UIState.ArtifactInfo)
+        {
+            if (Input.GetButtonDown("Fire1"))
+                OnCloseButtonPress?.Invoke();
+            
+            return;
+        }
+
         _inputDirection.x = Input.GetAxis("Horizontal");
         _inputDirection.y = Input.GetAxis("Vertical");
         _inputDirection = _inputDirection.magnitude > 1 ? _inputDirection.normalized : _inputDirection;
@@ -30,5 +40,8 @@ public class InputController : MonoBehaviour
         _mouseInput.y += VerticalRotationSign * Input.GetAxis("Mouse Y") * mouseSensitivity;
         _mouseInput.y = Mathf.Clamp(_mouseInput.y, -verticalCameraClampValue, verticalCameraClampValue);
         OnTurnInput?.Invoke(_mouseInput);
+
+        if (Input.GetButtonDown("Jump"))
+            OnInteractionButtonPress?.Invoke();
     }
 }
