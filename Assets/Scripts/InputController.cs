@@ -19,7 +19,7 @@ public class InputController : MonoBehaviour
     public static event Action<Vector2> OnMoveInput;
     public static event Action<Vector2> OnTurnInput;
     public static event Action OnInteractionButtonPress;
-    public static event Action OnCloseButtonPress;
+    public static event Action OnCollectButtonPress;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -31,7 +31,7 @@ public class InputController : MonoBehaviour
 
     private void Start()
     {
-        RunInputScheme = RunCastleVisitInputScheme;
+        SetInputScheme(UIState.Inactive);
     }
 
     private void Update()
@@ -46,8 +46,8 @@ public class InputController : MonoBehaviour
 
     private void RunArtifactInfoInputScheme()
     {
-        if (Input.GetButtonDown("Fire1"))
-            OnCloseButtonPress?.Invoke();
+        if (Input.GetKeyDown(KeyCode.Return))
+            OnCollectButtonPress?.Invoke();
     }
 
     private void RunCastleVisitInputScheme()
@@ -71,9 +71,11 @@ public class InputController : MonoBehaviour
         switch (currentState)
         {
             case UIState.Inactive:
+                Cursor.lockState = CursorLockMode.Locked;
                 RunInputScheme = RunCastleVisitInputScheme;
                 break;
             case UIState.ArtifactInfo:
+                Cursor.lockState = CursorLockMode.None;
                 RunInputScheme = RunArtifactInfoInputScheme;
                 break;
             default:
