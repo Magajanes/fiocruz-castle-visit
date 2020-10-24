@@ -9,6 +9,9 @@ public enum UIState
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    private ArtifactInfoPanel artifactInfoPanel;
+
     public static UIState CurrentState { get; private set; }
     public static event Action<UIState> OnUIStateChange;
 
@@ -36,13 +39,14 @@ public class UIManager : MonoBehaviour
             return;
 
         SetUIState(UIState.ArtifactInfo);
-        Debug.LogFormat("Interacted with {0}", info.Name);
+        artifactInfoPanel.gameObject.SetActive(true);
+        artifactInfoPanel.Initialize(info);
     }
 
     public void CloseArtifactInfoScreen()
     {
         SetUIState(UIState.Inactive);
-        Debug.Log("Closed artifact info screen.");
+        artifactInfoPanel.gameObject.SetActive(false);
     }
 
     private void SetUIState(UIState state)
