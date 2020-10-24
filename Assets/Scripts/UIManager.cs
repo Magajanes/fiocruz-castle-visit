@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+
+public enum UIState
+{
+    Inactive,
+    ArtifactInfo
+}
 
 public class UIManager : MonoBehaviour
 {
-    public enum UIState
-    {
-        Inactive,
-        ArtifactInfo
-    }
-
-    public static UIState CurrentState;
+    public static UIState CurrentState { get; private set; }
+    public static event Action<UIState> OnUIStateChange;
 
     private void Awake()
     {
@@ -33,13 +35,22 @@ public class UIManager : MonoBehaviour
         if (CurrentState == UIState.ArtifactInfo)
             return;
 
-        CurrentState = UIState.ArtifactInfo;
+        SetUIState(UIState.ArtifactInfo);
         Debug.LogFormat("Interacted with {0}", info.Name);
     }
 
     public void CloseArtifactInfoScreen()
     {
-        CurrentState = UIState.Inactive;
+        SetUIState(UIState.Inactive);
         Debug.Log("Closed artifact info screen.");
+    }
+
+    private void SetUIState(UIState state)
+    {
+        var previousState = CurrentState;
+        CurrentState = state;
+
+        if (CurrentState != previousState)
+            OnUIStateChange?.Invoke(CurrentState);
     }
 }
