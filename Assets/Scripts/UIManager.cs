@@ -18,19 +18,19 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Artifact.OnInteraction += ShowArtifactInfo;
-        InputController.OnCloseButtonPress += CloseArtifactInfoScreen;
+        ArtifactInfoPanel.OnCollect += CloseArtifactInfoScreen;
     }
 
     private void OnDestroy()
     {
         Artifact.OnInteraction -= ShowArtifactInfo;
-        InputController.OnCloseButtonPress -= CloseArtifactInfoScreen;
+        ArtifactInfoPanel.OnCollect -= CloseArtifactInfoScreen;
     }
 
     private void OnDisable()
     {
         Artifact.OnInteraction -= ShowArtifactInfo;
-        InputController.OnCloseButtonPress -= CloseArtifactInfoScreen;
+        ArtifactInfoPanel.OnCollect -= CloseArtifactInfoScreen;
     }
 
     private void ShowArtifactInfo(ArtifactInfo info)
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         artifactInfoPanel.Initialize(info);
     }
 
-    public void CloseArtifactInfoScreen()
+    private void CloseArtifactInfoScreen(ArtifactInfo info)
     {
         SetUIState(UIState.Inactive);
         artifactInfoPanel.gameObject.SetActive(false);
