@@ -3,7 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ArtifactInfoPanel : MonoBehaviour
+public abstract class UIPanel : MonoBehaviour
+{
+    public abstract void Initialize(ArtifactInfo info);
+}
+
+public class ArtifactInfoPanel : UIPanel
 {
     [SerializeField]
     private TextMeshProUGUI title;
@@ -15,7 +20,7 @@ public class ArtifactInfoPanel : MonoBehaviour
     private ArtifactInfo _currentInfo;
     public static event Action<ArtifactInfo> OnCollect;
 
-    public void Initialize(ArtifactInfo info)
+    public override void Initialize(ArtifactInfo info)
     {
         InputController.OnCollectButtonPress += Collect;
         
@@ -31,6 +36,8 @@ public class ArtifactInfoPanel : MonoBehaviour
 
     public void Collect()
     {
+        var args = new InteractionArgs(UIState.Inactive, _currentInfo);
+        UIManager.ChangeUIState(args);
         OnCollect?.Invoke(_currentInfo);
     }
 
