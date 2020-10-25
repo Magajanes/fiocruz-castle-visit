@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class PlayerPrefsService
 {
-    public static void SaveCollectedArtifacts(Dictionary<int, ArtifactInfo> collectedArtifacts)
+    public static void SaveCollectedArtifacts(List<int> collectedArtifacts)
     {
         if (collectedArtifacts == null)
         {
@@ -11,17 +12,17 @@ public class PlayerPrefsService
             return;
         }
 
-        var artifactsJson = JsonUtility.ToJson(collectedArtifacts);
+        var artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
         PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
     }
 
-    public static Dictionary<int, ArtifactInfo> LoadCollectedArtifacts()
+    public static List<int> LoadCollectedArtifacts()
     {
-        var collectedArtifacts = new Dictionary<int, ArtifactInfo>();
+        var collectedArtifacts = new List<int>();
         if (PlayerPrefs.HasKey("collectedArtifacts"))
         {
             var artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
-            collectedArtifacts = JsonUtility.FromJson<Dictionary<int, ArtifactInfo>>(artifactsJson);
+            collectedArtifacts = JsonConvert.DeserializeObject<List<int>>(artifactsJson);
         }
         return collectedArtifacts;
     }
