@@ -4,34 +4,45 @@ using UnityEngine;
 public class Artifact : MonoBehaviour
 {
     [SerializeField]
-    private ArtifactInfo info;
-
-    public static event Action<ArtifactInfo> OnInteraction;
+    private ArtifactInfo _info;
 
     private void OnTriggerEnter(Collider other)
     {
-        InputController.OnInteractionButtonPress += SendInfo;
-        Debug.LogFormat("Player can now interact with {0}.", info.Name);
+        InputController.OnInteractionButtonPress += ShowInfo;
+        Debug.LogFormat("Player can now interact with {0}.", _info.Name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        InputController.OnInteractionButtonPress -= SendInfo;
-        Debug.LogFormat("Player can no longer interact with {0}.", info.Name);
+        InputController.OnInteractionButtonPress -= ShowInfo;
+        Debug.LogFormat("Player can no longer interact with {0}.", _info.Name);
     }
 
     private void OnDisable()
     {
-        InputController.OnInteractionButtonPress -= SendInfo;
+        InputController.OnInteractionButtonPress -= ShowInfo;
     }
 
     private void OnDestroy()
     {
-        InputController.OnInteractionButtonPress -= SendInfo;
+        InputController.OnInteractionButtonPress -= ShowInfo;
     }
 
-    private void SendInfo()
+    private void ShowInfo()
     {
-        OnInteraction?.Invoke(info);
+        var args = new InteractionArgs(UIState.ArtifactInfo, _info);
+        UIManager.ChangeUIState(args);
+    }
+}
+
+public class InteractionArgs
+{
+    public readonly UIState UIState;
+    public readonly ArtifactInfo ArtifactInfo;
+
+    public InteractionArgs(UIState uiState, ArtifactInfo artifactInfo)
+    {
+        UIState = uiState;
+        ArtifactInfo = artifactInfo;
     }
 }

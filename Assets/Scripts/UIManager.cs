@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum UIState
@@ -10,51 +11,40 @@ public enum UIState
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private ArtifactInfoPanel artifactInfoPanel;
+    private UIPanel artifactInfoPanel;
 
     public static UIState CurrentState { get; private set; }
     public static event Action<UIState> OnUIStateChange;
+    private static Dictionary<UIState, UIPanel> uiPanels = new Dictionary<UIState, UIPanel>();
 
-    private void Awake()
+    private void Start()
     {
-        Artifact.OnInteraction += ShowArtifactInfo;
-        ArtifactInfoPanel.OnCollect += CloseArtifactInfoScreen;
+        InitializeUIPanelsDictionary();
     }
 
-    private void OnDestroy()
+    private void InitializeUIPanelsDictionary()
     {
-        Artifact.OnInteraction -= ShowArtifactInfo;
-        ArtifactInfoPanel.OnCollect -= CloseArtifactInfoScreen;
+        uiPanels.Add(UIState.Inactive, null);
+        uiPanels.Add(UIState.ArtifactInfo, artifactInfoPanel);
     }
 
-    private void OnDisable()
+    public static void ChangeUIState(InteractionArgs args)
     {
-        Artifact.OnInteraction -= ShowArtifactInfo;
-        ArtifactInfoPanel.OnCollect -= CloseArtifactInfoScreen;
-    }
-
-    private void ShowArtifactInfo(ArtifactInfo info)
-    {
-        if (CurrentState == UIState.ArtifactInfo)
+        if (CurrentState == args.UIState)
             return;
 
-        SetUIState(UIState.ArtifactInfo);
-        artifactInfoPanel.gameObject.SetActive(true);
-        artifactInfoPanel.Initialize(info);
-    }
+        var currentPanel = uiPanels[CurrentState];
+        if (currentPanel != null)
+            currentPanel.gameObject.SetActive(false);
 
-    private void CloseArtifactInfoScreen(ArtifactInfo info)
-    {
-        SetUIState(UIState.Inactive);
-        artifactInfoPanel.gameObject.SetActive(false);
-    }
+        CurrentState = args.UIState;
+        currentPanel = uiPanels[CurrentState];
+        if (currentPanel != null)
+        {
+            currentPanel.gameObject.SetActive(true);
+            currentPanel.Initialize(args.ArtifactInfo);
+        }
 
-    private void SetUIState(UIState state)
-    {
-        var previousState = CurrentState;
-        CurrentState = state;
-
-        if (CurrentState != previousState)
-            OnUIStateChange?.Invoke(CurrentState);
+        OnUIStateChange?.Invoke(CurrentState);
     }
 }
