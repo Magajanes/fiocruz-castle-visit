@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     {
         if (_inventory != null)
             return;
-
         _inventory = new Inventory();
         _inventory.Initialize();
     }

@@ -19,7 +19,6 @@ public class Inventory
             Debug.LogFormat("You already know about {0}", info.Name);
             return;
         }
-
         Save(info);
     }
 
