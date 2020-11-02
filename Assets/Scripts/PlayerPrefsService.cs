@@ -16,7 +16,7 @@ public class PlayerPrefsService
         PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
     }
 
-    public static List<int> LoadCollectedArtifacts()
+    public static List<int> LoadCollectedArtifactsIds()
     {
         var collectedArtifacts = new List<int>();
         if (PlayerPrefs.HasKey("collectedArtifacts"))
@@ -25,5 +25,22 @@ public class PlayerPrefsService
             collectedArtifacts = JsonConvert.DeserializeObject<List<int>>(artifactsJson);
         }
         return collectedArtifacts;
+    }
+
+    public static void SaveInventoryEntry(InventoryEntry entry)
+    {
+        var entryJson = JsonConvert.SerializeObject(entry);
+        PlayerPrefs.SetString($"entry_{entry.Id}", entryJson);
+    }
+
+    public static InventoryEntry LoadInventoryEntry(int id)
+    {
+        var entryKey = $"entry_{id}";
+        if (PlayerPrefs.HasKey(entryKey))
+        {
+            var entryJson = PlayerPrefs.GetString(entryKey);
+            return JsonConvert.DeserializeObject<InventoryEntry>(entryJson);
+        }
+        return null;
     }
 }

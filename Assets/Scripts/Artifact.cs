@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Artifact : MonoBehaviour
 {
@@ -9,13 +8,13 @@ public class Artifact : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         InputController.OnInteractionButtonPress += ShowInfo;
-        Debug.LogFormat("Player can now interact with {0}.", _info.Name);
+        Debug.Log($"Player can now interact with {_info.Name}.");
     }
 
     private void OnTriggerExit(Collider other)
     {
         InputController.OnInteractionButtonPress -= ShowInfo;
-        Debug.LogFormat("Player can no longer interact with {0}.", _info.Name);
+        Debug.Log($"Player can no longer interact with {_info.Name}.");
     }
 
     private void OnDisable()
@@ -38,11 +37,11 @@ public class Artifact : MonoBehaviour
 public class InteractionArgs
 {
     public readonly UIState UIState;
-    public readonly ArtifactInfo ArtifactInfo;
+    public readonly object Context;
 
-    public InteractionArgs(UIState uiState, ArtifactInfo artifactInfo)
+    public InteractionArgs(UIState uiState, object context = null)
     {
         UIState = uiState;
-        ArtifactInfo = artifactInfo;
+        Context = context;
     }
 }

@@ -20,6 +20,7 @@ public class InputController : MonoBehaviour
     public static event Action<Vector2> OnTurnInput;
     public static event Action OnInteractionButtonPress;
     public static event Action OnCollectButtonPress;
+    public static event Action OnInventoryButtonPress;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -64,6 +65,10 @@ public class InputController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
             OnInteractionButtonPress?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.I))
+            OnInventoryButtonPress?.Invoke();
+
     }
 
     private void SetInputScheme(UIState currentState)

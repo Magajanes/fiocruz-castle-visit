@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class Inventory
 {
-    private List<int> _collectedArtifactsIds = new List<int>();
+    private List<int> _collectedArtifactsIds;
 
     public void Initialize()
     {
+        if (_collectedArtifactsIds != null)
+            return;
+
         ArtifactInfoPanel.OnCollect += AddArtifact;
-        _collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifacts();
+        _collectedArtifactsIds = new List<int>();
+        _collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
         Debug.Log("Inventory initialized");
     }
 
@@ -16,16 +20,27 @@ public class Inventory
     {
         if (_collectedArtifactsIds.Contains(info.Id))
         {
-            Debug.LogFormat("You already know about {0}", info.Name);
+            Debug.Log($"You already know about {info.Name}");
             return;
         }
+        _collectedArtifactsIds.Add(info.Id);
         Save(info);
     }
 
     private void Save(ArtifactInfo info)
     {
-        _collectedArtifactsIds.Add(info.Id);
         PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
-        Debug.LogFormat("Saved {0} in inventory!", info.Name);
+        PlayerPrefsService.SaveInventoryEntry(info.Entry);
+        Debug.Log($"Saved {info.Name} in inventory!");
+    }
+
+    public InventoryEntry LoadEntry(int id)
+    {
+        if (!_collectedArtifactsIds.Contains(id))
+        {
+            Debug.Log($"Artifact not found in inventory! Id: {id}!");
+            return null;
+        }
+        return PlayerPrefsService.LoadInventoryEntry(id);
     }
 }

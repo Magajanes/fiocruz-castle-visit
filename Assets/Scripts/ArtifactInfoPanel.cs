@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class UIPanel : MonoBehaviour
 {
-    public abstract void Initialize(ArtifactInfo info);
+    public abstract void Initialize(object context = null);
 }
 
 public class ArtifactInfoPanel : UIPanel
@@ -20,15 +20,15 @@ public class ArtifactInfoPanel : UIPanel
     private ArtifactInfo _currentInfo;
     public static event Action<ArtifactInfo> OnCollect;
 
-    public override void Initialize(ArtifactInfo info)
+    public override void Initialize(object context)
     {
         InputController.OnCollectButtonPress += Collect;
-        
+        var info = context as ArtifactInfo;
+
         if (_currentInfo != null && _currentInfo.Name == info.name)
             return;
         
         _currentInfo = info;
-
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
         image.sprite = _currentInfo.Image;
