@@ -4,12 +4,7 @@ using Newtonsoft.Json;
 
 public class PlayerPrefsService
 {
-    public static void DeletePlayerPrefs()
-    {
-        PlayerPrefs.DeleteAll();
-    }
-
-    public static void SaveCollectedArtifacts(List<int> collectedArtifacts)
+    public void SaveCollectedArtifacts(List<int> collectedArtifacts)
     {
         if (collectedArtifacts == null)
         {
@@ -21,7 +16,7 @@ public class PlayerPrefsService
         PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
     }
 
-    public static List<int> LoadCollectedArtifactsIds()
+    public List<int> LoadCollectedArtifactsIds()
     {
         var collectedArtifacts = new List<int>();
         if (PlayerPrefs.HasKey("collectedArtifacts"))

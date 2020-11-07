@@ -2,25 +2,9 @@
 
 public class Player : MonoBehaviour
 {
-    private static Inventory _inventory;
-
-    public static Inventory Inventory
-    {
-        get
-        {
-            InitializeInventory();
-            return _inventory;
-        }
-    }
-
     private void Awake()
     {
         InputController.OnInventoryButtonPress += ShowInventory;
-    }
-
-    private void Start()
-    {
-        InitializeInventory();
     }
 
     private void OnDisable()
@@ -31,14 +15,6 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         InputController.OnInventoryButtonPress -= ShowInventory;
-    }
-
-    private static void InitializeInventory()
-    {
-        if (_inventory != null)
-            return;
-        _inventory = new Inventory();
-        _inventory.Initialize();
     }
 
     private void ShowInventory()

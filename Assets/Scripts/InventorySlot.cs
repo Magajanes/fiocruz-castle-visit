@@ -14,7 +14,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     private Image artifactImage;
 
-    public void Initialize(bool isArtifactCollected)
+    public void Initialize(ArtifactInfo artifactInfo, bool isArtifactCollected)
     {
         artifactImage.color = isArtifactCollected ? collectedColor : notCollectedColor;
     }

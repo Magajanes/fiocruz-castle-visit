@@ -10,11 +10,10 @@ public class InventoryPanel : UIPanel
 
     public override void Initialize(object context)
     {
-        _inventory = Player.Inventory;
-        var collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
-        foreach (var id in collectedArtifactsIds)
-        {
-            slots[id - 1].Initialize(true);
-        }
+        //var collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
+        //foreach (var id in collectedArtifactsIds)
+        //{
+        //    slots[id - 1].Initialize(true);
+        //}
     }
 }

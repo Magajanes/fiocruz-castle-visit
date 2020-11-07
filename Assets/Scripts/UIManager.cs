@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
     private InventoryPanel _inventoryPanel;
 
     public static UIState CurrentState { get; private set; }
-    public static event Action<UIState> OnUIStateChange;
     private static Dictionary<UIState, UIPanel> uiPanels = new Dictionary<UIState, UIPanel>();
+    public static event Action<UIState> OnUIStateChange;
 
     private void Start()
     {

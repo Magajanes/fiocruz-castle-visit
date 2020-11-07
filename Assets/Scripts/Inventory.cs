@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class Inventory
 {
-    private List<int> _collectedArtifactsIds;
+    private List<int> _collectedArtifactsIds = new List<int>();
+    private readonly PlayerPrefsService _playerPrefsService;
+
+    public Inventory(PlayerPrefsService playerPrefsService)
+    {
+        _playerPrefsService = playerPrefsService;
+    }
 
     public void Initialize()
     {
@@ -11,8 +17,7 @@ public class Inventory
             return;
 
         ArtifactInfoPanel.OnCollect += AddArtifact;
-        _collectedArtifactsIds = new List<int>();
-        _collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
+        _collectedArtifactsIds = _playerPrefsService.LoadCollectedArtifactsIds();
         Debug.Log("Inventory initialized");
     }
 
@@ -29,7 +34,7 @@ public class Inventory
 
     private void Save(ArtifactInfo info)
     {
-        PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
+        _playerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
         Debug.Log($"Saved {info.Name} in inventory!");
     }
 }
