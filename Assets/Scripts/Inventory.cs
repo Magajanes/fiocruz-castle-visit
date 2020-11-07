@@ -30,17 +30,6 @@ public class Inventory
     private void Save(ArtifactInfo info)
     {
         PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
-        PlayerPrefsService.SaveInventoryEntry(info.Entry);
         Debug.Log($"Saved {info.Name} in inventory!");
-    }
-
-    public InventoryEntry LoadEntry(int id)
-    {
-        if (!_collectedArtifactsIds.Contains(id))
-        {
-            Debug.Log($"Artifact not found in inventory! Id: {id}!");
-            return null;
-        }
-        return PlayerPrefsService.LoadInventoryEntry(id);
     }
 }

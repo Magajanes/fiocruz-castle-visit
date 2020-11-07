@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryPanel : UIPanel
@@ -15,8 +14,7 @@ public class InventoryPanel : UIPanel
         var collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
         foreach (var id in collectedArtifactsIds)
         {
-            var entry = _inventory.LoadEntry(id);
-            slots[id - 1].Initialize(entry);
+            slots[id - 1].Initialize(true);
         }
     }
 }
