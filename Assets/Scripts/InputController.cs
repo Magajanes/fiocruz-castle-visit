@@ -20,6 +20,8 @@ public class InputController : MonoBehaviour
     public static event Action<Vector2> OnTurnInput;
     public static event Action OnInteractionButtonPress;
     public static event Action OnCollectButtonPress;
+    public static event Action OnInventoryButtonPress;
+    public static event Action OnBackButtonPress;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -44,10 +46,13 @@ public class InputController : MonoBehaviour
         UIManager.OnUIStateChange -= SetInputScheme;
     }
 
-    private void RunArtifactInfoInputScheme()
+    private void RunUiInputScheme()
     {
         if (Input.GetKeyDown(KeyCode.Return))
             OnCollectButtonPress?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnBackButtonPress?.Invoke();
     }
 
     private void RunCastleVisitInputScheme()
@@ -64,6 +69,10 @@ public class InputController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
             OnInteractionButtonPress?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.I))
+            OnInventoryButtonPress?.Invoke();
+
     }
 
     private void SetInputScheme(UIState currentState)
@@ -76,7 +85,11 @@ public class InputController : MonoBehaviour
                 break;
             case UIState.ArtifactInfo:
                 Cursor.lockState = CursorLockMode.None;
-                RunInputScheme = RunArtifactInfoInputScheme;
+                RunInputScheme = RunUiInputScheme;
+                break;
+            case UIState.InventoryPanel:
+                Cursor.lockState = CursorLockMode.None;
+                RunInputScheme = RunUiInputScheme;
                 break;
             default:
                 break;

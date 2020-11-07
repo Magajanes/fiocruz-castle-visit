@@ -5,13 +5,16 @@ using UnityEngine;
 public enum UIState
 {
     Inactive,
-    ArtifactInfo
+    ArtifactInfo,
+    InventoryPanel
 }
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private UIPanel artifactInfoPanel;
+    private ArtifactInfoPanel _artifactInfoPanel;
+    [SerializeField]
+    private InventoryPanel _inventoryPanel;
 
     public static UIState CurrentState { get; private set; }
     public static event Action<UIState> OnUIStateChange;
@@ -25,7 +28,8 @@ public class UIManager : MonoBehaviour
     private void InitializeUIPanelsDictionary()
     {
         uiPanels.Add(UIState.Inactive, null);
-        uiPanels.Add(UIState.ArtifactInfo, artifactInfoPanel);
+        uiPanels.Add(UIState.ArtifactInfo, _artifactInfoPanel);
+        uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
     }
 
     public static void ChangeUIState(InteractionArgs args)
@@ -42,7 +46,7 @@ public class UIManager : MonoBehaviour
         if (currentPanel != null)
         {
             currentPanel.gameObject.SetActive(true);
-            currentPanel.Initialize(args.ArtifactInfo);
+            currentPanel.Initialize(args.Context);
         }
 
         OnUIStateChange?.Invoke(CurrentState);

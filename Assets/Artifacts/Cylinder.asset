@@ -17,3 +17,9 @@ MonoBehaviour:
   Description: This cylinder is something very nice and cool. It has a marvelous
     story about how it is so cool!
   Image: {fileID: 21300000, guid: 3f1bacbc39bf76b4cb1a83bdc5e37480, type: 3}
+  Entry:
+    Id: 1
+    Name: Very cool cylinder
+    Description: This cylinder is something very nice and cool. It has a marvelous
+      story about how it is so cool!
+    Image: {fileID: 21300000, guid: 3f1bacbc39bf76b4cb1a83bdc5e37480, type: 3}
