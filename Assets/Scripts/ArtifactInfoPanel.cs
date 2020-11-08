@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class UIPanel : MonoBehaviour
 {
-    public abstract void Initialize(object context = null);
+    public abstract void Show(int artifactId = 0);
 }
 
 public class ArtifactInfoPanel : UIPanel
@@ -17,18 +17,24 @@ public class ArtifactInfoPanel : UIPanel
     [SerializeField]
     private Image image;
 
+    private ArtifactsService _artifactsService;
     private ArtifactInfo _currentInfo;
     public static event Action<ArtifactInfo> OnCollect;
 
-    public override void Initialize(object context)
+    public void Initialize(ArtifactsService artifactsService)
+    {
+        _artifactsService = artifactsService;
+    }
+
+    public override void Show(int artifactId)
     {
         InputController.OnCollectButtonPress += Collect;
-        var info = context as ArtifactInfo;
+        ArtifactInfo artifactInfo = _artifactsService.GetArtifactInfoById(artifactId);
 
-        if (_currentInfo != null && _currentInfo.Name == info.name)
+        if (_currentInfo != null && _currentInfo.Name == artifactInfo.name)
             return;
         
-        _currentInfo = info;
+        _currentInfo = artifactInfo;
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
         image.sprite = _currentInfo.Image;
@@ -36,7 +42,7 @@ public class ArtifactInfoPanel : UIPanel
 
     public void Collect()
     {
-        var args = new InteractionArgs(UIState.Inactive, _currentInfo);
+        var args = new InteractionArgs(UIState.Inactive, _currentInfo.Id);
         UIManager.ChangeUIState(args);
         OnCollect?.Invoke(_currentInfo);
     }

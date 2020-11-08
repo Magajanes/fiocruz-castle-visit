@@ -20,8 +20,9 @@ public class UIManager : MonoBehaviour
     private static Dictionary<UIState, UIPanel> uiPanels = new Dictionary<UIState, UIPanel>();
     public static event Action<UIState> OnUIStateChange;
 
-    private void Start()
+    public void Initialize(ArtifactsService artifactsService, Inventory inventory)
     {
+        InitializePanels(artifactsService, inventory);
         InitializeUIPanelsDictionary();
     }
 
@@ -30,6 +31,12 @@ public class UIManager : MonoBehaviour
         uiPanels.Add(UIState.Inactive, null);
         uiPanels.Add(UIState.ArtifactInfo, _artifactInfoPanel);
         uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
+    }
+
+    private void InitializePanels(ArtifactsService artifactsService, Inventory inventory)
+    {
+        _artifactInfoPanel.Initialize(artifactsService);
+        _inventoryPanel.Initialize(artifactsService, inventory);
     }
 
     public static void ChangeUIState(InteractionArgs args)
@@ -46,7 +53,7 @@ public class UIManager : MonoBehaviour
         if (currentPanel != null)
         {
             currentPanel.gameObject.SetActive(true);
-            currentPanel.Initialize(args.Context);
+            currentPanel.Show(args.ArtifactId);
         }
 
         OnUIStateChange?.Invoke(CurrentState);

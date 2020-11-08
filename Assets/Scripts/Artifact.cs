@@ -29,7 +29,7 @@ public class Artifact : MonoBehaviour
 
     private void ShowInfo()
     {
-        var args = new InteractionArgs(UIState.ArtifactInfo, _info);
+        var args = new InteractionArgs(UIState.ArtifactInfo, _info.Id);
         UIManager.ChangeUIState(args);
     }
 }
@@ -37,11 +37,11 @@ public class Artifact : MonoBehaviour
 public class InteractionArgs
 {
     public readonly UIState UIState;
-    public readonly object Context;
+    public readonly int ArtifactId;
 
-    public InteractionArgs(UIState uiState, object context = null)
+    public InteractionArgs(UIState uiState, int artifactId = 0)
     {
         UIState = uiState;
-        Context = context;
+        ArtifactId = artifactId;
     }
 }

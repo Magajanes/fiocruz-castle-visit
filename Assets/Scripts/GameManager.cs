@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private static ArtifactsService _artifactsService;
     private static PlayerPrefsService _playerPrefsService;
     private static Inventory _inventory;
-    public static event Action OnAssetsLoaded;
+
+    [Header("Managers")]
+    [SerializeField]
+    private UIManager uiManager;
 
     private void Start()
     {
         InitializeServices();
+        InitializeInventory();
         InitializeLoading();
+        InitializeManagers();
     }
 
     private void InitializeServices()
@@ -23,11 +25,15 @@ public class GameManager : MonoBehaviour
 
         if (_artifactsService == null)
             _artifactsService = new ArtifactsService(_playerPrefsService);
+
+        Debug.Log("Services initialized!");
     }
 
     private void InitializeLoading()
     {
-        _artifactsService.LoadArtifacts(OnAssetsLoaded);
+        _artifactsService.LoadArtifacts(() => {
+            Debug.Log("Assets loaded!");
+        });
     }
 
     private void InitializeInventory()
@@ -37,5 +43,10 @@ public class GameManager : MonoBehaviour
             _inventory = new Inventory(_playerPrefsService);
             _inventory.Initialize();
         }
+    }
+
+    private void InitializeManagers()
+    {
+        uiManager.Initialize(_artifactsService, _inventory);
     }
 }
