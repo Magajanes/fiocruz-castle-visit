@@ -16,46 +16,38 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private InventoryPanel _inventoryPanel;
 
-    public static UIState CurrentState { get; private set; }
-    private static Dictionary<UIState, UIPanel> uiPanels = new Dictionary<UIState, UIPanel>();
+    private static UIState _currentState;
+    private static UIPanel _currentPanel;
     public static event Action<UIState> OnUIStateChange;
 
-    public void Initialize(ArtifactsService artifactsService, Inventory inventory)
+    private static Dictionary<UIState, UIPanel> _uiPanels = new Dictionary<UIState, UIPanel>();
+
+    public void Initialize()
     {
-        InitializePanels(artifactsService, inventory);
-        InitializeUIPanelsDictionary();
+        InitializePanelsDictionary();
     }
 
-    private void InitializeUIPanelsDictionary()
+    private void InitializePanelsDictionary()
     {
-        uiPanels.Add(UIState.Inactive, null);
-        uiPanels.Add(UIState.ArtifactInfo, _artifactInfoPanel);
-        uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
+        _uiPanels.Add(UIState.Inactive, null);
+        _uiPanels.Add(UIState.ArtifactInfo, _artifactInfoPanel);
+        _uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
     }
 
-    private void InitializePanels(ArtifactsService artifactsService, Inventory inventory)
+    public static void ChangeState(UIState state, object context = null)
     {
-        _artifactInfoPanel.Initialize(artifactsService);
-        _inventoryPanel.Initialize(artifactsService, inventory);
-    }
-
-    public static void ChangeUIState(InteractionArgs args)
-    {
-        if (CurrentState == args.UIState)
+        if (_currentState == state)
             return;
 
-        var currentPanel = uiPanels[CurrentState];
-        if (currentPanel != null)
-            currentPanel.gameObject.SetActive(false);
-
-        CurrentState = args.UIState;
-        currentPanel = uiPanels[CurrentState];
-        if (currentPanel != null)
+        _currentState = state;
+        _currentPanel.SetActive(false);
+        _currentPanel = _uiPanels[_currentState];
+        if (_currentPanel != null)
         {
-            currentPanel.gameObject.SetActive(true);
-            currentPanel.Show(args.ArtifactId);
+            _currentPanel.SetActive(true);
+            _currentPanel.Initialize(context);
         }
 
-        OnUIStateChange?.Invoke(CurrentState);
+        OnUIStateChange?.Invoke(_currentState);
     }
 }

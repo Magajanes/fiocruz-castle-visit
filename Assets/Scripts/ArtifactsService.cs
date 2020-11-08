@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArtifactsService
+public static class ArtifactsService
 {
     private static Dictionary<int, string> _artifactInfoPathById = new Dictionary<int, string>()
     {
@@ -10,31 +10,35 @@ public class ArtifactsService
         { 4, "Artifacts/Sphere" }
     };
 
-    private PlayerPrefsService _playerPrefsService;
-    private Dictionary<int, ArtifactInfo> _artifactInfoById = new Dictionary<int, ArtifactInfo>();
+    private static Dictionary<int, ArtifactInfo> _artifactInfoById;
 
-    public ArtifactsService(PlayerPrefsService playerPrefsService)
+    public static void LoadArtifactsInfo(Action onAssetsLoaded = null)
     {
-        _playerPrefsService = playerPrefsService;
-    }
+        if (_artifactInfoById != null)
+            return;
 
-    public void LoadArtifacts(Action onArtifactsLoaded)
-    {
+        _artifactInfoById = new Dictionary<int, ArtifactInfo>();
         foreach (KeyValuePair<int, string> pair in _artifactInfoPathById)
         {
-            ResourceRequest request = Resources.LoadAsync(pair.Value);
+            var request = Resources.LoadAsync(pair.Value);
             request.completed += (operation) =>
             {
-                var asset = request.asset as ArtifactInfo;
-                _artifactInfoById.Add(asset.Id, asset);
+                var artifactInfo = request.asset as ArtifactInfo;
+                _artifactInfoById.Add(pair.Key, artifactInfo);
             };
         }
 
-        onArtifactsLoaded?.Invoke();
+        onAssetsLoaded?.Invoke();
     }
 
-    public ArtifactInfo GetArtifactInfoById(int id)
+    public static bool TryGetArtifactInfoById(int id, ref ArtifactInfo artifactInfo)
     {
-        return _artifactInfoById[id];
+        if (!_artifactInfoById.ContainsKey(id))
+        {
+            Debug.Log($"Artifact with id: {id} not found!");
+            return false;
+        }
+        artifactInfo = _artifactInfoById[id];
+        return true;
     }
 }

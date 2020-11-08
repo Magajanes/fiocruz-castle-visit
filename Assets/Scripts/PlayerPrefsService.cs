@@ -2,14 +2,14 @@
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class PlayerPrefsService
+public static class PlayerPrefsService
 {
-    public void DeleteInventory()
+    public static void DeleteInventory()
     {
         PlayerPrefs.DeleteAll();
     }
 
-    public void SaveCollectedArtifacts(List<int> collectedArtifacts)
+    public static void SaveCollectedArtifacts(List<int> collectedArtifacts)
     {
         if (collectedArtifacts == null)
         {
@@ -17,16 +17,16 @@ public class PlayerPrefsService
             return;
         }
 
-        var artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
+        string artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
         PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
     }
 
-    public List<int> LoadCollectedArtifactsIds()
+    public static List<int> LoadCollectedArtifactsIds()
     {
         var collectedArtifacts = new List<int>();
         if (PlayerPrefs.HasKey("collectedArtifacts"))
         {
-            var artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
+            string artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
             collectedArtifacts = JsonConvert.DeserializeObject<List<int>>(artifactsJson);
         }
         return collectedArtifacts;
