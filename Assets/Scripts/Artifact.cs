@@ -3,18 +3,16 @@
 public class Artifact : MonoBehaviour
 {
     [SerializeField]
-    private ArtifactInfo _info;
+    private int _artifactId;
 
     private void OnTriggerEnter(Collider other)
     {
         InputController.OnInteractionButtonPress += ShowInfo;
-        Debug.Log($"Player can now interact with {_info.Name}.");
     }
 
     private void OnTriggerExit(Collider other)
     {
         InputController.OnInteractionButtonPress -= ShowInfo;
-        Debug.Log($"Player can no longer interact with {_info.Name}.");
     }
 
     private void OnDisable()
@@ -29,7 +27,7 @@ public class Artifact : MonoBehaviour
 
     private void ShowInfo()
     {
-        var args = new InteractionArgs(UIState.ArtifactInfo, _info.Id);
+        var args = new InteractionArgs(UIState.ArtifactInfo, _artifactId);
         UIManager.ChangeUIState(args);
     }
 }

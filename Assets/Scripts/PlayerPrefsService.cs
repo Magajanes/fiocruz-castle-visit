@@ -4,6 +4,11 @@ using Newtonsoft.Json;
 
 public class PlayerPrefsService
 {
+    public void DeleteInventory()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void SaveCollectedArtifacts(List<int> collectedArtifacts)
     {
         if (collectedArtifacts == null)

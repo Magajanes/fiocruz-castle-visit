@@ -27,9 +27,10 @@ public class ArtifactsService
             {
                 var asset = request.asset as ArtifactInfo;
                 _artifactInfoById.Add(asset.Id, asset);
-                onArtifactsLoaded?.Invoke();
             };
         }
+
+        onArtifactsLoaded?.Invoke();
     }
 
     public ArtifactInfo GetArtifactInfoById(int id)

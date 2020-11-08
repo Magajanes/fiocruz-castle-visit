@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private static ArtifactsService _artifactsService;
     private static PlayerPrefsService _playerPrefsService;
     private static Inventory _inventory;
+    public static event Action OnInventoryDeleted;
 
     [Header("Managers")]
     [SerializeField]
@@ -48,5 +50,12 @@ public class GameManager : MonoBehaviour
     private void InitializeManagers()
     {
         uiManager.Initialize(_artifactsService, _inventory);
+    }
+
+    public void DeleteInventory()
+    {
+        _playerPrefsService.DeleteInventory();
+        _inventory.Initialize();
+        OnInventoryDeleted?.Invoke();
     }
 }

@@ -17,11 +17,27 @@ public class InventoryPanel : UIPanel
 
     public override void Show(int artifactId)
     {
+        GameManager.OnInventoryDeleted += RefreshInventoryPanel;
+        RefreshInventoryPanel();
+    }
+
+    private void RefreshInventoryPanel()
+    {
         var collectedArtifactsIds = _inventory.GetCollectedArtifactsIds();
         foreach (var id in collectedArtifactsIds)
         {
             var artifactInfo = _artifactsService.GetArtifactInfoById(id);
             slots[id - 1].Initialize(artifactInfo, true);
         }
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnInventoryDeleted -= RefreshInventoryPanel;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnInventoryDeleted -= RefreshInventoryPanel;
     }
 }
