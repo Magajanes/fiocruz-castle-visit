@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,15 +9,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        InputController.LockInputs(true);
         InitializeLoading();
-        InitializeManagers();
-        InitializeInventory();
     }
 
     private void InitializeLoading()
     {
-        ArtifactsService.LoadArtifactsInfo(() => {
+        ArtifactsService.LoadGameArtifacts(() => {
             Debug.Log("Assets loaded");
+            InitializeManagers();
+            InitializeInventory();
+            InputController.LockInputs(false);
         });
     }
 

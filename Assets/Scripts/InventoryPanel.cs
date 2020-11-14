@@ -8,8 +8,8 @@ public class InventoryPanel : UIPanel
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
-    public override void Initialize(object context = null)
+    public override void Initialize(InitArgs args)
     {
-        _inventory = context as Inventory;
+        
     }
 }

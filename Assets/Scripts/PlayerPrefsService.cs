@@ -13,7 +13,7 @@ public static class PlayerPrefsService
     {
         if (collectedArtifacts == null)
         {
-            Debug.LogError("Trying to save a null dictionary in Collected Artifacts!");
+            Debug.LogError("Trying to save a null List in Collected Artifacts!");
             return;
         }
 

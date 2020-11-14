@@ -9,7 +9,17 @@ public abstract class UIPanel : MonoBehaviour
         gameObject.SetActive(active);
     }
 
-    public abstract void Initialize(object context = null);
+    public abstract void Initialize(InitArgs args);
+
+    public class InitArgs
+    {
+        public int ArtifactId;
+
+        public static InitArgs CreateWithId(int id)
+        {
+            return new InitArgs() { ArtifactId = id };
+        }
+    }
 }
 
 public class ArtifactInfoPanel : UIPanel
@@ -21,15 +31,26 @@ public class ArtifactInfoPanel : UIPanel
     [SerializeField]
     private Image image;
 
-    public override void Initialize(object context = null)
+    public override void Initialize(InitArgs args)
     {
-        int artifactId = (int)context;
-        ArtifactInfo info = null;
-        if (ArtifactsService.TryGetArtifactInfoById(artifactId, ref info))
+        int artifactId = args.ArtifactId;
+        ArtifactInfo artifactInfo = new ArtifactInfo();
+        if (ArtifactsService.TryGetArtifactInfo(artifactId, ref artifactInfo))
         {
-            title.text = info.Name;
-            description.text = info.Description;
-            image.sprite = info.Image;
+            SetPanel(artifactInfo);
         }
+    }
+
+    private void SetPanel(ArtifactInfo artifactInfo)
+    {
+        title.text = artifactInfo.Name;
+        description.text = artifactInfo.Description;
+        ArtifactsService.LoadArtifactSprite(
+            artifactInfo.ImagePath,
+            (sprite) =>
+            {
+                image.sprite = sprite;
+            }
+        );
     }
 }

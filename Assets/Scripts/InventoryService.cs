@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public static class InventoryService
+﻿public static class InventoryService
 {
     private static Inventory _inventory;
 

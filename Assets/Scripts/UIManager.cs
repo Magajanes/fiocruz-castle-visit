@@ -34,18 +34,18 @@ public class UIManager : MonoBehaviour
         _uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
     }
 
-    public static void ChangeState(UIState state, object context = null)
+    public static void ChangeState(UIState state, UIPanel.InitArgs args)
     {
         if (_currentState == state)
             return;
 
         _currentState = state;
-        _currentPanel.SetActive(false);
+        _currentPanel?.SetActive(false);
         _currentPanel = _uiPanels[_currentState];
         if (_currentPanel != null)
         {
             _currentPanel.SetActive(true);
-            _currentPanel.Initialize(context);
+            _currentPanel.Initialize(args);
         }
 
         OnUIStateChange?.Invoke(_currentState);
