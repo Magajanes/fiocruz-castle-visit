@@ -22,4 +22,9 @@
     {
         _inventory.AddArtifact(artifactId);
     }
+
+    public static Inventory GetInventory()
+    {
+        return _inventory;
+    }
 }

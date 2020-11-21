@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private UIManager uiManager;
+    [SerializeField]
+    private InventoryManager inventoryManager;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void InitializeManagers()
     {
         uiManager.Initialize();
+        inventoryManager.Initialize();
     }
 
     private void InitializeInventory()
