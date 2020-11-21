@@ -2,9 +2,9 @@
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class PlayerPrefsService
+public static class PlayerPrefsService
 {
-    public static void DeletePlayerPrefs()
+    public static void DeleteInventory()
     {
         PlayerPrefs.DeleteAll();
     }
@@ -13,11 +13,11 @@ public class PlayerPrefsService
     {
         if (collectedArtifacts == null)
         {
-            Debug.LogError("Trying to save a null dictionary in Collected Artifacts!");
+            Debug.LogError("Trying to save a null List in Collected Artifacts!");
             return;
         }
 
-        var artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
+        string artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
         PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
     }
 
@@ -26,7 +26,7 @@ public class PlayerPrefsService
         var collectedArtifacts = new List<int>();
         if (PlayerPrefs.HasKey("collectedArtifacts"))
         {
-            var artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
+            string artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
             collectedArtifacts = JsonConvert.DeserializeObject<List<int>>(artifactsJson);
         }
         return collectedArtifacts;

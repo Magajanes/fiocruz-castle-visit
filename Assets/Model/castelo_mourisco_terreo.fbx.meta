@@ -3,7 +3,32 @@ guid: a5bafe0bafc31c34f8994bd307000d1d
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janelas_terreo
+    second: {fileID: 2100000, guid: e34c23ad211c5e64fb062ad8b15517a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_cimento_grosso
+    second: {fileID: 2100000, guid: e8972d18ce074434f863f8b479d9ec09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_lisa_cimento
+    second: {fileID: 2100000, guid: be299816bcc24e443b24d1a7d840b9a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pedras_terreo
+    second: {fileID: 2100000, guid: 07913a611b30d224cbaef9ce81e725d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: porta_terreo
+    second: {fileID: 2100000, guid: b00374c9db0e7a241b2acfe548117662, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

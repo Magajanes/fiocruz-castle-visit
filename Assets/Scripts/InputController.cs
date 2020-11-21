@@ -5,6 +5,7 @@ public class InputController : MonoBehaviour
 {
     private Vector2 _inputDirection;
     private Vector2 _mouseInput;
+    private static bool _inputsLocked = true;
 
     [Header("Player Movement")]
     [SerializeField]
@@ -38,12 +39,20 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
+        if (_inputsLocked)
+            return;
+
         RunInputScheme();
     }
 
     private void OnDestroy()
     {
         UIManager.OnUIStateChange -= SetInputScheme;
+    }
+
+    public static void LockInputs(bool lockActive)
+    {
+        _inputsLocked = lockActive;
     }
 
     private void RunUiInputScheme()

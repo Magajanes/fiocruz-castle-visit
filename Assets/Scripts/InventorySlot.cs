@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
@@ -14,8 +12,12 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     private Image artifactImage;
 
-    public void Initialize(bool isArtifactCollected)
+    public void Initialize(int artifactId)
     {
-        artifactImage.color = isArtifactCollected ? collectedColor : notCollectedColor;
+        artifactImage.color = collectedColor;
+        if (ArtifactsService.TryGetArtifactSprite(artifactId, out Sprite sprite))
+        {
+            artifactImage.sprite = sprite;
+        }
     }
 }

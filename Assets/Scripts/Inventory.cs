@@ -10,26 +10,37 @@ public class Inventory
         if (_collectedArtifactsIds != null)
             return;
 
-        ArtifactInfoPanel.OnCollect += AddArtifact;
         _collectedArtifactsIds = new List<int>();
         _collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
         Debug.Log("Inventory initialized");
     }
 
-    private void AddArtifact(ArtifactInfo info)
+    public void AddArtifact(int id)
     {
-        if (_collectedArtifactsIds.Contains(info.Id))
+        if (HasArtifact(id))
         {
-            Debug.Log($"You already know about {info.Name}");
+            Debug.Log("Already knows about this artifact");
             return;
         }
-        _collectedArtifactsIds.Add(info.Id);
-        Save(info);
+
+        var info = ArtifactsService.GetArtifactInfoById(id);
+        Debug.Log($"Learned about {info.Name}!");
+        _collectedArtifactsIds.Add(id);
+        Save();
     }
 
-    private void Save(ArtifactInfo info)
+    private void Save()
     {
         PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
-        Debug.Log($"Saved {info.Name} in inventory!");
+    }
+
+    public bool HasArtifact(int id)
+    {
+        return _collectedArtifactsIds.Contains(id);
+    }
+
+    public List<int> GetCollectedArtifactsIds()
+    {
+        return _collectedArtifactsIds;
     }
 }

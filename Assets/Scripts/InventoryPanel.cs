@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class InventoryPanel : UIPanel
 {
-    private Inventory _inventory;
-
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
-    public override void Initialize(object context)
+    public override void Initialize(InitArgs args)
     {
-        _inventory = Player.Inventory;
-        var collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
-        foreach (var id in collectedArtifactsIds)
+        Inventory _inventory = InventoryService.GetInventory();
+        List<int> collectedArtifactsIds = _inventory.GetCollectedArtifactsIds();
+        foreach (int id in collectedArtifactsIds)
         {
-            slots[id - 1].Initialize(true);
+            if (ArtifactsService.TryGetArtifactInfo(id, out ArtifactInfo info))
+            {
+                slots[id - 1].Initialize(id);
+            }
         }
     }
 }
