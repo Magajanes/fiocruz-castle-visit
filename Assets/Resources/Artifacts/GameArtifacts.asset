@@ -19,5 +19,5 @@ MonoBehaviour:
     ImagePath: Sprites/cylinder
   - Id: 2
     Name: Awkward sphere
-    Description: This sphere has something wrong that is not corect about it...
+    Description: This sphere has something wrong that is not correct about it...
     ImagePath: Sprites/sphere

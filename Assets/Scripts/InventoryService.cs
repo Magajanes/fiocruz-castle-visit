@@ -17,4 +17,9 @@
         _inventory = new Inventory();
         _inventory.Initialize();
     }
+
+    public static void SaveArtifact(int artifactId)
+    {
+        _inventory.AddArtifact(artifactId);
+    }
 }

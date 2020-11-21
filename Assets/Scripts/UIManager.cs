@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         _uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
     }
 
-    public static void ChangeState(UIState state, UIPanel.InitArgs args)
+    public static void ChangeState(UIState state, UIPanel.InitArgs args = null)
     {
         if (_currentState == state)
             return;

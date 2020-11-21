@@ -31,26 +31,31 @@ public class ArtifactInfoPanel : UIPanel
     [SerializeField]
     private Image image;
 
+    private ArtifactInfo _currentInfo;
+
     public override void Initialize(InitArgs args)
     {
         int artifactId = args.ArtifactId;
-        ArtifactInfo artifactInfo = new ArtifactInfo();
-        if (ArtifactsService.TryGetArtifactInfo(artifactId, ref artifactInfo))
+        if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
         {
-            SetPanel(artifactInfo);
+            _currentInfo = artifactInfo;
+            SetPanel();
         }
     }
 
-    private void SetPanel(ArtifactInfo artifactInfo)
+    private void SetPanel()
     {
-        title.text = artifactInfo.Name;
-        description.text = artifactInfo.Description;
-        ArtifactsService.LoadArtifactSprite(
-            artifactInfo.ImagePath,
-            (sprite) =>
-            {
-                image.sprite = sprite;
-            }
-        );
+        title.text = _currentInfo.Name;
+        description.text = _currentInfo.Description;
+        if (ArtifactsService.TryGetArtifactSprite(_currentInfo.Id, out Sprite sprite))
+        {
+            image.sprite = sprite;
+        }
+    }
+
+    public void Collect()
+    {
+        InventoryService.SaveArtifact(_currentInfo.Id);
+        UIManager.ChangeState(UIState.Inactive);
     }
 }

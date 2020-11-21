@@ -6,7 +6,7 @@ public class Artifact : MonoBehaviour
     private int _atifactId;
     private string _name;
     private string _description;
-    private string _imagePath;
+    private Sprite _sprite;
 
     public string Name
     {
@@ -14,7 +14,7 @@ public class Artifact : MonoBehaviour
         {
             if (_name == null)
             {
-                if (ArtifactsService.TryGetArtifactName(_atifactId, ref _name))
+                if (ArtifactsService.TryGetArtifactName(_atifactId, out _name))
                 {
                     return _name;
                 }
@@ -33,7 +33,7 @@ public class Artifact : MonoBehaviour
         {
             if (_description == null)
             {
-                if (ArtifactsService.TryGetArtifactDescription(_atifactId, ref _description))
+                if (ArtifactsService.TryGetArtifactDescription(_atifactId, out _description))
                 {
                     return _description;
                 }
@@ -46,22 +46,22 @@ public class Artifact : MonoBehaviour
         }
     }
 
-    public string ImagePath
+    public Sprite Sprite
     {
         get
         {
-            if (_imagePath == null)
+            if (_sprite == null)
             {
-                if (ArtifactsService.TryGetArtifactImagePath(_atifactId, ref _imagePath))
+                if (ArtifactsService.TryGetArtifactSprite(_atifactId, out _sprite))
                 {
-                    return _imagePath;
+                    return _sprite;
                 }
                 else
                 {
-                    return string.Empty;
+                    return null;
                 }
             }
-            return _imagePath;
+            return _sprite;
         }
     }
 

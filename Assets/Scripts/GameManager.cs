@@ -5,8 +5,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIManager uiManager;
 
-    private static Inventory _inventory;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

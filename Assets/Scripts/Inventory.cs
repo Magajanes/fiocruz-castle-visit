@@ -15,7 +15,7 @@ public class Inventory
         Debug.Log("Inventory initialized");
     }
 
-    private void AddArtifact(int id)
+    public void AddArtifact(int id)
     {
         if (HasArtifact(id))
             return;
@@ -31,6 +31,7 @@ public class Inventory
 
     public bool HasArtifact(int id)
     {
+        Debug.Log("Already knows about this artifact");
         return _collectedArtifactsIds.Contains(id);
     }
 
