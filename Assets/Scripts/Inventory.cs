@@ -18,8 +18,13 @@ public class Inventory
     public void AddArtifact(int id)
     {
         if (HasArtifact(id))
+        {
+            Debug.Log("Already knows about this artifact");
             return;
+        }
 
+        var info = ArtifactsService.GetArtifactInfoById(id);
+        Debug.Log($"Learned about {info.Name}!");
         _collectedArtifactsIds.Add(id);
         Save();
     }
@@ -31,7 +36,6 @@ public class Inventory
 
     public bool HasArtifact(int id)
     {
-        Debug.Log("Already knows about this artifact");
         return _collectedArtifactsIds.Contains(id);
     }
 

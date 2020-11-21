@@ -55,6 +55,11 @@ public static class ArtifactsService
         return true;
     }
 
+    public static ArtifactInfo GetArtifactInfoById(int id)
+    {
+        return _artifactInfoById[id];
+    }
+
     public static bool TryGetArtifactName(int id, out string name)
     {
         if (!ArtifactExists(id))
