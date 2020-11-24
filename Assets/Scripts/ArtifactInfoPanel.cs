@@ -49,7 +49,6 @@ public class ArtifactInfoPanel : UIPanel
         int artifactId = args.ArtifactId;
         _entryPoint = args.EntryPoint;
         collectButton.SetActive(_entryPoint == UIState.Inactive);
-
         if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
         {
             _currentInfo = artifactInfo;
@@ -77,6 +76,29 @@ public class ArtifactInfoPanel : UIPanel
     {
         InputController.OnBackButtonPress -= ReturnToLastScreen;
         UIManager.ChangeState(_entryPoint);
+    }
+
+    public void ShowNextCollectedArtifact()
+    {
+        var inventory = InventoryService.GetInventory();
+        var collectedArtifactsIds = inventory.GetCollectedArtifactsIds();
+        var index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
+
+        if (index == collectedArtifactsIds.Count - 1)
+            return;
+
+        index++;
+        int artifactId = collectedArtifactsIds[index];
+        if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
+        {
+            _currentInfo = artifactInfo;
+            SetPanel();
+        }
+    }
+
+    public void ShowPreviousCollectedArtifact()
+    {
+
     }
 
     public void Collect()
