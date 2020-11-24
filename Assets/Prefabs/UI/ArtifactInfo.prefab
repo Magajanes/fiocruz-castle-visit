@@ -571,6 +571,7 @@ MonoBehaviour:
   title: {fileID: 9135940906557864186}
   description: {fileID: 9135940907592359518}
   image: {fileID: 9135940907900321717}
+  collectButton: {fileID: 4485222877327781775}
 --- !u!1 &9135940907145288652
 GameObject:
   m_ObjectHideFlags: 0
