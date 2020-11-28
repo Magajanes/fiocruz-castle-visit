@@ -1,4 +1,6 @@
-﻿public static class InventoryService
+﻿using System.Collections.Generic;
+
+public static class InventoryService
 {
     private static Inventory _inventory;
 
@@ -13,10 +15,14 @@
         _inventory.AddArtifact(artifactId);
     }
 
-    public static Inventory GetInventory()
+    public static int GetArtifactIndex(int id)
     {
-        if (_inventory == null)
-            InitializeInventory();
-        return _inventory;
+        List<int> collectedArtifactsIds = _inventory.GetCollectedArtifactsIds();
+        return collectedArtifactsIds.IndexOf(id);
+    }
+
+    public static List<int> GetCollectedArtifactsIds()
+    {
+        return _inventory.GetCollectedArtifactsIds();
     }
 }

@@ -24,12 +24,15 @@ public class GameManager : MonoBehaviour
 
     private void InitializeLoading()
     {
-        ArtifactsService.LoadGameArtifacts(() => {
+        ArtifactsService.LoadGameArtifacts(OnAssetsLoaded);
+
+        void OnAssetsLoaded()
+        {
             Debug.Log("Assets loaded");
             InitializeManagers();
             InitializeInventory();
             InputController.LockInputs(false);
-        });
+        }
     }
 
     private void InitializeManagers()

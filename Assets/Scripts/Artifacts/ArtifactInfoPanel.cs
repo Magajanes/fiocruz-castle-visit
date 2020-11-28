@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -80,16 +81,14 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowNextCollectedArtifact()
     {
-        var inventory = InventoryService.GetInventory();
-        var collectedArtifactsIds = inventory.GetCollectedArtifactsIds();
-        var index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
+        int index = InventoryService.GetArtifactIndex(_currentInfo.Id);
+        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
 
         if (index == collectedArtifactsIds.Count - 1)
             return;
 
         index++;
-        int artifactId = collectedArtifactsIds[index];
-        if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
+        if (ArtifactsService.TryGetArtifactInfo(collectedArtifactsIds[index], out ArtifactInfo artifactInfo))
         {
             _currentInfo = artifactInfo;
             SetPanel();
@@ -98,7 +97,18 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowPreviousCollectedArtifact()
     {
+        int index = InventoryService.GetArtifactIndex(_currentInfo.Id);
+        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
 
+        if (index == 0)
+            return;
+
+        index--;
+        if (ArtifactsService.TryGetArtifactInfo(collectedArtifactsIds[index], out ArtifactInfo artifactInfo))
+        {
+            _currentInfo = artifactInfo;
+            SetPanel();
+        }
     }
 
     public void Collect()
