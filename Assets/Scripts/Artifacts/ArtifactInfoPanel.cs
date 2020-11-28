@@ -31,14 +31,19 @@ public abstract class UIPanel : MonoBehaviour
 
 public class ArtifactInfoPanel : UIPanel
 {
+    [Header("Components")]
     [SerializeField]
     private TextMeshProUGUI title;
     [SerializeField]
     private TextMeshProUGUI description;
     [SerializeField]
     private Image image;
+
+    [Header("Buttons Gameobjects")]
     [SerializeField]
     private GameObject collectButton;
+    [SerializeField]
+    private GameObject arrowsPanel;
 
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
@@ -49,7 +54,11 @@ public class ArtifactInfoPanel : UIPanel
 
         int artifactId = args.ArtifactId;
         _entryPoint = args.EntryPoint;
-        collectButton.SetActive(_entryPoint == UIState.Inactive);
+        bool showCollectButton = _entryPoint == UIState.Inactive && !InventoryService.IsArtifactCollected(artifactId);
+        bool showArrowsPanel = InventoryService.IsArtifactCollected(artifactId);
+        collectButton.SetActive(showCollectButton);
+        arrowsPanel.SetActive(showArrowsPanel);
+
         if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
         {
             _currentInfo = artifactInfo;
@@ -100,7 +109,7 @@ public class ArtifactInfoPanel : UIPanel
         int index = InventoryService.GetArtifactIndex(_currentInfo.Id);
         List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
 
-        if (index == 0)
+        if (index <= 0)
             return;
 
         index--;
@@ -114,6 +123,7 @@ public class ArtifactInfoPanel : UIPanel
     public void Collect()
     {
         InventoryService.SaveArtifact(_currentInfo.Id);
-        Close();
+        collectButton.SetActive(false);
+        arrowsPanel.SetActive(true);
     }
 }

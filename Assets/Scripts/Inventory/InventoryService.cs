@@ -25,4 +25,9 @@ public static class InventoryService
     {
         return _inventory.GetCollectedArtifactsIds();
     }
+
+    public static bool IsArtifactCollected(int id)
+    {
+        return _inventory.HasArtifact(id);
+    }
 }
