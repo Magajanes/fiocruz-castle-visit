@@ -18,12 +18,9 @@ public class Inventory
     public void AddArtifact(int id)
     {
         if (HasArtifact(id))
-        {
-            Debug.Log("Already knows about this artifact");
             return;
-        }
 
-        var info = ArtifactsService.GetArtifactInfoById(id);
+        ArtifactInfo info = ArtifactsService.GetArtifactInfoById(id);
         Debug.Log($"Learned about {info.Name}!");
         _collectedArtifactsIds.Add(id);
         Save();
@@ -31,12 +28,19 @@ public class Inventory
 
     private void Save()
     {
+        _collectedArtifactsIds.Sort();
         PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
     }
 
     public bool HasArtifact(int id)
     {
-        return _collectedArtifactsIds.Contains(id);
+        if (_collectedArtifactsIds.Contains(id))
+        {
+            Debug.Log("Already knows about this artifact");
+            return true;
+        }
+
+        return false;
     }
 
     public List<int> GetCollectedArtifactsIds()

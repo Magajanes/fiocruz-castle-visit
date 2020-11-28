@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public static class ArtifactsService
 {
@@ -43,6 +42,14 @@ public static class ArtifactsService
         };
     }
 
+    public static ArtifactInfo GetArtifactInfoById(int id)
+    {
+        if (!ArtifactExists(id))
+            return null;
+
+        return _artifactInfoById[id];
+    }
+
     public static bool TryGetArtifactInfo(int id, out ArtifactInfo artifactInfo)
     {
         if (!ArtifactExists(id))
@@ -53,11 +60,6 @@ public static class ArtifactsService
 
         artifactInfo = _artifactInfoById[id];
         return true;
-    }
-
-    public static ArtifactInfo GetArtifactInfoById(int id)
-    {
-        return _artifactInfoById[id];
     }
 
     public static bool TryGetArtifactName(int id, out string name)

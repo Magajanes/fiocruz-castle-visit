@@ -8,8 +8,7 @@ public class InventoryPanel : UIPanel
 
     public override void Initialize(InitArgs args)
     {
-        Inventory _inventory = InventoryService.GetInventory();
-        List<int> collectedArtifactsIds = _inventory.GetCollectedArtifactsIds();
+        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
         foreach (int id in collectedArtifactsIds)
         {
             if (ArtifactsService.TryGetArtifactInfo(id, out ArtifactInfo info))
