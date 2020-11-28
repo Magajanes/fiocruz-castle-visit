@@ -31,6 +31,13 @@ public class Inventory
 
     private void Save()
     {
+        _collectedArtifactsIds.Sort();
+        string idString = string.Empty;
+        foreach (int id in _collectedArtifactsIds)
+        {
+            idString += $"{id} ";
+        }
+        Debug.Log($"Collected artifacts ids in order: {idString}!");
         PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
     }
 

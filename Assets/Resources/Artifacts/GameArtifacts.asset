@@ -17,7 +17,7 @@ MonoBehaviour:
     Name: Very cool cylinder
     Description: This cylinder is really awesome!
     ImagePath: Sprites/cylinder
-  - Id: 2
+  - Id: 4
     Name: Awkward sphere
     Description: This sphere has something wrong that is not correct about it...
     ImagePath: Sprites/sphere

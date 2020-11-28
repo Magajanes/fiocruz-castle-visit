@@ -2,13 +2,21 @@
 
 public class GameManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private UIManager uiManager;
     [SerializeField]
     private InventoryManager inventoryManager;
 
+    [Header("Delete PlayerPrefs")]
+    [SerializeField]
+    private bool deletePlayerPrefsOnStart;
+
     private void Start()
     {
+        if (deletePlayerPrefsOnStart)
+            PlayerPrefs.DeleteAll();
+
         Cursor.lockState = CursorLockMode.Locked;
         InputController.LockInputs(true);
         InitializeLoading();
