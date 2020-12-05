@@ -1,0 +1,352 @@
+fileFormatVersion: 2
+guid: 197c8c5a07c2c674fbd2e428ff0170e5
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arco_menor_piso1
+    second: {fileID: 2100000, guid: 21fa75cb4ae83d142af8f34306e51e62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arco_piso1
+    second: {fileID: 2100000, guid: 63ccfd92978dff945a8e149c507d2b71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arcos_piso1
+    second: {fileID: 2100000, guid: 03cdf7e997393b74bbb6787267d0a22d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coluna_tras
+    second: {fileID: 2100000, guid: 18fab7dd262c20a4f96721b0288e047a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: colunas
+    second: {fileID: 2100000, guid: d0bea42f90a09214d97bc569723697b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: colunas_baixo
+    second: {fileID: 2100000, guid: 578ada8e11abd454a9c6db75c49f261c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: conexao
+    second: {fileID: 2100000, guid: 98fbbb3f98070744aa3ce26b75d150a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cupula_branca
+    second: {fileID: 2100000, guid: 5b8c5fbab61ccde4898d11684735ed0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frente_piso1
+    second: {fileID: 2100000, guid: 66907d21fb987bc4a840c0b7c97f1b1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_dupla
+    second: {fileID: 2100000, guid: 688ff1e88138a3f4cbd0db798fac29d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_dupla_frente_dentro
+    second: {fileID: 2100000, guid: 8f844c32744e04f4b81c120fd02e8b10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_grande
+    second: {fileID: 2100000, guid: db01da2d381f3ba459885da1e086d213, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_grande_arco
+    second: {fileID: 2100000, guid: ba27322408512434087f1463054fb2f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_grande_dentro
+    second: {fileID: 2100000, guid: 00f02fb48e9d54f4b8636924a4d9a03a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_grande_parede
+    second: {fileID: 2100000, guid: f9decddfdc00d23428bf10120d793a13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_lado_piso1
+    second: {fileID: 2100000, guid: c84bf8ba1cc4faa4f98239311aa9e2e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_simples
+    second: {fileID: 2100000, guid: 0bb78834d7dd22d44bad0ece3ae5e2c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_simples_dentro
+    second: {fileID: 2100000, guid: a78bc9c9e3e909a4f951c76acdc81e9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_simples_lado_piso1
+    second: {fileID: 2100000, guid: 5c9323a512716014cbbb0b49a8a62ae4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_simples_parede
+    second: {fileID: 2100000, guid: e697f5fcd490be047b1e5fb18135f7f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_simples_parede_dentro
+    second: {fileID: 2100000, guid: 2509f7c15d51cde42aa6b224deb662f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_torre_oeste
+    second: {fileID: 2100000, guid: 3a99624e3e56ac149a7d50772e4a2edd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_aberta
+    second: {fileID: 2100000, guid: c21d540b14d9d67478baeaea8539b086, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_arco_tras
+    second: {fileID: 2100000, guid: 48a84140beae2844697b3fe9f24b0a3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_lado
+    second: {fileID: 2100000, guid: 1d798db000171844282f012a914f3ce3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_lado_arco
+    second: {fileID: 2100000, guid: 06712a67ea6bf6744b83d1434da91abc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_lado_dentro
+    second: {fileID: 2100000, guid: 243b4213a1cfc21409f2b6c2a7435792, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_lado_detalhe
+    second: {fileID: 2100000, guid: 85669213d316c2248a92a8883021fcc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: janela_tripla_lado_parede
+    second: {fileID: 2100000, guid: 195973ceb0f456840b40e5901114890d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lustre_preto_frente
+    second: {fileID: 2100000, guid: efa42e743f088cd478d48b475c60a11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marmore
+    second: {fileID: 2100000, guid: b82758f44726b6444ae4cf309d4f6320, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_preto
+    second: {fileID: 2100000, guid: 912f888d4f7b9474abc324165d5d82b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parapeito
+    second: {fileID: 2100000, guid: c3c07bf1670dc1f42bce1fe1d0ede285, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_cimento_grosso
+    second: {fileID: 2100000, guid: f044434bac5525b47aa36fd745c13944, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_interna_branca
+    second: {fileID: 2100000, guid: 0ee1ad8e0c941cf4094444e4b6e2939c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_interna_escadaria
+    second: {fileID: 2100000, guid: 439770380e0ca114b92205d8c9d82c44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_lisa_areia
+    second: {fileID: 2100000, guid: 967d56119e35c4148ae495133a421198, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_lisa_cimento
+    second: {fileID: 2100000, guid: 69c390d4dba74b54bb442399083b7220, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_lisa_interna
+    second: {fileID: 2100000, guid: 77add32798e5f5240908fcaedd7f0cb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pintura_lisa
+    second: {fileID: 2100000, guid: ccc64a28e3c154a45ae6c3f43ec8bfcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso ceramica varanda
+    second: {fileID: 2100000, guid: b0e5dfb6e7ad9514985dda8886ed1f83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso1_escada
+    second: {fileID: 2100000, guid: f69ec0da061f8a14190bcc417cab3445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso1_frente
+    second: {fileID: 2100000, guid: 66f5e08b4f866df41a1a6ce27d001056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso_ladrilho
+    second: {fileID: 2100000, guid: 383b6b4449afa1e4b9f3bf9a7a7314be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tijolo_simples
+    second: {fileID: 2100000, guid: 2cd62cb9fbcfd8d4fa6423899041331e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torre_oeste_arco
+    second: {fileID: 2100000, guid: 897b9a1d1434f354c909127adb5bd8c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torre_oeste_frente_alta
+    second: {fileID: 2100000, guid: 9e42cc312ef01154384133044b8ac2a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torre_oeste_frente_baixo
+    second: {fileID: 2100000, guid: 91033096568d3d44e83ac6d0b57a7e5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tras_frente
+    second: {fileID: 2100000, guid: 925b1cc444bed804ba417a483e7bd462, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tras_lado
+    second: {fileID: 2100000, guid: 7348df4bc9011f84cb30a0cb46c2e549, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tras_lado_meio
+    second: {fileID: 2100000, guid: 9ea69792b2b57224188290018f1ce0e2, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
