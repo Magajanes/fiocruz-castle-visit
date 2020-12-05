@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  gravityModifier: 1
   characterController: {fileID: 7664384075749495008}
   headTransform: {fileID: 7664384077109141757}
 --- !u!114 &6864842558812491325
