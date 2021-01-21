@@ -35,7 +35,6 @@ public class InputController : MonoBehaviour
     private void Start()
     {
         SetInputScheme(UIState.Inactive);
-        LockInputs(false);
     }
 
     private void Update()

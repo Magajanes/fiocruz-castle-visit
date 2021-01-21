@@ -4,13 +4,16 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    private UIManager uiManager;
-    [SerializeField]
     private InventoryManager inventoryManager;
 
     [Header("Delete PlayerPrefs")]
     [SerializeField]
     private bool deletePlayerPrefsOnStart;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 120;
+    }
 
     private void Start()
     {
@@ -18,7 +21,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.DeleteAll();
 
         Cursor.lockState = CursorLockMode.Locked;
-        InputController.LockInputs(true);
+        InputController.LockInputs(false);
         InitializeLoading();
     }
 
@@ -29,20 +32,37 @@ public class GameManager : MonoBehaviour
         void OnAssetsLoaded()
         {
             Debug.Log("Assets loaded");
-            InitializeManagers();
-            InitializeInventory();
-            InputController.LockInputs(false);
+            LoadUIManager();
         }
     }
 
-    private void InitializeManagers()
+    private void LoadUIManager()
     {
-        uiManager.Initialize();
-        inventoryManager.Initialize();
+        ResourceRequest request = Resources.LoadAsync("Prefabs/UIManager");
+        request.completed += InstantiateUIManager;
+
+        void InstantiateUIManager(AsyncOperation operation)
+        {
+            var prefab = request.asset as GameObject;
+            var uiManager = Instantiate(prefab).GetComponent<UIManager>();
+            uiManager.transform.SetParent(transform.parent);
+            uiManager.Initialize();
+            LoadIventoryManager();
+        }
     }
 
-    private void InitializeInventory()
+    private void LoadIventoryManager()
     {
-        InventoryService.InitializeInventory();
+        ResourceRequest request = Resources.LoadAsync("Prefabs/InventoryManager");
+        request.completed += InstantiateInventoryManager;
+
+        void InstantiateInventoryManager(AsyncOperation operation)
+        {
+            var prefab = request.asset as GameObject;
+            var inventoryManager = Instantiate(prefab).GetComponent<InventoryManager>();
+            inventoryManager.transform.SetParent(transform.parent);
+            inventoryManager.Initialize();
+            InputController.LockInputs(false);
+        }
     }
 }

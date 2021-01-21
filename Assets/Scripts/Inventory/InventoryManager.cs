@@ -6,6 +6,8 @@ public class InventoryManager : MonoBehaviour
     {
         InputController.OnInventoryButtonPress += ShowInventory;
         InputController.OnBackButtonPress += CloseInventory;
+
+        InventoryService.InitializeInventory();
     }
 
     private void OnDestroy()
