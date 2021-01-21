@@ -58,12 +58,10 @@ public class ArtifactInfoPanel : UIPanel
         bool showArrowsPanel = InventoryService.IsArtifactCollected(artifactId);
         collectButton.SetActive(showCollectButton);
         arrowsPanel.SetActive(showArrowsPanel);
+        _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
 
-        if (ArtifactsService.TryGetArtifactInfo(artifactId, out ArtifactInfo artifactInfo))
-        {
-            _currentInfo = artifactInfo;
+        if (_currentInfo != null)
             SetPanel();
-        }
     }
 
     private void SetPanel()
@@ -97,9 +95,11 @@ public class ArtifactInfoPanel : UIPanel
             return;
 
         index++;
-        if (ArtifactsService.TryGetArtifactInfo(collectedArtifactsIds[index], out ArtifactInfo artifactInfo))
+        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(collectedArtifactsIds[index]);
+
+        if (nextInfo != null)
         {
-            _currentInfo = artifactInfo;
+            _currentInfo = nextInfo;
             SetPanel();
         }
     }
@@ -113,9 +113,11 @@ public class ArtifactInfoPanel : UIPanel
             return;
 
         index--;
-        if (ArtifactsService.TryGetArtifactInfo(collectedArtifactsIds[index], out ArtifactInfo artifactInfo))
+        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(collectedArtifactsIds[index]);
+
+        if (nextInfo != null)
         {
-            _currentInfo = artifactInfo;
+            _currentInfo = nextInfo;
             SetPanel();
         }
     }

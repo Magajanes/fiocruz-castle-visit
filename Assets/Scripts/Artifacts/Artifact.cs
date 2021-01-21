@@ -8,15 +8,17 @@ public class Artifact : MonoBehaviour
     private string _description;
     private Sprite _sprite;
 
+    private ArtifactInfo Info => ArtifactsService.GetArtifactInfoById(_atifactId);
+
     public string Name
     {
         get
         {
             if (_name == null)
             {
-                if (ArtifactsService.TryGetArtifactName(_atifactId, out _name))
+                if (Info != null)
                 {
-                    return _name;
+                    return Info.Name;
                 }
                 else
                 {
@@ -33,9 +35,9 @@ public class Artifact : MonoBehaviour
         {
             if (_description == null)
             {
-                if (ArtifactsService.TryGetArtifactDescription(_atifactId, out _description))
+                if (Info != null)
                 {
-                    return _description;
+                    return Info.Description;
                 }
                 else
                 {
@@ -69,7 +71,8 @@ public class Artifact : MonoBehaviour
     {
         UIManager.ChangeState(
             UIState.ArtifactInfo,
-            UIPanel.InitArgs.CreateWithId(_atifactId));
+            UIPanel.InitArgs.CreateWithId(_atifactId)
+        );
     }
 
     private void OnTriggerEnter(Collider other)

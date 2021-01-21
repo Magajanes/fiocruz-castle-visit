@@ -11,10 +11,9 @@ public class InventoryPanel : UIPanel
         List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
         foreach (int id in collectedArtifactsIds)
         {
-            if (ArtifactsService.TryGetArtifactInfo(id, out ArtifactInfo info))
-            {
+            ArtifactInfo artifact = ArtifactsService.GetArtifactInfoById(id);
+            if (artifact != null)
                 slots[id - 1].Initialize(id);
-            }
         }
     }
 }

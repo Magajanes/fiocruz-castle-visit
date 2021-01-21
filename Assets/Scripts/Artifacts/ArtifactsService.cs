@@ -50,42 +50,6 @@ public static class ArtifactsService
         return _artifactInfoById[id];
     }
 
-    public static bool TryGetArtifactInfo(int id, out ArtifactInfo artifactInfo)
-    {
-        if (!ArtifactExists(id))
-        {
-            artifactInfo = null;
-            return false;
-        }
-
-        artifactInfo = _artifactInfoById[id];
-        return true;
-    }
-
-    public static bool TryGetArtifactName(int id, out string name)
-    {
-        if (!ArtifactExists(id))
-        {
-            name = string.Empty;
-            return false;
-        }
-
-        name = _artifactInfoById[id].Name;
-        return true;
-    }
-
-    public static bool TryGetArtifactDescription(int id, out string description)
-    {
-        if (!ArtifactExists(id))
-        {
-            description = string.Empty;
-            return false;
-        }
-
-        description = _artifactInfoById[id].Description;
-        return true;
-    }
-
     public static bool TryGetArtifactSprite(int id, out Sprite sprite)
     {
         if (!ArtifactExists(id))
