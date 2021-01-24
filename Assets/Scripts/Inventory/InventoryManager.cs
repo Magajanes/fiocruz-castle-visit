@@ -13,20 +13,12 @@ public class InventoryManager : MonoBehaviour
         InitializeInventory();
     }
 
-    public void InitializeInventory()
+    private void InitializeInventory()
     {
+        if (PlayerInventory != null) return;
+        
         PlayerInventory = new Inventory();
         PlayerInventory.Initialize();
-    }
-
-    public void SaveArtifact(int artifactId)
-    {
-        PlayerInventory.AddArtifact(artifactId);
-    }
-
-    public List<int> GetCollectedArtifactsIds()
-    {
-        return PlayerInventory.GetCollectedArtifactsIds();
     }
 
     private void ShowInventory()
