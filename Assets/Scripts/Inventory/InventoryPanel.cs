@@ -8,12 +8,10 @@ public class InventoryPanel : UIPanel
 
     public override void Initialize(InitArgs args)
     {
-        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
+        var collectedArtifactsIds = InventoryManager.PlayerInventory.GetCollectedArtifactsIds();
         foreach (int id in collectedArtifactsIds)
         {
-            ArtifactInfo artifact = ArtifactsService.GetArtifactInfoById(id);
-            if (artifact != null)
-                slots[id - 1].Initialize(id);
+            slots[id - 1].Initialize(id);
         }
     }
 }

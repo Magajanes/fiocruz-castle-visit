@@ -43,6 +43,11 @@ public class Inventory
         return false;
     }
 
+    public int GetArtifactIndex(int id)
+    {
+        return _collectedArtifactsIds.IndexOf(id);
+    }
+
     public List<int> GetCollectedArtifactsIds()
     {
         return _collectedArtifactsIds;

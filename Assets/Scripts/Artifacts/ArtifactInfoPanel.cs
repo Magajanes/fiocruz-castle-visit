@@ -19,12 +19,20 @@ public abstract class UIPanel : MonoBehaviour
 
         public static InitArgs CreateWithId(int id)
         {
-            return new InitArgs() { ArtifactId = id, EntryPoint = UIState.Inactive };
+            return new InitArgs() 
+            {
+                ArtifactId = id,
+                EntryPoint = UIState.Inactive
+            };
         }
 
         public static InitArgs Create(int id, UIState entryPoint)
         {
-            return new InitArgs() { ArtifactId = id, EntryPoint = entryPoint };
+            return new InitArgs() 
+            {
+                ArtifactId = id,
+                EntryPoint = entryPoint 
+            };
         }
     }
 }
@@ -47,15 +55,17 @@ public class ArtifactInfoPanel : UIPanel
 
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
+    private Inventory _playerInventory;
 
     public override void Initialize(InitArgs args)
     {
         InputController.OnBackButtonPress += ReturnToLastScreen;
 
+        _playerInventory = InventoryManager.PlayerInventory;
         int artifactId = args.ArtifactId;
         _entryPoint = args.EntryPoint;
-        bool showCollectButton = _entryPoint == UIState.Inactive && !InventoryService.IsArtifactCollected(artifactId);
-        bool showArrowsPanel = InventoryService.IsArtifactCollected(artifactId);
+        bool showCollectButton = _entryPoint == UIState.Inactive && !_playerInventory.HasArtifact(artifactId);
+        bool showArrowsPanel = _playerInventory.HasArtifact(artifactId);
         collectButton.SetActive(showCollectButton);
         arrowsPanel.SetActive(showArrowsPanel);
         _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
@@ -88,8 +98,8 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowNextCollectedArtifact()
     {
-        int index = InventoryService.GetArtifactIndex(_currentInfo.Id);
-        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
+        int index = _playerInventory.GetArtifactIndex(_currentInfo.Id);
+        List<int> collectedArtifactsIds = _playerInventory.GetCollectedArtifactsIds();
 
         if (index == collectedArtifactsIds.Count - 1)
             return;
@@ -106,8 +116,8 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowPreviousCollectedArtifact()
     {
-        int index = InventoryService.GetArtifactIndex(_currentInfo.Id);
-        List<int> collectedArtifactsIds = InventoryService.GetCollectedArtifactsIds();
+        int index = _playerInventory.GetArtifactIndex(_currentInfo.Id);
+        List<int> collectedArtifactsIds = _playerInventory.GetCollectedArtifactsIds();
 
         if (index <= 0)
             return;
@@ -124,7 +134,7 @@ public class ArtifactInfoPanel : UIPanel
 
     public void Collect()
     {
-        InventoryService.SaveArtifact(_currentInfo.Id);
+        _playerInventory.AddArtifact(_currentInfo.Id);
         collectButton.SetActive(false);
         arrowsPanel.SetActive(true);
     }
