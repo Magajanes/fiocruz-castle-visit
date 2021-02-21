@@ -27,7 +27,11 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
+        if (_isOpen)
+            return;
+        
         animator.SetTrigger(OPEN_DOOR_TRIGGER_NAME);
         _isOpen = true;
+        InputController.OnDoorInteractionPress -= OpenDoor;
     }
 }
