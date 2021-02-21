@@ -23,6 +23,7 @@ public class InputController : MonoBehaviour
     public static event Action OnCollectButtonPress;
     public static event Action OnInventoryButtonPress;
     public static event Action OnBackButtonPress;
+    public static event Action OnDoorInteractionPress;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -82,6 +83,8 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
             OnInventoryButtonPress?.Invoke();
 
+        if (Input.GetKeyDown(KeyCode.F))
+            OnDoorInteractionPress?.Invoke();
     }
 
     private void SetInputScheme(UIState currentState)
