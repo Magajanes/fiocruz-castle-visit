@@ -7,18 +7,27 @@ public class Door : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private bool _isOpen = false;
+
     private void OnTriggerEnter(Collider other)
     {
+        if (_isOpen)
+            return;
+
         InputController.OnDoorInteractionPress += OpenDoor;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (_isOpen)
+            return;
+        
         InputController.OnDoorInteractionPress -= OpenDoor;
     }
 
     private void OpenDoor()
     {
         animator.SetTrigger(OPEN_DOOR_TRIGGER_NAME);
+        _isOpen = true;
     }
 }
