@@ -5,9 +5,9 @@ public class Door : MonoBehaviour
     public const string OPEN_DOOR_TRIGGER_NAME = "Open";
     
     [SerializeField]
-    private Animator animator;
+    protected Animator animator;
 
-    private bool _isOpen = false;
+    protected bool _isOpen = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
         InputController.OnDoorInteractionPress -= OpenDoor;
     }
 
-    private void OpenDoor()
+    protected virtual void OpenDoor()
     {
         if (_isOpen)
             return;

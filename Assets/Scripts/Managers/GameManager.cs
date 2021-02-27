@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    private InventoryManager inventoryManager;
+    private LightManager lightManager;
 
     [Header("Delete PlayerPrefs")]
     [SerializeField]
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //Application.targetFrameRate = 120;
+        Application.targetFrameRate = 120;
     }
 
     private void Start()
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
             var inventoryManager = Instantiate(prefab).GetComponent<InventoryManager>();
             inventoryManager.transform.SetParent(transform.parent);
             inventoryManager.Initialize();
+            lightManager.Initialize();
             InputController.LockInputs(false);
         }
     }
