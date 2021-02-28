@@ -19,17 +19,16 @@ public class RegionDoor : Door
 
     public void CloseDoor(Action onDoorsClosed = null)
     {
-        if (!_isOpen) 
-        {
-            Debug.Log("Here!");
+        if (!_isOpen)
             return;
-        }
 
         animator.SetTrigger(CLOSE_DOOR_TRIGGER_NAME);
         _isOpen = false;
 
-        if (onDoorsClosed != null)
-            StartCoroutine(ExecuteAfterOneSecond(onDoorsClosed));
+        if (onDoorsClosed == null)
+            return;
+        
+        StartCoroutine(ExecuteAfterOneSecond(onDoorsClosed));
 
         IEnumerator ExecuteAfterOneSecond(Action action)
         {
