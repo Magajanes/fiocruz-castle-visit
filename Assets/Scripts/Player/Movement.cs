@@ -19,8 +19,13 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private Transform headTransform;
 
+    public static Movement Instance;
+    private bool _lockMovement;
+
     private void Awake()
     {
+        Instance = this;
+        
         InputController.OnMoveInput += MoveTowards;
         InputController.OnTurnInput += TurnHeadTowards;
     }
@@ -33,6 +38,9 @@ public class Movement : MonoBehaviour
 
     private void MoveTowards(Vector2 inputDirection)
     {
+        if (_lockMovement)
+            return;
+        
         _walkDirection = inputDirection.x * transform.right;
         _strafeDirection = inputDirection.y * transform.forward;
         CalculateGravity();
@@ -55,5 +63,10 @@ public class Movement : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0, mouseInput.x, 0);
         headTransform.localRotation = Quaternion.Euler(mouseInput.y, 0, 0);
+    }
+
+    public void LockMovement(bool isOn)
+    {
+        _lockMovement = isOn;
     }
 }

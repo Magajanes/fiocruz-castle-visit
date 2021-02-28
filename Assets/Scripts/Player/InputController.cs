@@ -6,6 +6,7 @@ public class InputController : MonoBehaviour
     private Vector2 _inputDirection;
     private Vector2 _mouseInput;
     private static bool _inputsLocked = true;
+    private static bool _elevatorMode = true;
 
     [Header("Player Movement")]
     [SerializeField]
@@ -24,6 +25,8 @@ public class InputController : MonoBehaviour
     public static event Action OnInventoryButtonPress;
     public static event Action OnBackButtonPress;
     public static event Action OnDoorInteractionPress;
+    public static event Action<int> OnElevatorButtonPress;
+    public static event Action OnElevatorCall;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -56,6 +59,11 @@ public class InputController : MonoBehaviour
         _inputsLocked = lockActive;
     }
 
+    public static void ElevatorMode(bool isOn)
+    {
+        _elevatorMode = isOn;
+    }
+
     private void RunUiInputScheme()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -85,6 +93,30 @@ public class InputController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
             OnDoorInteractionPress?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.C))
+            OnElevatorCall?.Invoke();
+
+        if (!_elevatorMode)
+            return;
+
+        RunElevatorInputMode();
+    }
+
+    private static void RunElevatorInputMode()
+    {
+
+        if (Input.GetKeyDown(KeyCode.F1))
+            OnElevatorButtonPress?.Invoke(1);
+
+        if (Input.GetKeyDown(KeyCode.F2))
+            OnElevatorButtonPress?.Invoke(2);
+
+        if (Input.GetKeyDown(KeyCode.F3))
+            OnElevatorButtonPress?.Invoke(3);
+
+        if (Input.GetKeyDown(KeyCode.F4))
+            OnElevatorButtonPress?.Invoke(4);
     }
 
     private void SetInputScheme(UIState currentState)
