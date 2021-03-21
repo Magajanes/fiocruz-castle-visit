@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenesController : MonoBehaviour
@@ -32,16 +33,28 @@ public class ScenesController : MonoBehaviour
         _loadingScreen.FadeIn(LoadMainScene);
     }
 
-    public void LoadMainScene()
+    private void LoadMainScene()
     {
-        var asyncOperation = SceneManager.LoadSceneAsync("NewMain", LoadSceneMode.Additive);
-        asyncOperation.completed += (o1) =>
+        var loadOperation = SceneManager.LoadSceneAsync("NewMain", LoadSceneMode.Additive);
+        StartCoroutine(ShowProgress());
+
+        loadOperation.completed += (load) =>
         {
             var unloadOperation = SceneManager.UnloadSceneAsync("MainMenu");
-            unloadOperation.completed += (o2) =>
+            unloadOperation.completed += (unload) =>
             {
                 _loadingScreen.FadeOut();
             };
         };
+
+        IEnumerator ShowProgress()
+        {
+            while (loadOperation.progress < 1)
+            {
+                _loadingScreen.SetProgress(loadOperation.progress);
+                yield return null;
+            }
+            _loadingScreen.SetProgress(1);
+        }
     }
 }

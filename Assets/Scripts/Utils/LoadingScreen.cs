@@ -1,11 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadingScreen : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
     private UIFader uiFader;
+    [SerializeField]
+    private Slider loadingProgressSlider;
 
     [Header("Panels")]
     [SerializeField]
@@ -17,16 +20,38 @@ public class LoadingScreen : MonoBehaviour
     {
         uiFader.FadeIn(
             _background,
-            () => uiFader.FadeIn(_picture, loadCallback, 2)
+            ShowLoadingPicture
         );
+
+        void ShowLoadingPicture()
+        {
+            uiFader.FadeIn(
+                _picture, 
+                loadCallback, 
+                2
+            );
+        }
     }
 
     public void FadeOut()
     {
         uiFader.FadeOut(
             _picture,
-            () => uiFader.FadeOut(_background),
+            FadeBackgroundOut,
             2
         );
+
+        void FadeBackgroundOut()
+        {
+            uiFader.FadeOut(
+                _background,
+                () => SetProgress(0)
+            );
+        }
+    }
+
+    public void SetProgress(float progress)
+    {
+        loadingProgressSlider.value = progress * loadingProgressSlider.maxValue;
     }
 }
