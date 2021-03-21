@@ -11,9 +11,9 @@ public class MenuController : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField]
-    private CanvasGroup mainMenuCanvasGroup;
+    private GameObject mainMenu;
     [SerializeField]
-    private CanvasGroup mainTextCanvasGroup;
+    private GameObject mainText;
 
     public static event Action OnGameStart; 
 
@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         uiFader.FadeIn(
-            mainMenuCanvasGroup,
+            mainMenu,
             OnFadeFinish,
             0.25f
         );
@@ -33,7 +33,7 @@ public class MenuController : MonoBehaviour
         void OnFadeFinish()
         {
             uiFader.FadeIn(
-                mainTextCanvasGroup,
+                mainText,
                 () => _inputLock = false
             );
         }

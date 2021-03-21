@@ -4,43 +4,100 @@ using UnityEngine;
 
 public class UIFader : MonoBehaviour
 {
-    public void FadeIn(CanvasGroup canvasGroup, Action onFadeFinish = null, float rate = 1)
+    private CanvasGroup _canvasGroup;
+
+    private void Start()
     {
-        canvasGroup.alpha = 0;
-        StartCoroutine(FadeInCoroutine());
-
-        IEnumerator FadeInCoroutine()
-        {
-            float alpha = 0;
-            while (canvasGroup.alpha < 1)
-            {
-                alpha += rate * Time.deltaTime;
-                canvasGroup.alpha = alpha;
-                yield return null;
-            }
-
-            canvasGroup.alpha = 1;
-            onFadeFinish?.Invoke();
-        }
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void FadeOut(CanvasGroup canvasGroup, Action onFadeFinish = null, float rate = 1)
+    public void FadeIn(Action onFadeFinish = null, float rate = 1)
     {
-        canvasGroup.alpha = 1;
-        StartCoroutine(FadeOutCoroutine());
+        _canvasGroup.alpha = 0;
+        StartCoroutine(
+            FadeInCoroutine(
+                _canvasGroup,
+                onFadeFinish,
+                rate
+            )
+        );
+    }
 
-        IEnumerator FadeOutCoroutine()
+    public void FadeIn(GameObject target, Action onFadeFinish = null, float rate = 1)
+    {
+        var canvasGroup = target.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
         {
-            float alpha = 1;
-            while (canvasGroup.alpha > 0)
-            {
-                alpha -= rate * Time.deltaTime;
-                canvasGroup.alpha = alpha;
-                yield return null;
-            }
-
-            canvasGroup.alpha = 0;
-            onFadeFinish?.Invoke();
+            Debug.LogError($"CanvasGroup component not found in game object! Name: {target.name}");
+            return;
         }
+        
+        canvasGroup.alpha = 0;
+        StartCoroutine(
+            FadeInCoroutine(
+                canvasGroup,
+                onFadeFinish,
+                rate
+            )
+        );
+    }
+
+    public void FadeOut(Action onFadeFinish = null, float rate = 1)
+    {
+        _canvasGroup.alpha = 1;
+        StartCoroutine(
+            FadeOutCoroutine(
+                _canvasGroup, 
+                onFadeFinish, 
+                rate
+            )
+        );
+    }
+
+    public void FadeOut(GameObject target, Action onFadeFinish = null, float rate = 1)
+    {
+        var canvasGroup = target.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            Debug.LogError($"CanvasGroup component not found in game object! Name: {target.name}");
+            return;
+        }
+
+        canvasGroup.alpha = 1;
+        StartCoroutine(
+            FadeOutCoroutine(
+                canvasGroup,
+                onFadeFinish,
+                rate
+            )
+        );
+    }
+
+    private IEnumerator FadeInCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
+    {
+        float alpha = 0;
+        while (canvasGroup.alpha < 1)
+        {
+            alpha += rate * Time.deltaTime;
+            canvasGroup.alpha = alpha;
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1;
+        onFadeFinish?.Invoke();
+    }
+
+    private IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
+    {
+        float alpha = 1;
+        while (canvasGroup.alpha > 0)
+        {
+            alpha -= rate * Time.deltaTime;
+            canvasGroup.alpha = alpha;
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0;
+        onFadeFinish?.Invoke();
     }
 }

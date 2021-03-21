@@ -21,8 +21,9 @@ public class ScenesController : MonoBehaviour
     {
         MenuController.OnGameStart -= StartGame;
         MenuController.OnGameStart += StartGame;
+
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_loadingScreen.transform.parent.gameObject);
+        DontDestroyOnLoad(_loadingScreen.gameObject);
     }
 
     public void StartGame()
