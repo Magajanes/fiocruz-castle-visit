@@ -6,7 +6,7 @@ public class InventoryPanel : UIPanel
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
-    public override void Initialize(InitArgs args)
+    public override void Initialize(InitArgs args = null)
     {
         var collectedArtifactsIds = InventoryManager.PlayerInventory.GetCollectedArtifactsIds();
         foreach (int id in collectedArtifactsIds)

@@ -2,21 +2,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScenesController : MonoBehaviour
+public class ScenesController : Singleton<ScenesController>
 {
-    private static ScenesController _instance;
-    public static ScenesController Instance => _instance;
-
     [SerializeField]
     private LoadingScreen _loadingScreen;
-
-    private void Awake()
-    {
-        if (_instance != null)
-            Destroy(gameObject);
-
-        _instance = this;
-    }
 
     private void Start()
     {

@@ -17,6 +17,8 @@ public class MenuController : MonoBehaviour
     private GameObject mainText;
     [SerializeField]
     private GameObject menu;
+    [SerializeField]
+    private GameObject inventoryPanel;
 
     public static event Action OnGameStart; 
 
@@ -91,5 +93,11 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         OnGameStart?.Invoke();
+    }
+
+    public void ShowInventory()
+    {
+        inventoryPanel.SetActive(true);
+        uiFader.FadeIn(inventoryPanel);
     }
 }
