@@ -33,10 +33,10 @@ public static class ArtifactsService
             foreach (var artifact in gameArtifacts.Artifacts)
             {
                 _artifactInfoById.Add(artifact.Id, artifact);
-                LoadArtifactSprite(artifact.ImagePath, (sprite) =>
-                {
-                    _artifactSpriteById.Add(artifact.Id, sprite);
-                });
+                LoadArtifactSprite(
+                    artifact.ImagePath,
+                    sprite => _artifactSpriteById.Add(artifact.Id, sprite)
+                );
             }
             onAssetsLoaded?.Invoke();
         };

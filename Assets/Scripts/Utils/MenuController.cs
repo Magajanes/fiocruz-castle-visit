@@ -4,6 +4,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     private bool _inputLock = true;
+    private bool _isAtStartScreen = true;
     
     [Header("References")]
     [SerializeField]
@@ -14,6 +15,8 @@ public class MenuController : MonoBehaviour
     private GameObject mainMenu;
     [SerializeField]
     private GameObject mainText;
+    [SerializeField]
+    private GameObject menu;
 
     public static event Action OnGameStart; 
 
@@ -34,7 +37,7 @@ public class MenuController : MonoBehaviour
         {
             uiFader.FadeIn(
                 mainText,
-                () => _inputLock = false
+                UnlockInput
             );
         }
     }
@@ -44,9 +47,49 @@ public class MenuController : MonoBehaviour
         if (_inputLock)
             return;
         
-        if (Input.anyKeyDown)
+        if (_isAtStartScreen && Input.anyKeyDown)
         {
-            OnGameStart?.Invoke();
+            _inputLock = true;
+            uiFader.FadeOut(mainMenu);
+            uiFader.FadeIn(
+                menu,
+                ShowMenu
+            );
         }
+    }
+
+    private void UnlockInput()
+    {
+        _inputLock = false;
+    }
+
+    private void ShowMenu()
+    {
+        UnlockInput();
+        _isAtStartScreen = false;
+    }
+
+    private void ShowStartScreen()
+    {
+        UnlockInput();
+        _isAtStartScreen = true;
+    }
+
+    public void BackToStartScreen()
+    {
+        if (_inputLock)
+            return;
+
+        _inputLock = true;
+        uiFader.FadeOut(menu);
+        uiFader.FadeIn(
+            mainMenu,
+            ShowStartScreen
+        );
+    }
+
+    public void StartGame()
+    {
+        OnGameStart?.Invoke();
     }
 }

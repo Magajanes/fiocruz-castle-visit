@@ -6,9 +6,11 @@ public class LoadingScreen : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    private UIFader uiFader;
+    private CanvasGroup _canvasGroup;
     [SerializeField]
-    private Slider loadingProgressSlider;
+    private UIFader _uiFader;
+    [SerializeField]
+    private Slider _loadingProgressSlider;
 
     [Header("Panels")]
     [SerializeField]
@@ -16,18 +18,19 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField]
     private GameObject _picture;
 
-    public void FadeIn(Action loadCallback = null)
+    public void FadeIn(Action onLoadFinished = null)
     {
-        uiFader.FadeIn(
+        _canvasGroup.blocksRaycasts = true;
+        _uiFader.FadeIn(
             _background,
             ShowLoadingPicture
         );
 
         void ShowLoadingPicture()
         {
-            uiFader.FadeIn(
+            _uiFader.FadeIn(
                 _picture, 
-                loadCallback, 
+                onLoadFinished, 
                 2
             );
         }
@@ -35,7 +38,7 @@ public class LoadingScreen : MonoBehaviour
 
     public void FadeOut()
     {
-        uiFader.FadeOut(
+        _uiFader.FadeOut(
             _picture,
             FadeBackgroundOut,
             2
@@ -43,15 +46,18 @@ public class LoadingScreen : MonoBehaviour
 
         void FadeBackgroundOut()
         {
-            uiFader.FadeOut(
+            _uiFader.FadeOut(
                 _background,
-                () => SetProgress(0)
+                () => {
+                    SetProgress(0);
+                    _canvasGroup.blocksRaycasts = false;
+                }
             );
         }
     }
 
     public void SetProgress(float progress)
     {
-        loadingProgressSlider.value = progress * loadingProgressSlider.maxValue;
+        _loadingProgressSlider.value = progress * _loadingProgressSlider.maxValue;
     }
 }
