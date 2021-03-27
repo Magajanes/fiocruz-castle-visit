@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             var prefab = request.asset as GameObject;
             var inventoryManager = Instantiate(prefab).GetComponent<InventoryManager>();
             inventoryManager.transform.SetParent(transform.parent);
-            inventoryManager.Initialize(null);
+            inventoryManager.Initialize();
             lightManager.Initialize();
             InputController.LockInputs(false);
         }

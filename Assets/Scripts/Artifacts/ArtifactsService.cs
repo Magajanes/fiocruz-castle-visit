@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ArtifactsService
 {
-    private const string GAME_ARTIFACTS_ASSET_PATH = "Artifacts/GameArtifacts";
+    public const string GAME_ARTIFACTS_ASSET_PATH = "Artifacts/GameArtifacts";
     private static Dictionary<int, ArtifactInfo> _artifactInfoById;
     private static Dictionary<int, Sprite> _artifactSpriteById;
 
@@ -32,10 +32,10 @@ public static class ArtifactsService
             var gameArtifacts = request.asset as GameArtifacts;
             foreach (var artifact in gameArtifacts.Artifacts)
             {
-                _artifactInfoById.Add(artifact.Id, artifact);
+                _artifactInfoById[artifact.Id] = artifact;
                 LoadArtifactSprite(
                     artifact.ImagePath,
-                    sprite => _artifactSpriteById.Add(artifact.Id, sprite)
+                    sprite => _artifactSpriteById[artifact.Id] = sprite
                 );
             }
             onAssetsLoaded?.Invoke();
@@ -75,6 +75,11 @@ public static class ArtifactsService
 
     private static Sprite GetSpriteFromTexture(Texture2D texture)
     {
-        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
+        var rect = new Rect(0, 0, texture.width, texture.height);
+        return Sprite.Create(
+            texture, 
+            rect,
+            Vector2.one * 0.5f
+        );
     }
 }

@@ -2,30 +2,13 @@
 
 public class InitializationManager : Singleton<InitializationManager>
 {
-    public const string INVENTORY_MANAGER_PREFAB_PATH = "Prefabs/InventoryManager";
-
     [SerializeField]
-    private InventoryPanel _inventoryPanel;
-
+    private NewInventoryManager inventoryManager;
+    
     private void Start()
     {
-        ArtifactsService.LoadGameArtifacts(InstantiateIventoryManager);
+        inventoryManager.Initialize();
     }
-
-    private void InstantiateIventoryManager()
-    {
-        ResourceRequest request = Resources.LoadAsync(INVENTORY_MANAGER_PREFAB_PATH);
-        request.completed += InstantiateInventoryManager;
-
-        void InstantiateInventoryManager(AsyncOperation operation)
-        {
-            var prefab = request.asset as GameObject;
-            var inventoryManager = Instantiate(prefab).GetComponent<InventoryManager>();
-            DontDestroyOnLoad(inventoryManager.gameObject);
-            inventoryManager.Initialize(_inventoryPanel);
-        }
-    }
-
 }
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour

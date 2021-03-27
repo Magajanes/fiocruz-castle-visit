@@ -98,8 +98,8 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowNextCollectedArtifact()
     {
-        int index = _playerInventory.GetArtifactIndex(_currentInfo.Id);
-        List<int> collectedArtifactsIds = _playerInventory.GetCollectedArtifactsIds();
+        List<int> collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
+        int index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
 
         if (index == collectedArtifactsIds.Count - 1)
             return;
@@ -116,8 +116,8 @@ public class ArtifactInfoPanel : UIPanel
 
     public void ShowPreviousCollectedArtifact()
     {
-        int index = _playerInventory.GetArtifactIndex(_currentInfo.Id);
-        List<int> collectedArtifactsIds = _playerInventory.GetCollectedArtifactsIds();
+        List<int> collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
+        int index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
 
         if (index <= 0)
             return;

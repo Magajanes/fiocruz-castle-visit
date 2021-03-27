@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class Inventory
 {
-    private List<int> _collectedArtifactsIds;
+    private Dictionary<int, bool> _collectedArtifacts;
 
     public void Initialize()
     {
-        if (_collectedArtifactsIds != null)
+        if (_collectedArtifacts != null)
             return;
 
-        _collectedArtifactsIds = new List<int>();
-        _collectedArtifactsIds = PlayerPrefsService.LoadCollectedArtifactsIds();
+        _collectedArtifacts = new Dictionary<int, bool>();
+        NewPlayerPrefsService.LoadCollectedArtifacts(_collectedArtifacts);
         Debug.Log("Inventory initialized");
     }
 
@@ -22,34 +22,35 @@ public class Inventory
 
         ArtifactInfo info = ArtifactsService.GetArtifactInfoById(id);
         Debug.Log($"Learned about {info.Name}!");
-        _collectedArtifactsIds.Add(id);
+        _collectedArtifacts[id] = true;
         Save();
     }
 
     private void Save()
     {
-        _collectedArtifactsIds.Sort();
-        PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifactsIds);
+        NewPlayerPrefsService.SaveCollectedArtifacts(_collectedArtifacts);
     }
 
     public bool HasArtifact(int id)
     {
-        if (_collectedArtifactsIds.Contains(id))
+        if (!_collectedArtifacts.ContainsKey(id))
         {
-            Debug.Log("Already knows about this artifact");
-            return true;
+            Debug.Log($"Artifact with id: {id} does not exist!");
+            return false;
         }
 
-        return false;
+        return _collectedArtifacts[id];
     }
 
-    public int GetArtifactIndex(int id)
+    public List<int> GetSortedCollectedArtifactsIds()
     {
-        return _collectedArtifactsIds.IndexOf(id);
-    }
-
-    public List<int> GetCollectedArtifactsIds()
-    {
-        return _collectedArtifactsIds;
+        List<int> collectedArtifactsIds = new List<int>();
+        foreach (KeyValuePair<int, bool> pair in _collectedArtifacts)
+        {
+            if (pair.Value)
+                collectedArtifactsIds.Add(pair.Key);
+        }
+        collectedArtifactsIds.Sort();
+        return collectedArtifactsIds;
     }
 }
