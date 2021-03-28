@@ -8,7 +8,8 @@ public class InventoryPanel : UIPanel
 
     public override void Initialize(InitArgs args = null)
     {
-        var collectedArtifactsIds = InventoryManager.PlayerInventory.GetSortedCollectedArtifactsIds();
+        var inventory = InventoryManager.PlayerInventory;
+        List<int> collectedArtifactsIds = inventory.GetSortedCollectedArtifactsIds();
         foreach (int id in collectedArtifactsIds)
         {
             slots[id - 1].Initialize(id);

@@ -11,7 +11,7 @@ public class Inventory
             return;
 
         _collectedArtifacts = new Dictionary<int, bool>();
-        NewPlayerPrefsService.LoadCollectedArtifacts(_collectedArtifacts);
+        PlayerPrefsService.LoadCollectedArtifacts(_collectedArtifacts);
         Debug.Log("Inventory initialized");
     }
 
@@ -28,7 +28,7 @@ public class Inventory
 
     private void Save()
     {
-        NewPlayerPrefsService.SaveCollectedArtifacts(_collectedArtifacts);
+        PlayerPrefsService.SaveCollectedArtifacts(_collectedArtifacts);
     }
 
     public bool HasArtifact(int id)

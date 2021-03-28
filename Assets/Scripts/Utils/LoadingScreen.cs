@@ -48,11 +48,14 @@ public class LoadingScreen : MonoBehaviour
         {
             _uiFader.FadeOut(
                 _background,
-                () => {
-                    SetProgress(0);
-                    _canvasGroup.blocksRaycasts = false;
-                }
+                OnFadeOutFinish
             );
+
+            void OnFadeOutFinish()
+            {
+                SetProgress(0);
+                _canvasGroup.blocksRaycasts = false;
+            }
         }
     }
 

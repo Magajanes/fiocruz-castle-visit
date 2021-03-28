@@ -8,28 +8,33 @@ public class InventorySlot : MonoBehaviour
     private Color notCollectedColor;
     [SerializeField]
     private Color collectedColor = Color.white;
+
     [Header("References")]
     [SerializeField]
     private Image artifactImage;
 
-    private int _artifactId;
+    private ArtifactInfo _artifactInfo;
 
     public void Initialize(int artifactId)
     {
-        _artifactId = artifactId;
+        _artifactInfo = ArtifactsService.GetArtifactInfoById(artifactId);
+
+        if (_artifactInfo == null)
+            return;
+
         artifactImage.color = collectedColor;
-        if (ArtifactsService.TryGetArtifactSprite(artifactId, out Sprite sprite))
-        {
-            artifactImage.sprite = sprite;
-        }
+        ArtifactSpriteHelper.LoadArtifactSprite(
+            _artifactInfo.ImagePath,
+            (sprite) => artifactImage.sprite = sprite
+        );
     }
 
     public void ShowArtifactInfo()
     {
-        if (!ArtifactsService.ArtifactExists(_artifactId))
+        if (_artifactInfo == null)
             return;
 
-        var args = UIPanel.InitArgs.Create(_artifactId, UIState.InventoryPanel);
+        var args = UIPanel.InitArgs.Create(_artifactInfo.Id, UIState.InventoryPanel);
         UIManager.ChangeState(UIState.ArtifactInfo, args);
     }
 }

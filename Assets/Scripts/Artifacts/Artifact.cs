@@ -6,7 +6,6 @@ public class Artifact : MonoBehaviour
     private int _atifactId;
     private string _name;
     private string _description;
-    private Sprite _sprite;
 
     private ArtifactInfo Info => ArtifactsService.GetArtifactInfoById(_atifactId);
 
@@ -48,24 +47,6 @@ public class Artifact : MonoBehaviour
         }
     }
 
-    public Sprite Sprite
-    {
-        get
-        {
-            if (_sprite == null)
-            {
-                if (ArtifactsService.TryGetArtifactSprite(_atifactId, out _sprite))
-                {
-                    return _sprite;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            return _sprite;
-        }
-    }
 
     private void ShowInfo()
     {

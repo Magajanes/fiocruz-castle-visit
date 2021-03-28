@@ -1,34 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
 
-public static class PlayerPrefsService
+public class PlayerPrefsService : MonoBehaviour
 {
-    public static void DeleteInventory()
+    public const string COLLECTED_ARTIFACTS_PLAYERPREFS_KEY = "collectedArtifacts";
+
+    public static void DeletePlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
     }
 
-    public static void SaveCollectedArtifacts(List<int> collectedArtifacts)
+    public static void LoadCollectedArtifacts(Dictionary<int, bool> collectedArtifacts)
     {
-        if (collectedArtifacts == null)
+        collectedArtifacts.Clear();
+
+        if (!PlayerPrefs.HasKey(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY))
         {
-            Debug.LogError("Trying to save a null List in Collected Artifacts!");
+            var request = Resources.LoadAsync(ArtifactsService.GAME_ARTIFACTS_ASSET_PATH);
+            request.completed += (operation) =>
+            {
+                var gameArtifacts = request.asset as GameArtifacts;
+                foreach (ArtifactInfo artifact in gameArtifacts.Artifacts)
+                {
+                    collectedArtifacts[artifact.Id] = false;
+                }
+                SaveCollectedArtifacts(collectedArtifacts);
+            };
+
             return;
         }
 
-        string artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
-        PlayerPrefs.SetString("collectedArtifacts", artifactsJson);
+        string artifactsJson = PlayerPrefs.GetString(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY);
+        collectedArtifacts = JsonConvert.DeserializeObject<Dictionary<int, bool>>(artifactsJson);
+        Debug.Log($"Loaded serialized dictionary: {artifactsJson}");
     }
 
-    public static List<int> LoadCollectedArtifactsIds()
+    public static void SaveCollectedArtifacts(Dictionary<int, bool> collectedArtifacts)
     {
-        var collectedArtifacts = new List<int>();
-        if (PlayerPrefs.HasKey("collectedArtifacts"))
-        {
-            string artifactsJson = PlayerPrefs.GetString("collectedArtifacts");
-            collectedArtifacts = JsonConvert.DeserializeObject<List<int>>(artifactsJson);
-        }
-        return collectedArtifacts;
+        string artifactsJson = JsonConvert.SerializeObject(collectedArtifacts);
+        PlayerPrefs.SetString(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY, artifactsJson);
+        Debug.Log($"Saved serialized dictionary: {artifactsJson}");
     }
 }

@@ -78,10 +78,10 @@ public class ArtifactInfoPanel : UIPanel
     {
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
-        if (ArtifactsService.TryGetArtifactSprite(_currentInfo.Id, out Sprite sprite))
-        {
-            image.sprite = sprite;
-        }
+        ArtifactSpriteHelper.LoadArtifactSprite(
+            _currentInfo.ImagePath,
+            (sprite) => image.sprite = sprite
+        );
     }
 
     private void Close()

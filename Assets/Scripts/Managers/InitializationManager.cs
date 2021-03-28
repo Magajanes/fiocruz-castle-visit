@@ -2,12 +2,9 @@
 
 public class InitializationManager : Singleton<InitializationManager>
 {
-    [SerializeField]
-    private NewInventoryManager inventoryManager;
-    
     private void Start()
     {
-        inventoryManager.Initialize();
+        ArtifactsService.LoadGameArtifacts(null);
     }
 }
 
