@@ -11,9 +11,9 @@ public class PlayerPrefsService : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    public static void LoadCollectedArtifacts(Dictionary<int, bool> collectedArtifacts)
+    public static Dictionary<int, bool> LoadCollectedArtifacts()
     {
-        collectedArtifacts.Clear();
+        var collectedArtifacts = new Dictionary<int, bool>();
 
         if (!PlayerPrefs.HasKey(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY))
         {
@@ -27,13 +27,15 @@ public class PlayerPrefsService : MonoBehaviour
                 }
                 SaveCollectedArtifacts(collectedArtifacts);
             };
-
-            return;
+        }
+        else
+        {
+            string artifactsJson = PlayerPrefs.GetString(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY);
+            collectedArtifacts = JsonConvert.DeserializeObject<Dictionary<int, bool>>(artifactsJson);
+            Debug.Log($"Loaded serialized dictionary: {artifactsJson}");
         }
 
-        string artifactsJson = PlayerPrefs.GetString(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY);
-        collectedArtifacts = JsonConvert.DeserializeObject<Dictionary<int, bool>>(artifactsJson);
-        Debug.Log($"Loaded serialized dictionary: {artifactsJson}");
+        return collectedArtifacts;
     }
 
     public static void SaveCollectedArtifacts(Dictionary<int, bool> collectedArtifacts)

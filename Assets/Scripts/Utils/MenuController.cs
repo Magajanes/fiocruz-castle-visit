@@ -99,5 +99,7 @@ public class MenuController : MonoBehaviour
     {
         inventoryPanel.SetActive(true);
         uiFader.FadeIn(inventoryPanel);
+        var inventory = inventoryPanel.GetComponent<InventoryPanel>();
+        inventory.Initialize();
     }
 }

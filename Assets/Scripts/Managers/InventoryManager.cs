@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-
-public class InventoryManager : MonoBehaviour
+﻿public class InventoryManager : Singleton<InventoryManager>
 {
     public static Inventory PlayerInventory;
     
     public void Initialize()
     {
+        InputController.OnInteractionButtonPress -= ShowInventory;
+        InputController.OnBackButtonPress -= CloseInventory;
+
         InputController.OnInventoryButtonPress += ShowInventory;
         InputController.OnBackButtonPress += CloseInventory;
 

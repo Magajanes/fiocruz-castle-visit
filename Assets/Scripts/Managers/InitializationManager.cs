@@ -2,9 +2,21 @@
 
 public class InitializationManager : Singleton<InitializationManager>
 {
+    [SerializeField]
+    private InventoryManager _inventoryManager;
+    
+    protected override void Awake()
+    {
+        Application.targetFrameRate = 120;
+        base.Awake();
+    }
+
     private void Start()
     {
+        InputController.Instance.LockInputs(true);
         ArtifactsService.LoadGameArtifacts(null);
+
+        _inventoryManager.Initialize();
     }
 }
 

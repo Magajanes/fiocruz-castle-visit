@@ -4,11 +4,11 @@ public class ElevatorTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {
-        InputController.ElevatorMode(true);
+        InputController.Instance.ElevatorMode(true);
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        InputController.ElevatorMode(false);
+        InputController.Instance.ElevatorMode(false);
     }
 }

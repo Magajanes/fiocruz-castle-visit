@@ -14,14 +14,14 @@ public class ElevatorDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        InputController.ElevatorMode(true);
+        InputController.Instance.ElevatorMode(true);
         InputController.OnElevatorCall += CallElevator;
         Debug.Log("Please call elevator!");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        InputController.ElevatorMode(false);
+        InputController.Instance.ElevatorMode(false);
         InputController.OnElevatorCall -= CallElevator;
         Debug.Log("Nevermind!");
     }

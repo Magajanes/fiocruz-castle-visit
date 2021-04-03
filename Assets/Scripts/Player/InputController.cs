@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public class InputController : Singleton<InputController>
 {
     private Vector2 _inputDirection;
     private Vector2 _mouseInput;
@@ -31,14 +31,10 @@ public class InputController : MonoBehaviour
     public delegate void InputAction();
     public InputAction RunInputScheme;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         UIManager.OnUIStateChange += SetInputScheme;
-    }
-
-    private void Start()
-    {
-        SetInputScheme(UIState.Inactive);
     }
 
     private void Update()
@@ -54,12 +50,12 @@ public class InputController : MonoBehaviour
         UIManager.OnUIStateChange -= SetInputScheme;
     }
 
-    public static void LockInputs(bool lockActive)
+    public void LockInputs(bool lockActive)
     {
         _inputsLocked = lockActive;
     }
 
-    public static void ElevatorMode(bool isOn)
+    public void ElevatorMode(bool isOn)
     {
         _elevatorMode = isOn;
     }
@@ -103,7 +99,7 @@ public class InputController : MonoBehaviour
         RunElevatorInputMode();
     }
 
-    private static void RunElevatorInputMode()
+    private void RunElevatorInputMode()
     {
 
         if (Input.GetKeyDown(KeyCode.F1))
@@ -119,7 +115,7 @@ public class InputController : MonoBehaviour
             OnElevatorButtonPress?.Invoke(4);
     }
 
-    private void SetInputScheme(UIState currentState)
+    public void SetInputScheme(UIState currentState)
     {
         switch (currentState)
         {

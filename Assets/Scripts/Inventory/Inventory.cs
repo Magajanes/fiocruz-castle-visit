@@ -3,15 +3,11 @@ using UnityEngine;
 
 public class Inventory
 {
-    private Dictionary<int, bool> _collectedArtifacts;
+    private Dictionary<int, bool> _collectedArtifacts = new Dictionary<int, bool>();
 
     public void Initialize()
     {
-        if (_collectedArtifacts != null)
-            return;
-
-        _collectedArtifacts = new Dictionary<int, bool>();
-        PlayerPrefsService.LoadCollectedArtifacts(_collectedArtifacts);
+        _collectedArtifacts = PlayerPrefsService.LoadCollectedArtifacts();
         Debug.Log("Inventory initialized");
     }
 
