@@ -74,6 +74,18 @@ public class ArtifactInfoPanel : UIPanel
             SetPanel();
     }
 
+    public void Initialize(int artifactId)
+    {
+        _playerInventory = InventoryManager.PlayerInventory;
+        bool showArrowsPanel = _playerInventory.HasArtifact(artifactId);
+        collectButton.SetActive(false);
+        arrowsPanel.SetActive(showArrowsPanel);
+        _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
+
+        if (_currentInfo != null)
+            SetPanel();
+    }
+
     private void SetPanel()
     {
         title.text = _currentInfo.Name;

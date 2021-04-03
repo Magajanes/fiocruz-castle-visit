@@ -11,18 +11,6 @@ public class UIFader : MonoBehaviour
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void FadeIn(Action onFadeFinish = null, float rate = 1)
-    {
-        _canvasGroup.alpha = 0;
-        StartCoroutine(
-            FadeInCoroutine(
-                _canvasGroup,
-                onFadeFinish,
-                rate
-            )
-        );
-    }
-
     public void FadeIn(GameObject target, Action onFadeFinish = null, float rate = 1)
     {
         var canvasGroup = target.GetComponent<CanvasGroup>();
@@ -37,18 +25,6 @@ public class UIFader : MonoBehaviour
             FadeInCoroutine(
                 canvasGroup,
                 onFadeFinish,
-                rate
-            )
-        );
-    }
-
-    public void FadeOut(Action onFadeFinish = null, float rate = 1)
-    {
-        _canvasGroup.alpha = 1;
-        StartCoroutine(
-            FadeOutCoroutine(
-                _canvasGroup, 
-                onFadeFinish, 
                 rate
             )
         );
