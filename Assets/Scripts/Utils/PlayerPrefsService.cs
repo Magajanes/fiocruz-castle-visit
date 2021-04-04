@@ -5,10 +5,25 @@ using UnityEngine;
 public class PlayerPrefsService : MonoBehaviour
 {
     public const string COLLECTED_ARTIFACTS_PLAYERPREFS_KEY = "collectedArtifacts";
+    public const string INVERT_MOUSE_Y = "invertMouseY";
 
     public static void DeletePlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public static void SetBool(string key, bool value)
+    {
+        PlayerPrefs.SetInt(key, value ? 1 : 0);
+    }
+
+    public static bool GetBool(string key)
+    {
+        if (!PlayerPrefs.HasKey(key))
+            return false;
+        
+        int value = PlayerPrefs.GetInt(key);
+        return value == 1;
     }
 
     public static Dictionary<int, bool> LoadCollectedArtifacts()

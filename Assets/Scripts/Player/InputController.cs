@@ -55,6 +55,11 @@ public class InputController : Singleton<InputController>
         _inputsLocked = lockActive;
     }
 
+    public void SetInvertMouseY(bool active)
+    {
+        invertY = active;
+    }
+
     public void ElevatorMode(bool isOn)
     {
         _elevatorMode = isOn;

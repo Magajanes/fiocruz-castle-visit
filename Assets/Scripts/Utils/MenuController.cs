@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MenuController : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private UIFader uiFader;
+    [SerializeField]
+    private Toggle toggle;
 
     [Header("UI Elements")]
     [SerializeField]
@@ -17,6 +20,10 @@ public class MenuController : MonoBehaviour
     private GameObject mainText;
     [SerializeField]
     private GameObject menu;
+    [SerializeField]
+    private GameObject selectionMenu;
+    [SerializeField]
+    private GameObject optionsPanel;
     [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
@@ -74,10 +81,30 @@ public class MenuController : MonoBehaviour
         _isAtStartScreen = false;
     }
 
+    public void ShowOptionsPanel()
+    {
+        if (_isAtStartScreen || _inputLock)
+            return;
+
+        LockInput();
+        ApplySavedPlayerPrefs();
+
+        optionsPanel.SetActive(true);
+        uiFader.FadeOut(selectionMenu);
+        uiFader.FadeIn(
+            optionsPanel,
+            UnlockInput
+        );
+    }
+
     //This method is called from "COMPENDIUM" button in scene
     public void ShowInventory()
     {
+        if (_isAtStartScreen || _inputLock)
+            return;
+        
         inventoryPanel.SetActive(true);
+        uiFader.FadeOut(selectionMenu);
         uiFader.FadeIn(inventoryPanel);
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
         inventory.Initialize();
@@ -101,7 +128,7 @@ public class MenuController : MonoBehaviour
         if (_inputLock)
             return;
 
-        _inputLock = true;
+        LockInput();
         uiFader.FadeOut(menu);
         uiFader.FadeIn(
             mainMenu,
@@ -114,12 +141,15 @@ public class MenuController : MonoBehaviour
         if (_inputLock)
             return;
 
-        _inputLock = true;
+        LockInput();
+        uiFader.FadeIn(selectionMenu);
+
+        GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
         uiFader.FadeOut(
-            inventoryPanel,
+            currentPanel,
             () => {
-                inventoryPanel.SetActive(false);
-                _inputLock = false;
+                currentPanel.SetActive(false);
+                UnlockInput();
             }
         );
     }
@@ -129,17 +159,22 @@ public class MenuController : MonoBehaviour
         if (_inputLock)
             return;
 
-        _inputLock = true;
+        LockInput();
         uiFader.FadeIn(inventoryPanel);
         uiFader.FadeOut(
             artifactInfo,
             () => {
                 artifactInfo.SetActive(false);
-                _inputLock = false;
+                UnlockInput();
             }
         );
     }
 
+    private void LockInput()
+    {
+        _inputLock = true;
+    }
+    
     private void UnlockInput()
     {
         _inputLock = false;
@@ -147,6 +182,23 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
+        if (_isAtStartScreen || _inputLock)
+            return;
+
+        ApplySavedPlayerPrefs();
         OnGameStart?.Invoke();
+    }
+
+    private void ApplySavedPlayerPrefs()
+    {
+        bool invertY = PlayerPrefsService.GetBool(PlayerPrefsService.INVERT_MOUSE_Y);
+        InputController.Instance.SetInvertMouseY(invertY);
+        toggle.isOn = invertY;
+    }
+
+    public void SetInvertMouseY(bool active)
+    {
+        PlayerPrefsService.SetBool(PlayerPrefsService.INVERT_MOUSE_Y, active);
+        InputController.Instance.SetInvertMouseY(active);
     }
 }
