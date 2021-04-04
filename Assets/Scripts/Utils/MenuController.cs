@@ -86,6 +86,9 @@ public class MenuController : MonoBehaviour
     //This method is called from Inventory Slots buttons in MainMenu scene
     public void ShowArtifactInfo(int artifactId)
     {
+        if (!InventoryManager.PlayerInventory.HasArtifact(artifactId))
+            return;
+        
         artifactInfo.SetActive(true);
         uiFader.FadeIn(artifactInfo);
         uiFader.FadeOut(inventoryPanel);

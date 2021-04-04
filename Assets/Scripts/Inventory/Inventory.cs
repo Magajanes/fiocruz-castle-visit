@@ -35,6 +35,12 @@ public class Inventory
             return false;
         }
 
+        if (!_collectedArtifacts[id])
+        {
+            ArtifactInfo info = ArtifactsService.GetArtifactInfoById(id);
+            Debug.Log($"You still don't know about artifact {info.Name}! Artifact id: {id}");
+        }
+
         return _collectedArtifacts[id];
     }
 

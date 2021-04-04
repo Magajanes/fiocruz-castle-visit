@@ -1307,6 +1307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130951993524101776, guid: 6dba13595858ff647bcd33e0de6dd5a4,
         type: 3}
+      propertyPath: _deletePlayerPrefs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130951993524101776, guid: 6dba13595858ff647bcd33e0de6dd5a4,
+        type: 3}
       propertyPath: deletePlayerPrefsOnStart
       value: 0
       objectReference: {fileID: 0}

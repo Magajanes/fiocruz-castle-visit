@@ -2,6 +2,15 @@
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool _deletePlayerPrefs;
+
+    private void Awake()
+    {
+        if (_deletePlayerPrefs)
+            PlayerPrefsService.DeletePlayerPrefs();
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
