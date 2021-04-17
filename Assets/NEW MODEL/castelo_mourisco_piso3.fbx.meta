@@ -252,6 +252,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: parede_biblioteca
+    second: {fileID: 2100000, guid: d5a6a776a809738449a9cdb490986efc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_biblioteca_lado
+    second: {fileID: 2100000, guid: f1d556865a55f174eb1425b4985d2217, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: parede_interna
     second: {fileID: 2100000, guid: e1b8a42eb5026dc49bde58e6c0359e0e, type: 2}
   - first:
@@ -264,6 +274,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: parede_interna_escadaria
     second: {fileID: 2100000, guid: b24c640f2d9bbae4f8df9713c90a0655, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parede_lisa
+    second: {fileID: 2100000, guid: 56b0df839e3ed4d4eb73f7a446b448c3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -282,8 +297,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: parede_piso1_dentro
+    second: {fileID: 2100000, guid: 947df11c13f89ec4d9282fa2346ca6b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: piso3_frente
     second: {fileID: 2100000, guid: 529ea678cc139944b82647fc031410ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso_biblioteca
+    second: {fileID: 2100000, guid: 57b4f3fbf394e984f939d6e1790d9fdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso_biblioteca_faixa
+    second: {fileID: 2100000, guid: c335d357ccd69f741aa8b40d05356d1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso_biblioteca_meio
+    second: {fileID: 2100000, guid: 752df147e6de5ff43a7d0abbd3d6c8eb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
