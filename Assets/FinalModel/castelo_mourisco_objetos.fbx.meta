@@ -1,0 +1,677 @@
+fileFormatVersion: 2
+guid: 9018d913797b72f4a86d7b96789bd9fc
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barbante
+    second: {fileID: 2100000, guid: 5b4f241b6fd0690468a6870818efa92c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Borracha.001
+    second: {fileID: 2100000, guid: 4d83ca00d0cca0f4580643175eba7c33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Branco.002
+    second: {fileID: 2100000, guid: f60b2d48a6de7ef4089b0bc5e32ffee2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Branco.003
+    second: {fileID: 2100000, guid: 5f341d7557ab55a49ba787aa594777f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Branco.004
+    second: {fileID: 2100000, guid: 2baa7f80f1a84b54482b448561e431ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinza
+    second: {fileID: 2100000, guid: ee11843c9af8db34fa0c180d5d3cc46f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Insetos 1
+    second: {fileID: 2100000, guid: 8c0d552fe8800fa4d8bd834bb4c8058e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Insetos 2
+    second: {fileID: 2100000, guid: f22de7f4d59e62643b23caae27bd84c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Insetos 3
+    second: {fileID: 2100000, guid: fb5c37ebb1ff0a34380ee86b063ecdc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Velho Prat
+    second: {fileID: 2100000, guid: df25af083c5e76a44ab8dc4e988231ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Velho Prat.001
+    second: {fileID: 2100000, guid: 298c5115ee3036b4397515f77ea60edf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: agua_tubo
+    second: {fileID: 2100000, guid: 8c0249a6167fcf1439c718560c4eff23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amostra_vidro
+    second: {fileID: 2100000, guid: 802b9f3b8bbdbdb458b84f7417ea4118, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: borda
+    second: {fileID: 2100000, guid: e0a4dd7864d840e45a5447b005811700, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: borracha
+    second: {fileID: 2100000, guid: c872cbb719afa5e4da121b250e93407c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: borracha.001
+    second: {fileID: 2100000, guid: 8f0c308df79f76a4cb22c7e632b5a295, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: borracha_dourada
+    second: {fileID: 2100000, guid: 6f72eb71ce8149b48895bc2c11448c7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco
+    second: {fileID: 2100000, guid: 3c4cfc57cdddcab40b934cc38e757b6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco.001
+    second: {fileID: 2100000, guid: 73c5f6dcf4c1d2a46b0a867e740b6818, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco.002
+    second: {fileID: 2100000, guid: df6860ee2efb19b47bdd8d1f94b20214, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco_fechadura
+    second: {fileID: 2100000, guid: 946a39e46cc22da4ea81d438ef1c72c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_de_insetos_frente
+    second: {fileID: 2100000, guid: b23309cd77d9ab14b920480a13ec4c20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_de_insetos_lado
+    second: {fileID: 2100000, guid: 7cfa514351db2624186b0b06e1a3957e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_de_insetos_topo
+    second: {fileID: 2100000, guid: cd4bd91b44738124b8bebf640de8cd54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_de_insetos_tras
+    second: {fileID: 2100000, guid: 1a296486c274abd47b05b7545ae310e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_frente
+    second: {fileID: 2100000, guid: 5dc8b1f2285299b47864a2bf209c185a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_lado
+    second: {fileID: 2100000, guid: 4aee4c17b8bf2b247aa49c82916b6d33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_porta
+    second: {fileID: 2100000, guid: 0d52960ad6d76324a8830f333f385826, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: caixa_topo
+    second: {fileID: 2100000, guid: 3085aefa3fbe20541afbecb85cf7ddfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento
+    second: {fileID: 2100000, guid: c4b9a01803ad42b4ab80c1248339970a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.001
+    second: {fileID: 2100000, guid: 753d9a6e3ef872f46afadb3c263051d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.002
+    second: {fileID: 2100000, guid: eb81c8d7ad415cf40b446485727d61f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.003
+    second: {fileID: 2100000, guid: 6eeeaf466d069c84fad61baeb2c26ed1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.005
+    second: {fileID: 2100000, guid: d75b390b29583ca47bc9ae2e478f612e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.006
+    second: {fileID: 2100000, guid: 2e865d8a410b0a242a3ba79da11991a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.007
+    second: {fileID: 2100000, guid: d676f584e9282b243b287b8a282be3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.008
+    second: {fileID: 2100000, guid: c5d35a06bd16cb3468de99ee069d5877, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.009
+    second: {fileID: 2100000, guid: bc2e590f562c9d24b9ea5904beeff90d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.010
+    second: {fileID: 2100000, guid: 9a7b672a855688f4e93f18efa795cd93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.011
+    second: {fileID: 2100000, guid: 5f371529f43de9c4895dd7a7e623be94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.012
+    second: {fileID: 2100000, guid: 0eb6384f7d611394daa16eab75bafb9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: documento.013
+    second: {fileID: 2100000, guid: c47865f057eac9048a537c9dc14739be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: espelho
+    second: {fileID: 2100000, guid: 97a6f1db1cc7cc94e83e7532cabfe68e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: etiqueta
+    second: {fileID: 2100000, guid: 041dc7b3865e1e640ab53055b7b2a5ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ev_frente
+    second: {fileID: 2100000, guid: 8e10e43d3475bc24bbcda428cf3b4c74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ev_lado
+    second: {fileID: 2100000, guid: 6d8263e57c7d6ee42b7b0d0664269824, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: formigueiro_frente
+    second: {fileID: 2100000, guid: c93dac2e8662419499528b184741ad82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: formigueiro_lado
+    second: {fileID: 2100000, guid: 2537d5806568f42428a220fc6051b045, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: formigueiro_tras
+    second: {fileID: 2100000, guid: 3ce74485a4c64344ba99325f6e9df310, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: insetos3
+    second: {fileID: 2100000, guid: 1a860546b35b2914dbd3200520c2f8c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laminario_detalhe_frente
+    second: {fileID: 2100000, guid: 71874d4478cdb0c44a5f503fbcabfb98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laminario_detalhe_lado
+    second: {fileID: 2100000, guid: 353fda6b9a43ce24090aeca19b6e9bc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laminario_frente
+    second: {fileID: 2100000, guid: 4741ab3460da76e448e783a6bc71b169, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laminario_lado
+    second: {fileID: 2100000, guid: e6419a9a9e533b547903289a5407bbc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laminario_tras
+    second: {fileID: 2100000, guid: 5f8dfba6fc8cc8e45ad539de1a821990, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro01_brochura
+    second: {fileID: 2100000, guid: 8057bac1b4267024e94b526e7cc2b11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro01_capa
+    second: {fileID: 2100000, guid: 3fadeb6b830d73d4093a23470311b3b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro01_contracapa
+    second: {fileID: 2100000, guid: fcf734ed7b13e1147af952ccb6d12e67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro01_folhas
+    second: {fileID: 2100000, guid: 0e74b956ade1e324899b22f1bf7dffb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro02_brochura
+    second: {fileID: 2100000, guid: c65c2cdc605337340aa96108ca554689, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro02_capa
+    second: {fileID: 2100000, guid: 41fe5782e577adc4183a766c222cc453, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro02_folhas
+    second: {fileID: 2100000, guid: 3b6e217affe192247ab3b2895e4779c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro03_brochura
+    second: {fileID: 2100000, guid: 78cf942f157098b4a928e976071b76b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro03_capa
+    second: {fileID: 2100000, guid: faf57fb9777f968479b86a6f68708cb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro03_folhas
+    second: {fileID: 2100000, guid: 3fcd4dc62cc1c6947b5b1cf247b9a783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro04_brochura
+    second: {fileID: 2100000, guid: 7420e4f7c22fd1947af8bf4be165bb69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro04_capa
+    second: {fileID: 2100000, guid: c854d028230428f4eb1d70605d571674, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro04_folhas
+    second: {fileID: 2100000, guid: c306d06d6c99f9b4a9257c6f13843fd5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro05_brochura
+    second: {fileID: 2100000, guid: 48865bc262605654d8973fe908eeec37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro05_capa
+    second: {fileID: 2100000, guid: 57018db4a06b9ed4bb30a3ac861d2887, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro05_folhas
+    second: {fileID: 2100000, guid: 8a72dbe9ec1041b419a5dcf50884ffc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro06_brochura
+    second: {fileID: 2100000, guid: 82b08c30d6371ec40adc4ee26b50d806, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro06_capa
+    second: {fileID: 2100000, guid: 040c6c56676979c48abde85aa583b449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: livro06_folhas
+    second: {fileID: 2100000, guid: 06afbdf839c00bb418722f44c7c78354, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira
+    second: {fileID: 2100000, guid: ad166e5a95f0ae84789948707dfc0248, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira.001
+    second: {fileID: 2100000, guid: 3fc31e9753009ff43a0a9023e1248110, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira.002
+    second: {fileID: 2100000, guid: f126768c5f30f3a43a54136c7b89fc53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira_caixa
+    second: {fileID: 2100000, guid: ce0f4637a8342a7458fc50d46b5e0560, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira_caixa_escura
+    second: {fileID: 2100000, guid: e2bd092562f62f840b40f568867b11d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira_escura
+    second: {fileID: 2100000, guid: 3daed8e3ee186a448a8749dadde3f610, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira_frisada
+    second: {fileID: 2100000, guid: c6248d856e81bc340a0bbbe54b851eac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madeira_preta
+    second: {fileID: 2100000, guid: 8b92cb2f7f4068c45a87be595f3256cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marmore
+    second: {fileID: 2100000, guid: 94f7a592d734a414f93cef732c4d9c1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marmore_bancada
+    second: {fileID: 2100000, guid: 862c943fc69622745a614813057604b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_frente
+    second: {fileID: 2100000, guid: 12c157b57bd47e94a904ab8f74fd2b06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_preto
+    second: {fileID: 2100000, guid: 184b6e9aa35b7ca4f8f4fd99a0d1f535, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_preto_textura
+    second: {fileID: 2100000, guid: c06444825b9517c4e8eca2ed519122db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_preto_topo
+    second: {fileID: 2100000, guid: 545f9118c143c09498a3cc6e8cf61d8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_topo
+    second: {fileID: 2100000, guid: 5e8277cdc39210243bb7ed3e3ea932bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_velho_cinza
+    second: {fileID: 2100000, guid: 1e80e865c8703334d8f836675ab4fae9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_velho_dourado
+    second: {fileID: 2100000, guid: a4fddfca924915945b9090d7a02d2842, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_velho_dourado.001
+    second: {fileID: 2100000, guid: dd6e59bb0a599014ab13234ce6c9c347, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_velho_prata
+    second: {fileID: 2100000, guid: ca513cdd6c2ccd1489371142315ac15f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_velho_prata.001
+    second: {fileID: 2100000, guid: f46c6427e93cd4a429336d78b511a8ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: microscopio_logo
+    second: {fileID: 2100000, guid: 48705b905ecc9f041b456dd3604e6989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ocular
+    second: {fileID: 2100000, guid: 9848eaedbedd1344e8139639d79d0ca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ouro_escovado
+    second: {fileID: 2100000, guid: c10cf5f589053624297d9c867302de7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pano_branco
+    second: {fileID: 2100000, guid: adfbe0958adcb054bb7c83213cb3ff9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: papel_preto
+    second: {fileID: 2100000, guid: 3d71480f6db1cb4418bec21d427bf425, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: papelao
+    second: {fileID: 2100000, guid: 22e0c269f98d21b47b8cf1edb4909d5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parafuso
+    second: {fileID: 2100000, guid: 6f47bfab10808104987bac838d45911b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pia_cimento
+    second: {fileID: 2100000, guid: 5105a3a358f032c46859808dfd13e7a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plastico_branco
+    second: {fileID: 2100000, guid: 164dbb8a87ca4d64dbec9aa2b5b74289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prata_escovada
+    second: {fileID: 2100000, guid: 1793332825df900449d89c22fabdae32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rolha
+    second: {fileID: 2100000, guid: 4ead83b9ad6b7dd49b8c0984d3702d40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tinta_verde
+    second: {fileID: 2100000, guid: 41c8dbc7079331e458d3078ccec81bcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vela
+    second: {fileID: 2100000, guid: 043aaa485206ecb46baada13f0705984, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventilador_frente
+    second: {fileID: 2100000, guid: 89a1c00876f0d2c49af70a2f3cfe72b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventilador_logo
+    second: {fileID: 2100000, guid: 15dabd6f0bf4d6c4db421a71f894c96d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventilador_pas
+    second: {fileID: 2100000, guid: ed788d3874117ec4d9b16713d5a59b2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: verde_claro
+    second: {fileID: 2100000, guid: 0c73fe82a1dc83649b4d10a43364ceef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro
+    second: {fileID: 2100000, guid: e24dc8b7c8df5fc40bea4cdb91edeccc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro_amostra
+    second: {fileID: 2100000, guid: e58f346736f48f64cbb90ac9f7e10906, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro_fosco
+    second: {fileID: 2100000, guid: 6c72c533314f95241a8557ddd72acac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro_lampada
+    second: {fileID: 2100000, guid: a7df08066a8e22c4598891781899aca6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro_transparente
+    second: {fileID: 2100000, guid: 7161adbfa7294744987641a53618dac1, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
