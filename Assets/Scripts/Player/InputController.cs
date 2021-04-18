@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class InputController : Singleton<InputController>
+public class InputController : GameSingleton<InputController>
 {
     private Vector2 _inputDirection;
     private Vector2 _mouseInput;

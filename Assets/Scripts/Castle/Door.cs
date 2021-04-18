@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Door : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Door : MonoBehaviour
             return;
 
         InputController.OnDoorInteractionPress += OpenDoor;
+        InGameTutorial.Instance.ShowOpenDoorTutorial();
     }
 
     private void OnTriggerExit(Collider other)

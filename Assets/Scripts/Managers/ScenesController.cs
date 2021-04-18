@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScenesController : Singleton<ScenesController>
+public class ScenesController : GameSingleton<ScenesController>
 {
     [SerializeField]
     private LoadingScreen _loadingScreen;

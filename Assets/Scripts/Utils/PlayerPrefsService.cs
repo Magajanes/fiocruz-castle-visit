@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPrefsService : MonoBehaviour
+public class PlayerPrefsService
 {
     public const string COLLECTED_ARTIFACTS_PLAYERPREFS_KEY = "collectedArtifacts";
     public const string INVERT_MOUSE_Y = "invertMouseY";

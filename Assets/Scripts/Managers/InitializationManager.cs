@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InitializationManager : Singleton<InitializationManager>
+public class InitializationManager : GameSingleton<InitializationManager>
 {
     [SerializeField]
     private InventoryManager _inventoryManager;
@@ -22,7 +22,7 @@ public class InitializationManager : Singleton<InitializationManager>
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance;
+    protected static T _instance;
     public static T Instance => _instance;
 
     protected virtual void Awake()
@@ -34,6 +34,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
 
         _instance = this as T;
+    }
+}
+
+public class GameSingleton<T> : Singleton<T> where T : MonoBehaviour
+{
+    protected override void Awake()
+    {
+        base.Awake();
         DontDestroyOnLoad(gameObject);
     }
 }

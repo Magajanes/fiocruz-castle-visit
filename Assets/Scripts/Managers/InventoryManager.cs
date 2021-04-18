@@ -1,4 +1,4 @@
-﻿public class InventoryManager : Singleton<InventoryManager>
+﻿public class InventoryManager : GameSingleton<InventoryManager>
 {
     public static Inventory PlayerInventory;
     
