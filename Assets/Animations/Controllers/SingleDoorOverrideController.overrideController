@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorOverrideController
+  m_Name: SingleDoorOverrideController
   m_Controller: {fileID: 9100000, guid: 4ba4e2e34be8c4e46b6aeafa854165e7, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: d8be78b9f3a9e4142afe37907f5e6426, type: 2}
