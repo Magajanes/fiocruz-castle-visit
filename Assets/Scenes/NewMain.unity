@@ -223,6 +223,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8962218, y: 7.3221765, z: 1.1655724}
   m_Center: {x: -0.00012908997, y: -2.4424205, z: 0.0002518561}
+--- !u!4 &960472807 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2751559947596576829, guid: 64b7bdc17f236b14ebb58da49939855c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2424405876328499793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1029399841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4137508698194859379, guid: 64b7bdc17f236b14ebb58da49939855c,
@@ -405,6 +411,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e832851b10227145b17b5987d4ca3a4, type: 3}
+--- !u!1 &1151722103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151722104}
+  m_Layer: 10
+  m_Name: porta_dupla
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151722104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151722103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 960472807}
+  m_RootOrder: 132
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1158311669
 GameObject:
   m_ObjectHideFlags: 0

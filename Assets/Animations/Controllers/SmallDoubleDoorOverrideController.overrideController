@@ -6,10 +6,10 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlippedDoorOverrideController
+  m_Name: SmallDoubleDoorOverrideController
   m_Controller: {fileID: 9100000, guid: 4ba4e2e34be8c4e46b6aeafa854165e7, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: d8be78b9f3a9e4142afe37907f5e6426, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: d8be78b9f3a9e4142afe37907f5e6426, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: d9868137d36e35b47a964f22b4adbb66, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: cdc2bb09a4acbb848a0e3fabb5c85b6d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 32bf1f872c996a84485aaa8ba311a8fd, type: 2}
