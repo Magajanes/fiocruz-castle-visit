@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -10,13 +10,16 @@ public class Door : MonoBehaviour
 
     protected bool _isOpen = false;
 
+    public static event Action OnDoorReached;
+    public static event Action OnDoorOpen;
+
     private void OnTriggerEnter(Collider other)
     {
         if (_isOpen)
             return;
 
+        OnDoorReached?.Invoke();
         InputController.OnDoorInteractionPress += OpenDoor;
-        InGameTutorial.Instance.ShowOpenDoorTutorial();
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,9 +34,11 @@ public class Door : MonoBehaviour
     {
         if (_isOpen)
             return;
-        
-        animator.SetTrigger(OPEN_DOOR_TRIGGER_NAME);
+
         _isOpen = true;
+        animator.SetTrigger(OPEN_DOOR_TRIGGER_NAME);
+        
+        OnDoorOpen?.Invoke();
         InputController.OnDoorInteractionPress -= OpenDoor;
     }
 }

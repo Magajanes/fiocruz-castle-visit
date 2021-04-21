@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,9 @@ public class Elevator : MonoBehaviour
     private Animator animator;
 
     private Coroutine moveCoroutine = null;
+
+    public static event Action OnElevatorCalled;
+    public static event Action OnElevatorMoved;
 
     private Dictionary<int, float> floorHeights = new Dictionary<int, float>
     {
@@ -52,6 +56,7 @@ public class Elevator : MonoBehaviour
             return;
         
         moveCoroutine = StartCoroutine(MoveElevatorToFloor(floor));
+        OnElevatorCalled?.Invoke();
         
         IEnumerator MoveElevatorToFloor(int floorNumber)
         {
@@ -88,6 +93,7 @@ public class Elevator : MonoBehaviour
             return;
 
         moveCoroutine = StartCoroutine(MoveElevatorToFloor(floor));
+        OnElevatorMoved?.Invoke();
 
         IEnumerator MoveElevatorToFloor(int floorNumber)
         {

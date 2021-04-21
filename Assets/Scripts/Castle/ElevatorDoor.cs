@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ElevatorDoor : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ElevatorDoor : MonoBehaviour
     [SerializeField]
     private Elevator elevator;
 
+    public static event Action OnElevatorReached;
+
     private void CallElevator()
     {
         elevator.CallToFloor(floorNumber);
@@ -14,15 +17,16 @@ public class ElevatorDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        InputController.Instance.ElevatorMode(true);
         InputController.OnElevatorCall += CallElevator;
-        Debug.Log("Please call elevator!");
+
+        InputController.Instance.ElevatorMode(true);
+        OnElevatorReached?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        InputController.Instance.ElevatorMode(false);
         InputController.OnElevatorCall -= CallElevator;
-        Debug.Log("Nevermind!");
+
+        InputController.Instance.ElevatorMode(false);
     }
 }
