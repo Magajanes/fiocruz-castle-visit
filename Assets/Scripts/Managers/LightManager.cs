@@ -1,53 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LightManager : MonoBehaviour
+public class LightManager : Singleton<LightManager>
 {
+    [Header("Light Triggers")]
+    [SerializeField]
+    private GameObject[] _lightTriggers;
+    
+    [Header("Light Objects")]
     [SerializeField]
     private GameObject[] _mainHallLights;
     [SerializeField]
-    private RegionDoor[] _mainDoors;
+    private GameObject[] _firstFloorLights;
+    [SerializeField]
+    private GameObject[] _secondFloorLights;
+    [SerializeField]
+    private GameObject[] _thirdFloorLights;
+    [SerializeField]
+    private GameObject[] _fourthFloorLights;
 
-    private Dictionary<int, Action<bool>> _lightActions = new Dictionary<int, Action<bool>>();
+    private bool _isAtMainHall;
+    private int _currentFloor;
+    private Dictionary<int, GameObject[]> _lightsByFloor = new Dictionary<int, GameObject[]>();
 
-    public void Initialize()
+    public bool IsAtMainHall => _isAtMainHall;
+
+    private void Start()
     {
-        RegionDoor.OnRegionEnter += OnRegionEnter;
-
-        _lightActions.Add(0, TurnMainHallLights);
-        Debug.Log("Light manger initialized!");
+        InitializeLightTriggers();
+        InitializeFloorsDictionary();
     }
 
-    private void OnRegionEnter(int regionId)
+    private void InitializeLightTriggers()
     {
-        if (!_lightActions.ContainsKey(regionId))
-            return;
-        
-        _lightActions[regionId].Invoke(true);
-    }
-
-    private void OnMainRegionExit()
-    {
-        if (!_lightActions.ContainsKey(0))
-            return;
-
-        _lightActions[0].Invoke(false);
-    }
-
-    private void TurnMainHallLights(bool on)
-    {
-        foreach (GameObject light in _mainHallLights)
+        foreach (GameObject lightTrigger in _lightTriggers)
         {
-            light.SetActive(on);
+            var trigger = lightTrigger.GetComponent<ILightTrigger>();
+            trigger.Initialize();
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void InitializeFloorsDictionary()
     {
-        foreach (RegionDoor door in _mainDoors)
+        _lightsByFloor[1] = _firstFloorLights;
+        _lightsByFloor[2] = _secondFloorLights;
+        _lightsByFloor[3] = _thirdFloorLights;
+        _lightsByFloor[4] = _fourthFloorLights;
+    }
+
+    public void SetIsAtMainHall(bool isAtMainHall)
+    {
+        _isAtMainHall = isAtMainHall;
+        SetMainHallLights();
+        if (!_isAtMainHall)
         {
-            door.CloseDoor(OnMainRegionExit);
+            SetCurrentFloorLights();
+        }
+    }
+
+    public void SetCurrentFloor(int currentFloor)
+    {
+        _currentFloor = currentFloor;
+        SetCurrentFloorLights();
+        SetMainHallLights();
+    }
+
+    private void SetMainHallLights()
+    {
+        foreach (GameObject lightObject in _mainHallLights)
+        {
+            lightObject.SetActive(_isAtMainHall);
+        }
+    }
+
+    private void SetCurrentFloorLights()
+    {
+        foreach (int floor in _lightsByFloor.Keys)
+        {
+            foreach (GameObject light in _lightsByFloor[floor])
+            {
+                light.SetActive(floor == _currentFloor);
+            }
         }
     }
 }
