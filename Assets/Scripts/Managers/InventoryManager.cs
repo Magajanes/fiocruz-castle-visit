@@ -16,7 +16,8 @@
     private void InitializeInventory()
     {
         if (PlayerInventory != null) return;
-        
+
+        PlayerPrefsService.DeletePlayerPrefs();
         PlayerInventory = new Inventory();
         PlayerInventory.Initialize();
     }

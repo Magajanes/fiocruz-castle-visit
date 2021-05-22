@@ -14,9 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Artifacts:
   - Id: 1
-    Name: Very cool cylinder
-    Description: This cylinder is really awesome!
-    ImagePath: Sprites/cylinder
+    Name: Busto do Oswaldo Cruz
+    Description: "Patrono da Funda\xE7\xE3o Oswaldo Cruz e idealizador do Castelo
+      Mourisco, foi um cientista de m\xFAltiplas habilidades e especialista em microbiologia.
+      Foi importante no combate \xE0 febre amarela no Brasil, implantou medidas sanit\xE1rias
+      na cidade do Rio de Janeiro e provocou uma revolu\xE7\xE3o na sa\xFAde p\xFAblica
+      da cidade, estruturando as pol\xEDticas p\xFAblicas em sa\xFAde no combate
+      a problemas urbanos, como os surtos epid\xEAmicos de peste bub\xF4nica, var\xEDola
+      e febre amarela. Ao identificar a transmissibilidade das doen\xE7as e a necessidade
+      de preven\xE7\xE3o atrav\xE9s de vacina\xE7\xE3o e imuniza\xE7\xE3o da popula\xE7\xE3o.
+      Mesmo com protestos, organizou campanhas de vacina\xE7\xE3o na d\xE9cada de
+      1910 que culminaram na \u2018revolta da vacina\u2019, em 1904.\_ A despeito
+      do medo e desconhecimento da popula\xE7\xE3o, em 1908, uma nova epidemia de
+      var\xEDola levou a popula\xE7\xE3o espontaneamente aos postos de vacina\xE7\xE3o
+      e, assim o Brasil finalmente reconhecia o valor do sanitarista. "
+    ImagePath: Sprites/busto_oswaldo_cruz
+  - Id: 2
+    Name: "Placa na Pra\xE7a Pasteur"
+    Description: "O N\xFAcleo Arquitet\xF4nico Hist\xF3rico de Manguinhos compreende
+      um conjunto de pr\xE9dios hist\xF3ricos constru\xEDdos durante os anos de 1905
+      e 1918 \u2013 o pr\xE9dio do Quinino ou Pavilh\xE3o Figueiredo Vasconcellos,
+      a Cavalari\xE7a, o Pavilh\xE3o do Rel\xF3gio ou da Peste, o Pombal ou Biot\xE9rio
+      para Pequenos Animais, o Hospital Evandro Chagas, a Casa de Ch\xE1 e o Castelo
+      Mourisco, principal arquitetura e s\xEDmbolo da Fiocruz."
+    ImagePath: Sprites/fundos_castelo
   - Id: 4
     Name: Awkward sphere
     Description: This sphere has something wrong that is not correct about it...
