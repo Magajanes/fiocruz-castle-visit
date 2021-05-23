@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7750f4b3026f35a408a37cc43494de1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 8
+  mouseSensitivity: 3
   verticalCameraClampValue: 90
   invertY: 0
 --- !u!4 &1301264084
@@ -1141,6 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc31c23dc5fad446be81a8c3e4da662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resetInventory: 0
 --- !u!4 &2077818441
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,11 @@
-﻿public class InventoryManager : GameSingleton<InventoryManager>
+﻿using UnityEngine;
+
+public class InventoryManager : GameSingleton<InventoryManager>
 {
     public static Inventory PlayerInventory;
+
+    [SerializeField]
+    private bool _resetInventory;
     
     public void Initialize()
     {
@@ -15,10 +20,12 @@
 
     private void InitializeInventory()
     {
-        if (PlayerInventory != null) return;
+        if (PlayerInventory != null) 
+            return;
 
-        //TODO: Remove this when artifacts are all placed
-        PlayerPrefsService.DeletePlayerPrefs();
+        if (_resetInventory)
+            PlayerPrefsService.DeletePlayerPrefs();
+
         PlayerInventory = new Inventory();
         PlayerInventory.Initialize();
     }

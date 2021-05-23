@@ -3,6 +3,9 @@
 public class Artifact : MonoBehaviour
 {
     [SerializeField]
+    private ParticleSystem _particleSystem;
+    
+    [SerializeField]
     private int _atifactId;
     private string _name;
     private string _description;
@@ -59,13 +62,13 @@ public class Artifact : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         InputController.OnInteractionButtonPress += ShowInfo;
-        Debug.Log($"Can interact with {Name}!");
+        _particleSystem.Play();
     }
 
     private void OnTriggerExit(Collider other)
     {
         InputController.OnInteractionButtonPress -= ShowInfo;
-        Debug.Log($"Cannot interact with {Name} anymore!");
+        _particleSystem.Stop();
     }
 }
 

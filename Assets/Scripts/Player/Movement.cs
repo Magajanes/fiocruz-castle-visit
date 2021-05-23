@@ -43,7 +43,9 @@ public class Movement : MonoBehaviour
         
         _walkDirection = inputDirection.x * transform.right;
         _strafeDirection = inputDirection.y * transform.forward;
+
         CalculateGravity();
+
         _moveDirection = _walkDirection + _strafeDirection + _verticalDirection;
         characterController.Move(_moveDirection * speed * Time.deltaTime);
     }
