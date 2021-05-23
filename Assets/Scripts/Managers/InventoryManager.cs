@@ -17,6 +17,7 @@
     {
         if (PlayerInventory != null) return;
 
+        //TODO: Remove this when artifacts are all placed
         PlayerPrefsService.DeletePlayerPrefs();
         PlayerInventory = new Inventory();
         PlayerInventory.Initialize();
