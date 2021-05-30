@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4851820645954845209
+--- !u!1 &7400336295509182999
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,80 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4851820645954845214}
+  - component: {fileID: 7400336295509182992}
   m_Layer: 10
-  m_Name: MuretaEscada
+  m_Name: MesaTrabalho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4851820645954845214
+--- !u!4 &7400336295509182992
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851820645954845209}
+  m_GameObject: {fileID: 7400336295509182999}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -22}
+  m_LocalPosition: {x: -4.962, y: 4.35, z: -14.612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4851820644837849771}
+  - {fileID: 7400336294519065253}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8483704485807512845
+--- !u!1001 &5790023605848632579
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4851820645954845214}
+    m_TransformParent: {fileID: 7400336295509182992}
     m_Modifications:
     - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.28021964
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 0.031319052
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.99137974
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 0.031319052
+      objectReference: {fileID: 0}
     - target: {fileID: 3956708505714946319, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: _atifactId
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3956708505714946320, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: m_Radius
-      value: 18
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956708505714946320, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 3956708506715203494, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
@@ -115,32 +145,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
-      propertyPath: m_Size.z
-      value: 20
+      propertyPath: m_Size.x
+      value: 24.58
       objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
-      propertyPath: m_Center.x
-      value: 0
+      propertyPath: m_Size.y
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.94
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3956708506715203495, guid: 04373a8db65ef8146911610f37bfd25f, type: 3}
-    - {fileID: 3956708506715203496, guid: 04373a8db65ef8146911610f37bfd25f, type: 3}
-    - {fileID: 3956708506715203497, guid: 04373a8db65ef8146911610f37bfd25f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04373a8db65ef8146911610f37bfd25f, type: 3}
---- !u!4 &4851820644837849771 stripped
+--- !u!4 &7400336294519065253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3956708506715203494, guid: 04373a8db65ef8146911610f37bfd25f,
     type: 3}
-  m_PrefabInstance: {fileID: 8483704485807512845}
+  m_PrefabInstance: {fileID: 5790023605848632579}
   m_PrefabAsset: {fileID: 0}

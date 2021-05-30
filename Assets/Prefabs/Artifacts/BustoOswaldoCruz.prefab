@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8660013950287087275
 MonoBehaviour:
@@ -57,7 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7adb2d5db4b89748af924bfbd662285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 2890019575583644310}
   _atifactId: 1
 --- !u!1 &2891046579176219228
 GameObject:
@@ -260,6 +259,8 @@ GameObject:
   - component: {fileID: 1076214251021454080}
   - component: {fileID: 2890019575583644310}
   - component: {fileID: 96133698957951734}
+  - component: {fileID: 8254188545112897678}
+  - component: {fileID: 5687077769535157409}
   m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
@@ -5003,3 +5004,29 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &8254188545112897678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948888120851423055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36, y: 36, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5687077769535157409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948888120851423055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303af09d5ef515e4593bbf3276ff55ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 2890019575583644310}
