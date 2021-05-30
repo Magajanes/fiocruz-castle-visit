@@ -29,7 +29,8 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject artifactInfo;
 
-    public static event Action OnGameStart; 
+    public static event Action<bool> OnSelectionMenuFade;
+    public static event Action OnGameStart;
 
     private void Awake()
     {
@@ -79,6 +80,7 @@ public class MenuController : MonoBehaviour
     {
         UnlockInput();
         _isAtStartScreen = false;
+        OnSelectionMenuFade?.Invoke(true);
     }
 
     public void ShowOptionsPanel()
@@ -91,6 +93,8 @@ public class MenuController : MonoBehaviour
 
         optionsPanel.SetActive(true);
         uiFader.FadeOut(selectionMenu);
+        OnSelectionMenuFade?.Invoke(false);
+
         uiFader.FadeIn(
             optionsPanel,
             UnlockInput
@@ -105,6 +109,8 @@ public class MenuController : MonoBehaviour
         
         inventoryPanel.SetActive(true);
         uiFader.FadeOut(selectionMenu);
+        OnSelectionMenuFade?.Invoke(false);
+
         uiFader.FadeIn(inventoryPanel);
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
         inventory.Initialize();
@@ -130,6 +136,8 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         uiFader.FadeOut(menu);
+        OnSelectionMenuFade?.Invoke(false);
+
         uiFader.FadeIn(
             mainMenu,
             ShowStartScreen
@@ -143,6 +151,7 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         uiFader.FadeIn(selectionMenu);
+        OnSelectionMenuFade?.Invoke(true);
 
         GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
         uiFader.FadeOut(

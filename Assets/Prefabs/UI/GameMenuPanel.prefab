@@ -927,7 +927,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 3f870f93b884fe24ba886145301716bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1065,6 +1065,7 @@ GameObject:
   - component: {fileID: 6538537215142059429}
   - component: {fileID: 6538537215142059431}
   - component: {fileID: 6538537215142059428}
+  - component: {fileID: 3821722751931812133}
   m_Layer: 5
   m_Name: SelectionMenu
   m_TagString: Untagged
@@ -1131,3 +1132,19 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &3821722751931812133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538537215142059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bccde31f51d504caeff2b01f7591bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuButtons:
+  - {fileID: 6538537214632885998}
+  - {fileID: 6538537213647746980}
+  - {fileID: 6538537214827698613}
