@@ -46,6 +46,8 @@ public class ArtifactInfoPanel : UIPanel
     private TextMeshProUGUI description;
     [SerializeField]
     private Image image;
+    [SerializeField]
+    private ScrollRect scrollRect;
 
     [Header("Buttons Gameobjects")]
     [SerializeField]
@@ -90,10 +92,17 @@ public class ArtifactInfoPanel : UIPanel
     {
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
+        scrollRect.verticalNormalizedPosition = 1;
+
         ArtifactSpriteHelper.LoadArtifactSprite(
             _currentInfo.ImagePath,
-            (sprite) => image.sprite = sprite
+            SetSprite
         );
+
+        void SetSprite(Sprite sprite)
+        {
+            image.sprite = sprite;
+        }
     }
 
     private void Close()

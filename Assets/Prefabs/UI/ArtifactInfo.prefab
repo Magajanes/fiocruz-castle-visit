@@ -1137,6 +1137,7 @@ MonoBehaviour:
   title: {fileID: 9135940906557864186}
   description: {fileID: 9135940907592359518}
   image: {fileID: 9135940907900321717}
+  scrollRect: {fileID: 3582980927619263710}
   collectButton: {fileID: 4485222877327781775}
   arrowsPanel: {fileID: 11008386439381167}
 --- !u!1 &9135940907145288652

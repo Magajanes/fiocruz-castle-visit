@@ -156,11 +156,14 @@ public class MenuController : MonoBehaviour
         GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
         uiFader.FadeOut(
             currentPanel,
-            () => {
-                currentPanel.SetActive(false);
-                UnlockInput();
-            }
+            CloseCurrentPanel
         );
+
+        void CloseCurrentPanel()
+        {
+            currentPanel.SetActive(false);
+            UnlockInput();
+        }
     }
 
     public void BackToInventory()
@@ -172,11 +175,14 @@ public class MenuController : MonoBehaviour
         uiFader.FadeIn(inventoryPanel);
         uiFader.FadeOut(
             artifactInfo,
-            () => {
-                artifactInfo.SetActive(false);
-                UnlockInput();
-            }
+            CloseArtifactInfo
         );
+
+        void CloseArtifactInfo()
+        {
+            artifactInfo.SetActive(false);
+            UnlockInput();
+        }
     }
 
     private void LockInput()
