@@ -597,7 +597,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7016543720410730120}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2910,6 +2910,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6110395685823145671}
     m_Modifications:
+    - target: {fileID: 4643186571129312423, guid: 652d4c009414a7d42af81e7d0d6fe90d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7447500123288645946, guid: 652d4c009414a7d42af81e7d0d6fe90d,
         type: 3}
       propertyPath: m_textInfo.lineCount
