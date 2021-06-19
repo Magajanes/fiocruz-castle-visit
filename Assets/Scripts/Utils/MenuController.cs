@@ -105,12 +105,17 @@ public class MenuController : MonoBehaviour
     {
         if (_isAtStartScreen || _inputLock)
             return;
-        
+
+        LockInput();
         inventoryPanel.SetActive(true);
         uiFader.FadeOut(selectionMenu);
         OnSelectionMenuFade?.Invoke(false);
 
-        uiFader.FadeIn(inventoryPanel);
+        uiFader.FadeIn(
+            inventoryPanel, 
+            UnlockInput
+        );
+
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
         inventory.Initialize();
     }
@@ -119,10 +124,16 @@ public class MenuController : MonoBehaviour
     {
         if (!InventoryManager.PlayerInventory.HasArtifact(artifactId))
             return;
-        
+
+        LockInput();
         artifactInfo.SetActive(true);
         uiFader.FadeIn(artifactInfo);
-        uiFader.FadeOut(inventoryPanel);
+
+        uiFader.FadeOut(
+            inventoryPanel,
+            UnlockInput
+        );
+
         var artifactInfoPanel = artifactInfo.GetComponent<ArtifactInfoPanel>();
         artifactInfoPanel.Initialize(artifactId);
     }
