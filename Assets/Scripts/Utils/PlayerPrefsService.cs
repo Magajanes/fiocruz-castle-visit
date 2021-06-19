@@ -59,4 +59,10 @@ public class PlayerPrefsService
         PlayerPrefs.SetString(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY, artifactsJson);
         Debug.Log($"Saved serialized dictionary: {artifactsJson}");
     }
+
+    public static void ApplySavedPlayerPrefs(out bool invertY)
+    {
+        invertY = GetBool(INVERT_MOUSE_Y);
+        InputController.Instance.SetInvertMouseY(invertY);
+    }
 }

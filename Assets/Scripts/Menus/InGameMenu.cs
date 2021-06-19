@@ -4,11 +4,23 @@ using UnityEngine.UI;
 public class InGameMenu : MonoBehaviour
 {
     public const float IN_GAME_MENU_FADE_RATE = 2;
-    
+
+    [Header("Menu objects")]
+    [SerializeField]
+    private GameObject _inGameMenuPanel;
+    [SerializeField]
+    private GameObject _inGameOptionsPanel;
+
+    [Header("References")]
     [SerializeField]
     private UIFader _uiFader;
     [SerializeField]
+    private Toggle _invertYToggle;
+    [SerializeField]
     private Button[] _menuButtons;
+
+    private bool _isFading;
+    private GameObject _currentPanel;
 
     private void Awake()
     {
@@ -33,37 +45,75 @@ public class InGameMenu : MonoBehaviour
         }
     }
 
+    private void SetInGameMenuInputScheme()
+    {
+        InputController.Instance.SetInputScheme(UIState.InGameMenu);
+        SetMenuButtonsInteractive(true);
+    }
+
+    private void SetInactiveInputScheme()
+    {
+        InputController.Instance.SetInputScheme(UIState.Inactive);
+        _currentPanel = null;
+    }
+
+    private void CloseCurrentPanel()
+    {
+        SetMenuButtonsInteractive(true);
+        _currentPanel.SetActive(false);
+        _currentPanel = _inGameMenuPanel;
+        _isFading = false;
+    }
+
     private void OpenMenu()
     {
-        InputController.Instance.LockInputs(true);
+        _currentPanel = _inGameMenuPanel;
+        SetInGameMenuInputScheme();
         _uiFader.FadeIn(
-            gameObject,
-            SetInGameMenuInputScheme,
+            _inGameMenuPanel,
+            null,
             IN_GAME_MENU_FADE_RATE
         );
-
-        void SetInGameMenuInputScheme()
-        {
-            InputController.Instance.SetInputScheme(UIState.InGameMenu);
-            InputController.Instance.LockInputs(false);
-            SetMenuButtonsInteractive(true);
-        }
     }
 
     public void ResumeGame()
     {
         SetMenuButtonsInteractive(false);
-        InputController.Instance.LockInputs(true);
         _uiFader.FadeOut(
-            gameObject,
+            _inGameMenuPanel,
             SetInactiveInputScheme,
             IN_GAME_MENU_FADE_RATE
         );
+    }
 
-        void SetInactiveInputScheme()
-        {
-            InputController.Instance.SetInputScheme(UIState.Inactive);
-            InputController.Instance.LockInputs(false);
-        }
+    public void ShowOptionsPanel()
+    {
+        PlayerPrefsService.ApplySavedPlayerPrefs(out bool invertY);
+        _invertYToggle.isOn = invertY;
+
+        _inGameOptionsPanel.SetActive(true);
+        _currentPanel = _inGameOptionsPanel;
+
+        _uiFader.FadeOut(_inGameMenuPanel);
+        SetMenuButtonsInteractive(false);
+
+        _uiFader.FadeIn(
+            _inGameOptionsPanel,
+            null,
+            IN_GAME_MENU_FADE_RATE
+        );
+    }
+
+    public void BackToMenu()
+    {
+        if (_isFading)
+            return;
+
+        _isFading = true;
+        _uiFader.FadeIn(_inGameMenuPanel);
+        _uiFader.FadeOut(
+            _currentPanel,
+            CloseCurrentPanel
+        );
     }
 }

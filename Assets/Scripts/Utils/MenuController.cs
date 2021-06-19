@@ -220,14 +220,7 @@ public class MenuController : MonoBehaviour
 
     private void ApplySavedPlayerPrefs()
     {
-        bool invertY = PlayerPrefsService.GetBool(PlayerPrefsService.INVERT_MOUSE_Y);
-        InputController.Instance.SetInvertMouseY(invertY);
+        PlayerPrefsService.ApplySavedPlayerPrefs(out bool invertY);
         toggle.isOn = invertY;
-    }
-
-    public void SetInvertMouseY(bool active)
-    {
-        PlayerPrefsService.SetBool(PlayerPrefsService.INVERT_MOUSE_Y, active);
-        InputController.Instance.SetInvertMouseY(active);
     }
 }

@@ -83,7 +83,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 514893835016744071}
+        m_MethodName: SetInvertMouseY
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &2921355821155458345
 GameObject:
@@ -349,6 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3912564327359199593}
   - component: {fileID: 6922981613924578563}
+  - component: {fileID: 514893835016744071}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -401,6 +413,18 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &514893835016744071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263220420865807917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10d3c69aca21704797d896539950058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5446571133156838833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,15 +2330,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f27530549b2095f4ab3edcf63240c2e0, type: 3}
---- !u!224 &6110395686776176174 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6538537214633405849, guid: f27530549b2095f4ab3edcf63240c2e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1040877372183286711}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6110395687332793874 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6538537215142059429, guid: f27530549b2095f4ab3edcf63240c2e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1040877372183286711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6110395686776176174 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6538537214633405849, guid: f27530549b2095f4ab3edcf63240c2e0,
     type: 3}
   m_PrefabInstance: {fileID: 1040877372183286711}
   m_PrefabAsset: {fileID: 0}
