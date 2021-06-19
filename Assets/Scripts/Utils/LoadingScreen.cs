@@ -8,8 +8,6 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
     [SerializeField]
     private CanvasGroup _canvasGroup;
     [SerializeField]
-    private UIFader _uiFader;
-    [SerializeField]
     private Slider _loadingProgressSlider;
 
     [Header("Panels")]
@@ -21,14 +19,14 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
     public void FadeIn(Action onLoadFinished = null)
     {
         _canvasGroup.blocksRaycasts = true;
-        _uiFader.FadeIn(
+        UIFader.FadeIn(
             _background,
             ShowLoadingPicture
         );
 
         void ShowLoadingPicture()
         {
-            _uiFader.FadeIn(
+            UIFader.FadeIn(
                 _picture, 
                 onLoadFinished, 
                 2
@@ -38,7 +36,7 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
 
     public void FadeOut()
     {
-        _uiFader.FadeOut(
+        UIFader.FadeOut(
             _picture,
             FadeBackgroundOut,
             2
@@ -46,7 +44,7 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
 
         void FadeBackgroundOut()
         {
-            _uiFader.FadeOut(
+            UIFader.FadeOut(
                 _background,
                 OnFadeOutFinish
             );

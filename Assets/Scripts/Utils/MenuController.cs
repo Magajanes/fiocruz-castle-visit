@@ -9,8 +9,6 @@ public class MenuController : MonoBehaviour
     
     [Header("References")]
     [SerializeField]
-    private UIFader uiFader;
-    [SerializeField]
     private Toggle toggle;
 
     [Header("UI Elements")]
@@ -38,15 +36,15 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        uiFader.FadeIn(
+        UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
-            0.25f
+            0.5f
         );
 
         void OnFadeFinish()
         {
-            uiFader.FadeIn(
+            UIFader.FadeIn(
                 mainText,
                 UnlockInput
             );
@@ -61,8 +59,8 @@ public class MenuController : MonoBehaviour
         if (_isAtStartScreen && Input.anyKeyDown)
         {
             _inputLock = true;
-            uiFader.FadeOut(mainMenu);
-            uiFader.FadeIn(
+            UIFader.FadeOut(mainMenu);
+            UIFader.FadeIn(
                 menu,
                 ShowMenu
             );
@@ -91,10 +89,10 @@ public class MenuController : MonoBehaviour
         ApplySavedPlayerPrefs();
 
         optionsPanel.SetActive(true);
-        uiFader.FadeOut(selectionMenu);
+        UIFader.FadeOut(selectionMenu);
         OnSelectionMenuFade?.Invoke(false);
 
-        uiFader.FadeIn(
+        UIFader.FadeIn(
             optionsPanel,
             UnlockInput
         );
@@ -107,10 +105,10 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         inventoryPanel.SetActive(true);
-        uiFader.FadeOut(selectionMenu);
+        UIFader.FadeOut(selectionMenu);
         OnSelectionMenuFade?.Invoke(false);
 
-        uiFader.FadeIn(
+        UIFader.FadeIn(
             inventoryPanel, 
             UnlockInput
         );
@@ -126,9 +124,9 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         artifactInfo.SetActive(true);
-        uiFader.FadeIn(artifactInfo);
+        UIFader.FadeIn(artifactInfo);
 
-        uiFader.FadeOut(
+        UIFader.FadeOut(
             inventoryPanel,
             UnlockInput
         );
@@ -143,10 +141,10 @@ public class MenuController : MonoBehaviour
             return;
 
         LockInput();
-        uiFader.FadeOut(menu);
+        UIFader.FadeOut(menu);
         OnSelectionMenuFade?.Invoke(false);
 
-        uiFader.FadeIn(
+        UIFader.FadeIn(
             mainMenu,
             ShowStartScreen
         );
@@ -158,11 +156,11 @@ public class MenuController : MonoBehaviour
             return;
 
         LockInput();
-        uiFader.FadeIn(selectionMenu);
+        UIFader.FadeIn(selectionMenu);
         OnSelectionMenuFade?.Invoke(true);
 
         GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
-        uiFader.FadeOut(
+        UIFader.FadeOut(
             currentPanel,
             CloseCurrentPanel
         );
@@ -180,8 +178,8 @@ public class MenuController : MonoBehaviour
             return;
 
         LockInput();
-        uiFader.FadeIn(inventoryPanel);
-        uiFader.FadeOut(
+        UIFader.FadeIn(inventoryPanel);
+        UIFader.FadeOut(
             artifactInfo,
             CloseArtifactInfo
         );

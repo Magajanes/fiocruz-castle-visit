@@ -6,8 +6,14 @@ public class InventoryManager : GameSingleton<InventoryManager>
 
     [SerializeField]
     private bool _resetInventory;
-    
-    public void Initialize()
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Initialize();
+    }
+
+    private void Initialize()
     {
         InputController.OnInteractionButtonPress -= ShowInventory;
         InputController.OnBackButtonPress -= CloseInventory;
@@ -15,6 +21,7 @@ public class InventoryManager : GameSingleton<InventoryManager>
         InputController.OnInventoryButtonPress += ShowInventory;
         InputController.OnBackButtonPress += CloseInventory;
 
+        ArtifactsService.LoadGameArtifacts(null);
         InitializeInventory();
     }
 

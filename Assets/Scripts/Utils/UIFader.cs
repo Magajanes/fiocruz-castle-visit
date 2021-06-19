@@ -2,16 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class UIFader : MonoBehaviour
+public class UIFader : GameSingleton<UIFader>
 {
-    private CanvasGroup _canvasGroup;
-
-    private void Start()
-    {
-        _canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    public void FadeIn(GameObject target, Action onFadeFinish = null, float rate = 1)
+    public static void FadeIn(GameObject target, Action onFadeFinish = null, float rate = 1)
     {
         var canvasGroup = target.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
@@ -21,7 +14,7 @@ public class UIFader : MonoBehaviour
         }
         
         canvasGroup.alpha = 0;
-        StartCoroutine(
+        Instance.StartCoroutine(
             FadeInCoroutine(
                 canvasGroup,
                 onFadeFinish,
@@ -30,7 +23,7 @@ public class UIFader : MonoBehaviour
         );
     }
 
-    public void FadeOut(GameObject target, Action onFadeFinish = null, float rate = 1)
+    public static void FadeOut(GameObject target, Action onFadeFinish = null, float rate = 1)
     {
         var canvasGroup = target.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
@@ -40,7 +33,7 @@ public class UIFader : MonoBehaviour
         }
 
         canvasGroup.alpha = 1;
-        StartCoroutine(
+        Instance.StartCoroutine(
             FadeOutCoroutine(
                 canvasGroup,
                 onFadeFinish,
@@ -49,7 +42,7 @@ public class UIFader : MonoBehaviour
         );
     }
 
-    private IEnumerator FadeInCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
+    private static IEnumerator FadeInCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
     {
         float alpha = 0;
         while (canvasGroup.alpha < 1)
@@ -63,7 +56,7 @@ public class UIFader : MonoBehaviour
         onFadeFinish?.Invoke();
     }
 
-    private IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
+    private static IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
     {
         float alpha = 1;
         while (canvasGroup.alpha > 0)

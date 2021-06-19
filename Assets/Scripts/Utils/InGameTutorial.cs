@@ -7,10 +7,6 @@ public class InGameTutorial : Singleton<InGameTutorial>
     private bool _elevatorCallTutorialComplete = false;
     private bool _elevatorMoveTutorialComplete = false;
 
-    [Header("References")]
-    [SerializeField]
-    private UIFader _uiFader;
-    
     [Header("UI Elements")]
     [SerializeField]
     private GameObject _openDoorTutorial;
@@ -39,7 +35,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         Door.OnDoorReached -= ShowOpenDoorTutorial;
         Door.OnDoorOpen += CompleteDoorTutorial;
 
-        _uiFader.FadeIn(_openDoorTutorial, null, 2);
+        UIFader.FadeIn(_openDoorTutorial, null, 2);
         StartCoroutine(OpenDoorTutorial());
     }
 
@@ -55,7 +51,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         while (!_doorTutorialComplete)
             yield return null;
 
-        _uiFader.FadeOut(_openDoorTutorial, null, 2);
+        UIFader.FadeOut(_openDoorTutorial, null, 2);
     }
     #endregion
 
@@ -65,7 +61,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         ElevatorDoor.OnElevatorReached -= ShowElevatorCallTutorial;
         Elevator.OnElevatorCalled += CompleteElevatorCallTutorial;
 
-        _uiFader.FadeIn(_elevatorCallTutorial, null, 2);
+        UIFader.FadeIn(_elevatorCallTutorial, null, 2);
         StartCoroutine(ElevatorCallTutorial());
     }
 
@@ -81,7 +77,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         while (!_elevatorCallTutorialComplete)
             yield return null;
 
-        _uiFader.FadeOut(_elevatorCallTutorial, null, 2);
+        UIFader.FadeOut(_elevatorCallTutorial, null, 2);
     }
     #endregion
 
@@ -91,7 +87,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         ElevatorTrigger.OnElevatorEnter -= ShowElevatorMoveTutorial;
         Elevator.OnElevatorMoved += CompleteElevatorMoveTutorial;
 
-        _uiFader.FadeIn(_elevatorMoveTutorial, null, 2);
+        UIFader.FadeIn(_elevatorMoveTutorial, null, 2);
         StartCoroutine(ElevatorMoveTutorial());
     }
 
@@ -107,7 +103,7 @@ public class InGameTutorial : Singleton<InGameTutorial>
         while (!_elevatorMoveTutorialComplete)
             yield return null;
 
-        _uiFader.FadeOut(_elevatorMoveTutorial, null, 2);
+        UIFader.FadeOut(_elevatorMoveTutorial, null, 2);
     }
     #endregion
 }
