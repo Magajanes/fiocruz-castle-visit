@@ -30,7 +30,6 @@ public class MenuController : MonoBehaviour
     private GameObject artifactInfo;
 
     public static event Action<bool> OnSelectionMenuFade;
-    public static event Action OnGameStart;
 
     private void Awake()
     {
@@ -210,7 +209,7 @@ public class MenuController : MonoBehaviour
             return;
 
         ApplySavedPlayerPrefs();
-        OnGameStart?.Invoke();
+        ScenesController.Instance.StartGame();
     }
 
     public void ExitGame()

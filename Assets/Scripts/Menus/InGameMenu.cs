@@ -116,4 +116,15 @@ public class InGameMenu : MonoBehaviour
             CloseCurrentPanel
         );
     }
+
+    public void BackToMainMenu()
+    {
+        SetMenuButtonsInteractive(false);
+        ScenesController.Instance.BackToMainMenu();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

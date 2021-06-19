@@ -7,25 +7,20 @@ public class ScenesController : GameSingleton<ScenesController>
     [SerializeField]
     private LoadingScreen _loadingScreen;
 
-    private void Start()
-    {
-        MenuController.OnGameStart -= StartGame;
-        MenuController.OnGameStart += StartGame;
-
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_loadingScreen.gameObject);
-    }
-
     public void StartGame()
     {
-        MenuController.OnGameStart -= StartGame;
         _loadingScreen.FadeIn(LoadMainScene);
+    }
+
+    public void BackToMainMenu()
+    {
+        _loadingScreen.FadeIn(LoadMainMenuScene);
     }
 
     private void LoadMainScene()
     {
         var loadOperation = SceneManager.LoadSceneAsync("NewMain", LoadSceneMode.Additive);
-        StartCoroutine(ShowProgress());
+        StartCoroutine(ShowProgress(loadOperation));
 
         loadOperation.completed += (load) =>
         {
@@ -35,15 +30,30 @@ public class ScenesController : GameSingleton<ScenesController>
                 _loadingScreen.FadeOut();
             };
         };
+    }
 
-        IEnumerator ShowProgress()
+    private void LoadMainMenuScene()
+    {
+        var loadOperation = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
+        StartCoroutine(ShowProgress(loadOperation));
+
+        loadOperation.completed += (load) =>
         {
-            while (loadOperation.progress < 1)
+            var unloadOperation = SceneManager.UnloadSceneAsync("NewMain");
+            unloadOperation.completed += (unload) =>
             {
-                _loadingScreen.SetProgress(loadOperation.progress);
-                yield return null;
-            }
-            _loadingScreen.SetProgress(1);
+                _loadingScreen.FadeOut();
+            };
+        };
+    }
+
+    private IEnumerator ShowProgress(AsyncOperation loadOperation)
+    {
+        while (loadOperation.progress < 1)
+        {
+            _loadingScreen.SetProgress(loadOperation.progress);
+            yield return null;
         }
+        _loadingScreen.SetProgress(1);
     }
 }

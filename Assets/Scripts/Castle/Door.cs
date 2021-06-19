@@ -41,4 +41,9 @@ public class Door : MonoBehaviour
         OnDoorOpen?.Invoke();
         InputController.OnDoorInteractionPress -= OpenDoor;
     }
+
+    private void OnDestroy()
+    {
+        InputController.OnDoorInteractionPress -= OpenDoor;
+    }
 }

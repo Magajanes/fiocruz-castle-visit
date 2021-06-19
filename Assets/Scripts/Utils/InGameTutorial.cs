@@ -26,6 +26,13 @@ public class InGameTutorial : Singleton<InGameTutorial>
         ElevatorTrigger.OnElevatorEnter += ShowElevatorMoveTutorial;
     }
 
+    private void OnDestroy()
+    {
+        Door.OnDoorReached -= ShowOpenDoorTutorial;
+        ElevatorDoor.OnElevatorReached -= ShowElevatorCallTutorial;
+        ElevatorTrigger.OnElevatorEnter -= ShowElevatorMoveTutorial;
+    }
+
     #region DoorTutorial
     private void ShowOpenDoorTutorial()
     {

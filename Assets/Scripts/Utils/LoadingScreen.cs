@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingScreen : MonoBehaviour
+public class LoadingScreen : GameSingleton<LoadingScreen>
 {
     [Header("References")]
     [SerializeField]
