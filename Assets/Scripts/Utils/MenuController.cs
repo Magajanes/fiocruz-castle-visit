@@ -101,7 +101,6 @@ public class MenuController : MonoBehaviour
         );
     }
 
-    //This method is called from "COMPENDIUM" button in scene
     public void ShowInventory()
     {
         if (_isAtStartScreen || _inputLock)
@@ -116,7 +115,6 @@ public class MenuController : MonoBehaviour
         inventory.Initialize();
     }
 
-    //This method is called from Inventory Slots buttons in MainMenu scene
     public void ShowArtifactInfo(int artifactId)
     {
         if (!InventoryManager.PlayerInventory.HasArtifact(artifactId))
@@ -202,6 +200,11 @@ public class MenuController : MonoBehaviour
 
         ApplySavedPlayerPrefs();
         OnGameStart?.Invoke();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     private void ApplySavedPlayerPrefs()
