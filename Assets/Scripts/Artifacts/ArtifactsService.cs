@@ -7,7 +7,7 @@ public static class ArtifactsService
     public const string GAME_ARTIFACTS_ASSET_PATH = "Artifacts/GameArtifacts";
     private static Dictionary<int, ArtifactInfo> _artifactInfoById;
 
-    public static void LoadGameArtifacts(Action onAssetsLoaded)
+    public static void LoadGameArtifacts(Action onAssetsLoaded = null)
     {
         if (_artifactInfoById != null)
             return;

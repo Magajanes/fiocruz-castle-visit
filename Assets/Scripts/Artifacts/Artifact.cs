@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Artifact : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Artifact : MonoBehaviour
     private string _description;
 
     private ArtifactInfo Info => ArtifactsService.GetArtifactInfoById(_atifactId);
+
+    public static event Action<InitArgs> OnInteraction;
 
     public string Name
     {
@@ -50,10 +53,8 @@ public class Artifact : MonoBehaviour
 
     private void ShowInfo()
     {
-        UIManager.ChangeState(
-            UIState.ArtifactInfo,
-            UIPanel.InitArgs.CreateWithId(_atifactId)
-        );
+        var args = InitArgs.CreateWithId(_atifactId);
+        OnInteraction?.Invoke(args);
     }
 
     private void OnTriggerEnter(Collider other)

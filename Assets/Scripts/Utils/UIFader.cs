@@ -45,13 +45,14 @@ public class UIFader : GameSingleton<UIFader>
     private static IEnumerator FadeInCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
     {
         float alpha = 0;
-        while (canvasGroup.alpha < 1)
+        while (canvasGroup?.alpha < 1)
         {
             alpha += rate * Time.deltaTime;
             canvasGroup.alpha = alpha;
             yield return null;
         }
 
+        if (canvasGroup == null) yield break;
         canvasGroup.alpha = 1;
         onFadeFinish?.Invoke();
     }
@@ -59,13 +60,14 @@ public class UIFader : GameSingleton<UIFader>
     private static IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
     {
         float alpha = 1;
-        while (canvasGroup.alpha > 0)
+        while (canvasGroup?.alpha > 0)
         {
             alpha -= rate * Time.deltaTime;
             canvasGroup.alpha = alpha;
             yield return null;
         }
 
+        if (canvasGroup == null) yield break;
         canvasGroup.alpha = 0;
         onFadeFinish?.Invoke();
     }

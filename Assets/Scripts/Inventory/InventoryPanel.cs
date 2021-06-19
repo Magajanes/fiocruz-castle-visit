@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryPanel : UIPanel
+public class InventoryPanel : MonoBehaviour
 {
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
-    public override void Initialize(InitArgs args = null)
+    public void Initialize()
     {
         var inventory = InventoryManager.PlayerInventory;
         List<int> collectedArtifactsIds = inventory.GetSortedCollectedArtifactsIds();

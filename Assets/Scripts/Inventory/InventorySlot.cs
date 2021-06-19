@@ -28,13 +28,4 @@ public class InventorySlot : MonoBehaviour
             (sprite) => artifactImage.sprite = sprite
         );
     }
-
-    public void ShowArtifactInfo()
-    {
-        if (_artifactInfo == null)
-            return;
-
-        var args = UIPanel.InitArgs.Create(_artifactInfo.Id, UIState.InventoryPanel);
-        UIManager.ChangeState(UIState.ArtifactInfo, args);
-    }
 }

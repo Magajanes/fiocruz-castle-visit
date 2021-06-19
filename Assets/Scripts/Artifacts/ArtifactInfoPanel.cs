@@ -3,41 +3,31 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class UIPanel : MonoBehaviour
+public class InitArgs
 {
-    public void SetActive(bool active)
+    public int ArtifactId;
+    public UIState EntryPoint;
+
+    public static InitArgs CreateWithId(int id)
     {
-        gameObject.SetActive(active);
+        return new InitArgs()
+        {
+            ArtifactId = id,
+            EntryPoint = UIState.Inactive
+        };
     }
 
-    public abstract void Initialize(InitArgs args);
-
-    public class InitArgs
+    public static InitArgs Create(int id, UIState entryPoint)
     {
-        public int ArtifactId;
-        public UIState EntryPoint;
-
-        public static InitArgs CreateWithId(int id)
+        return new InitArgs()
         {
-            return new InitArgs() 
-            {
-                ArtifactId = id,
-                EntryPoint = UIState.Inactive
-            };
-        }
-
-        public static InitArgs Create(int id, UIState entryPoint)
-        {
-            return new InitArgs() 
-            {
-                ArtifactId = id,
-                EntryPoint = entryPoint 
-            };
-        }
+            ArtifactId = id,
+            EntryPoint = entryPoint
+        };
     }
 }
 
-public class ArtifactInfoPanel : UIPanel
+public class ArtifactInfoPanel : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField]
@@ -59,10 +49,8 @@ public class ArtifactInfoPanel : UIPanel
     private UIState _entryPoint;
     private Inventory _playerInventory;
 
-    public override void Initialize(InitArgs args)
+    public void Initialize(InitArgs args)
     {
-        InputController.OnBackButtonPress += ReturnToLastScreen;
-
         _playerInventory = InventoryManager.PlayerInventory;
         int artifactId = args.ArtifactId;
         _entryPoint = args.EntryPoint;
@@ -103,18 +91,6 @@ public class ArtifactInfoPanel : UIPanel
         {
             image.sprite = sprite;
         }
-    }
-
-    private void Close()
-    {
-        InputController.OnBackButtonPress -= ReturnToLastScreen;
-        UIManager.ChangeState(UIState.Inactive);
-    }
-
-    private void ReturnToLastScreen()
-    {
-        InputController.OnBackButtonPress -= ReturnToLastScreen;
-        UIManager.ChangeState(_entryPoint);
     }
 
     public void ShowNextCollectedArtifact()

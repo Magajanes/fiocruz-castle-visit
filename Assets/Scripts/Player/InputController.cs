@@ -32,23 +32,12 @@ public class InputController : GameSingleton<InputController>
     public delegate void InputAction();
     public InputAction RunInputScheme;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        UIManager.OnUIStateChange += SetInputScheme;
-    }
-
     private void Update()
     {
         if (_inputsLocked)
             return;
 
         RunInputScheme?.Invoke();
-    }
-
-    private void OnDestroy()
-    {
-        UIManager.OnUIStateChange -= SetInputScheme;
     }
 
     public void LockInputs(bool lockActive)
@@ -87,7 +76,7 @@ public class InputController : GameSingleton<InputController>
         _mouseInput.y = Mathf.Clamp(_mouseInput.y, -verticalCameraClampValue, verticalCameraClampValue);
         OnTurnInput?.Invoke(_mouseInput);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
             OnInteractionButtonPress?.Invoke();
 
         if (Input.GetKeyDown(KeyCode.I))
