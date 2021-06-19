@@ -6,7 +6,8 @@ public enum UIState
 {
     Inactive,
     ArtifactInfo,
-    InventoryPanel
+    InventoryPanel,
+    InGameMenu
 }
 
 public class UIManager : MonoBehaviour
@@ -29,9 +30,9 @@ public class UIManager : MonoBehaviour
 
     private void InitializePanelsDictionary()
     {
-        _uiPanels.Add(UIState.Inactive, null);
-        _uiPanels.Add(UIState.ArtifactInfo, _artifactInfoPanel);
-        _uiPanels.Add(UIState.InventoryPanel, _inventoryPanel);
+        _uiPanels[UIState.Inactive] = null;
+        _uiPanels[UIState.ArtifactInfo] = _artifactInfoPanel;
+        _uiPanels[UIState.InventoryPanel] = _inventoryPanel;
     }
 
     public static void ChangeState(UIState state, UIPanel.InitArgs args = null)

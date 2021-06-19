@@ -27,6 +27,7 @@ public class InputController : GameSingleton<InputController>
     public static event Action OnDoorInteractionPress;
     public static event Action<int> OnElevatorButtonPress;
     public static event Action OnElevatorCall;
+    public static event Action OnInGameMenuOpen;
 
     public delegate void InputAction();
     public InputAction RunInputScheme;
@@ -42,7 +43,7 @@ public class InputController : GameSingleton<InputController>
         if (_inputsLocked)
             return;
 
-        RunInputScheme();
+        RunInputScheme?.Invoke();
     }
 
     private void OnDestroy()
@@ -98,6 +99,9 @@ public class InputController : GameSingleton<InputController>
         if (Input.GetKeyDown(KeyCode.C))
             OnElevatorCall?.Invoke();
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnInGameMenuOpen?.Invoke();
+
         if (!_elevatorMode)
             return;
 
@@ -135,6 +139,10 @@ public class InputController : GameSingleton<InputController>
             case UIState.InventoryPanel:
                 Cursor.lockState = CursorLockMode.None;
                 RunInputScheme = RunUiInputScheme;
+                break;
+            case UIState.InGameMenu:
+                Cursor.lockState = CursorLockMode.None;
+                RunInputScheme = null;
                 break;
             default:
                 break;
