@@ -153,10 +153,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Artifact
       objectReference: {fileID: 0}
+    - target: {fileID: 5342554438340708656, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.87
+      objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: m_Size.x
-      value: 20.25
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
@@ -166,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: m_Center.x
-      value: 3.5
+      value: 9.62
       objectReference: {fileID: 0}
     - target: {fileID: 6421475990390220359, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
