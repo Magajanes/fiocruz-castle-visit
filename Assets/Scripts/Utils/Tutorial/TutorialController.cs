@@ -24,6 +24,8 @@ public class TutorialController : Singleton<TutorialController>
         base.Awake();
         Door.OnDoorOpen += () => CompleteTutorial(TutorialSubject.Door);
         Artifact.OnInteraction += (args) => CompleteTutorial(TutorialSubject.ArtifactInteraction);
+        Elevator.OnElevatorCalled += () => CompleteTutorial(TutorialSubject.ElevatorCall);
+        Elevator.OnElevatorMoved += () => CompleteTutorial(TutorialSubject.ElevatorMove);
     }
 
     private void Start()
@@ -36,6 +38,8 @@ public class TutorialController : Singleton<TutorialController>
     {
         Door.OnDoorOpen -= () => CompleteTutorial(TutorialSubject.Door);
         Artifact.OnInteraction -= (args) => CompleteTutorial(TutorialSubject.ArtifactInteraction);
+        Elevator.OnElevatorCalled -= () => CompleteTutorial(TutorialSubject.ElevatorCall);
+        Elevator.OnElevatorMoved -= () => CompleteTutorial(TutorialSubject.ElevatorMove);
     }
 
     private void InitializeTutorialConfigDictionary(TutorialConfig config)

@@ -15,18 +15,6 @@ public class InGameTutorial : Singleton<InGameTutorial>
     [SerializeField]
     private GameObject _elevatorMoveTutorial;
 
-    private void Start()
-    {
-        ElevatorDoor.OnElevatorReached += ShowElevatorCallTutorial;
-        ElevatorTrigger.OnElevatorEnter += ShowElevatorMoveTutorial;
-    }
-
-    private void OnDestroy()
-    {
-        ElevatorDoor.OnElevatorReached -= ShowElevatorCallTutorial;
-        ElevatorTrigger.OnElevatorEnter -= ShowElevatorMoveTutorial;
-    }
-
     #region DoorTutorial
     private void ShowOpenDoorTutorial()
     {
@@ -55,17 +43,12 @@ public class InGameTutorial : Singleton<InGameTutorial>
     #region ElevatorCallTutorial
     private void ShowElevatorCallTutorial()
     {
-        ElevatorDoor.OnElevatorReached -= ShowElevatorCallTutorial;
-        Elevator.OnElevatorCalled += CompleteElevatorCallTutorial;
-
         UIFader.FadeIn(_elevatorCallTutorial, null, 2);
         StartCoroutine(ElevatorCallTutorial());
     }
 
     private void CompleteElevatorCallTutorial()
     {
-        Elevator.OnElevatorCalled -= CompleteElevatorCallTutorial;
-
         _elevatorCallTutorialComplete = true;
     }
 
@@ -81,17 +64,12 @@ public class InGameTutorial : Singleton<InGameTutorial>
     #region ElevatorMoveTutorial
     private void ShowElevatorMoveTutorial()
     {
-        ElevatorTrigger.OnElevatorEnter -= ShowElevatorMoveTutorial;
-        Elevator.OnElevatorMoved += CompleteElevatorMoveTutorial;
-
         UIFader.FadeIn(_elevatorMoveTutorial, null, 2);
         StartCoroutine(ElevatorMoveTutorial());
     }
 
     private void CompleteElevatorMoveTutorial()
     {
-        Elevator.OnElevatorMoved -= CompleteElevatorMoveTutorial;
-
         _elevatorMoveTutorialComplete = true;
     }
 

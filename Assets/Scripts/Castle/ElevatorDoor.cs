@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ElevatorDoor : MonoBehaviour
 {
@@ -7,8 +6,6 @@ public class ElevatorDoor : MonoBehaviour
     private int floorNumber;
     [SerializeField]
     private Elevator elevator;
-
-    public static event Action OnElevatorReached;
 
     private void CallElevator()
     {
@@ -20,7 +17,7 @@ public class ElevatorDoor : MonoBehaviour
         InputController.OnElevatorCall += CallElevator;
 
         InputController.Instance.ElevatorMode(true);
-        OnElevatorReached?.Invoke();
+        TutorialController.Instance.ShowTutorial(TutorialSubject.ElevatorCall);
     }
 
     private void OnTriggerExit(Collider other)
@@ -28,5 +25,6 @@ public class ElevatorDoor : MonoBehaviour
         InputController.OnElevatorCall -= CallElevator;
 
         InputController.Instance.ElevatorMode(false);
+        TutorialController.Instance.HideTutorial(TutorialSubject.ElevatorCall);
     }
 }

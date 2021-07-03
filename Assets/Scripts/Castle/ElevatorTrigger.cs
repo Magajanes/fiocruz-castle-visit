@@ -1,18 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ElevatorTrigger : MonoBehaviour
 {
-    public static event Action OnElevatorEnter;
-    
     private void OnTriggerEnter(Collider collider)
     {
         InputController.Instance.ElevatorMode(true);
-        OnElevatorEnter?.Invoke();
+        TutorialController.Instance.ShowTutorial(TutorialSubject.ElevatorMove);
     }
 
     private void OnTriggerExit(Collider collider)
     {
         InputController.Instance.ElevatorMode(false);
+        TutorialController.Instance.HideTutorial(TutorialSubject.ElevatorMove);
     }
 }
