@@ -13,6 +13,11 @@ public class TutorialPanel : MonoBehaviour
         _tutorialMessage.text = message;
     }
 
+    public void Open()
+    {
+        _canvasGroup.alpha = 1;
+    }
+
     public void Close()
     {
         _canvasGroup.alpha = 0;

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class UIFader : GameSingleton<UIFader>
 {
-    private static Coroutine _fadeInCoroutine;
-    private static Coroutine _fadeOutCoroutine;
-    
     public static void FadeIn(GameObject target, Action onFadeFinish = null, float rate = 1)
     {
         var canvasGroup = target.GetComponent<CanvasGroup>();
@@ -17,7 +14,7 @@ public class UIFader : GameSingleton<UIFader>
         }
         
         canvasGroup.alpha = 0;
-        _fadeInCoroutine = Instance.StartCoroutine(FadeInCoroutine(canvasGroup, onFadeFinish, rate));
+        Instance.StartCoroutine(FadeInCoroutine(canvasGroup, onFadeFinish, rate));
     }
 
     public static void FadeOut(GameObject target, Action onFadeFinish = null, float rate = 1)
@@ -30,23 +27,7 @@ public class UIFader : GameSingleton<UIFader>
         }
 
         canvasGroup.alpha = 1;
-        _fadeOutCoroutine = Instance.StartCoroutine(FadeOutCoroutine(canvasGroup, onFadeFinish, rate));
-    }
-
-    public static void StopFadeInCoroutine()
-    {
-        if (_fadeInCoroutine == null) return;
-
-        Instance.StopCoroutine(_fadeInCoroutine);
-        _fadeInCoroutine = null;
-    }
-
-    public static void StopFadeOutCoroutine()
-    {
-        if (_fadeOutCoroutine == null) return;
-
-        Instance.StopCoroutine(_fadeOutCoroutine);
-        _fadeOutCoroutine = null;
+        Instance.StartCoroutine(FadeOutCoroutine(canvasGroup, onFadeFinish, rate));
     }
 
     private static IEnumerator FadeInCoroutine(CanvasGroup canvasGroup, Action onFadeFinish, float rate)
@@ -59,7 +40,6 @@ public class UIFader : GameSingleton<UIFader>
             yield return null;
         }
 
-        _fadeInCoroutine = null;
         if (canvasGroup == null) yield break;
 
         canvasGroup.alpha = 1;
@@ -76,7 +56,6 @@ public class UIFader : GameSingleton<UIFader>
             yield return null;
         }
 
-        _fadeOutCoroutine = null;
         if (canvasGroup == null) yield break;
         
         canvasGroup.alpha = 0;

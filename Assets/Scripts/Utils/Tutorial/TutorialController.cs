@@ -57,8 +57,7 @@ public class TutorialController : Singleton<TutorialController>
     {
         if (_tutorialSubjectMessages.TryGetValue(subject, out string message))
         {
-            UIFader.StopFadeOutCoroutine();
-            UIFader.FadeIn(_tutorialPanel.gameObject);
+            _tutorialPanel.Open();
             _tutorialPanel.SetMessage(message);
         }
     }
@@ -67,20 +66,15 @@ public class TutorialController : Singleton<TutorialController>
     {
         if (!_tutorialSubjectMessages.ContainsKey(subject)) return;
 
-        UIFader.StopFadeInCoroutine();
-        UIFader.FadeOut(_tutorialPanel.gameObject, ClearMessage);
-        
-        void ClearMessage()
-        {
-            _tutorialPanel.SetMessage(string.Empty);
-        }
+        _tutorialPanel.Close();
+        _tutorialPanel.SetMessage(string.Empty);
     }
 
     public void CompleteTutorial(TutorialSubject subject)
     {
         if (!_tutorialSubjectMessages.ContainsKey(subject)) return;
 
-        _tutorialSubjectMessages.Remove(subject);
         _tutorialPanel.Close();
+        _tutorialSubjectMessages.Remove(subject);
     }
 }
