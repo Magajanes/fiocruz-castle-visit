@@ -17,14 +17,12 @@ public class InGameTutorial : Singleton<InGameTutorial>
 
     private void Start()
     {
-        Door.OnDoorReached += ShowOpenDoorTutorial;
         ElevatorDoor.OnElevatorReached += ShowElevatorCallTutorial;
         ElevatorTrigger.OnElevatorEnter += ShowElevatorMoveTutorial;
     }
 
     private void OnDestroy()
     {
-        Door.OnDoorReached -= ShowOpenDoorTutorial;
         ElevatorDoor.OnElevatorReached -= ShowElevatorCallTutorial;
         ElevatorTrigger.OnElevatorEnter -= ShowElevatorMoveTutorial;
     }
@@ -32,7 +30,6 @@ public class InGameTutorial : Singleton<InGameTutorial>
     #region DoorTutorial
     private void ShowOpenDoorTutorial()
     {
-        Door.OnDoorReached -= ShowOpenDoorTutorial;
         Door.OnDoorOpen += CompleteDoorTutorial;
 
         UIFader.FadeIn(_openDoorTutorial, null, 2);

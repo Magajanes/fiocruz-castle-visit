@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d99df8d2a1a1e644b2874d84672d638, type: 3}
+  m_Name: TutorialConfig
+  m_EditorClassIdentifier: 
+  TutorialEntries:
+  - Subject: 0
+    Message: Open Door - F
+  - Subject: 1
+    Message: Interact - Space
+  - Subject: 2
+    Message: Click button to learn
+  - Subject: 3
+    Message: Call elevator - C
+  - Subject: 4
+    Message: Press floor number to go (1 - 4)

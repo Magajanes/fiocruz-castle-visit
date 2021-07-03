@@ -54,16 +54,19 @@ public class Artifact : MonoBehaviour
     private void ShowInfo()
     {
         var args = InitArgs.CreateWithId(_atifactId);
+
         OnInteraction?.Invoke(args);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        TutorialController.Instance.ShowTutorial(TutorialSubject.ArtifactInteraction);
         InputController.OnInteractionButtonPress += ShowInfo;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        TutorialController.Instance.HideTutorial(TutorialSubject.ArtifactInteraction);
         InputController.OnInteractionButtonPress -= ShowInfo;
     }
 }

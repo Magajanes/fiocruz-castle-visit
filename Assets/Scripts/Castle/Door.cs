@@ -10,7 +10,6 @@ public class Door : MonoBehaviour
 
     protected bool _isOpen = false;
 
-    public static event Action OnDoorReached;
     public static event Action OnDoorOpen;
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +17,7 @@ public class Door : MonoBehaviour
         if (_isOpen)
             return;
 
-        OnDoorReached?.Invoke();
+        TutorialController.Instance.ShowTutorial(TutorialSubject.Door);
         InputController.OnDoorInteractionPress += OpenDoor;
     }
 
@@ -26,7 +25,8 @@ public class Door : MonoBehaviour
     {
         if (_isOpen)
             return;
-        
+
+        TutorialController.Instance.HideTutorial(TutorialSubject.Door);
         InputController.OnDoorInteractionPress -= OpenDoor;
     }
 
