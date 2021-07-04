@@ -117,7 +117,7 @@ MonoBehaviour:
       - evitando contamina\xE7\xE3o. Assim como, as mudan\xE7as tecnol\xF3gicas e
       hist\xF3ricas no processo de imuniza\xE7\xE3o, t\xE3o importante para a sa\xFAde,
       preven\xE7\xE3o de doen\xE7as."
-    ImagePath: Sprites/sphere
+    ImagePath: Sprites/sala_carlos_chagas
   - Id: 10
     Name: "Equipamentos antigos de vacina\xE7\xE3o"
     Description: "Inventada em 1950, a pistola de vacina\xE7\xE3o faz parte de um
