@@ -11,7 +11,6 @@ public class InitializationManager : GameSingleton<InitializationManager>
     private void Start()
     {
         InputController.Instance.LockInputs(true);
-        SoundsManager.Instance.PlayIntro();
     }
 }
 

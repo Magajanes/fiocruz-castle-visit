@@ -29,13 +29,10 @@ public class MenuController : MonoBehaviour
 
     public static event Action<bool> OnSelectionMenuFade;
 
-    private void Awake()
-    {
-        //Sound starts here
-    }
-
     private void Start()
     {
+        SoundsManager.Instance.PlayIntro();
+        
         UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
@@ -208,6 +205,7 @@ public class MenuController : MonoBehaviour
 
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
+        SoundsManager.Instance.StopIntro();
     }
 
     public void ExitGame()
