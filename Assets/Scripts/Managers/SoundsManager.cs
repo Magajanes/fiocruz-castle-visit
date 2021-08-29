@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundsManager : GameSingleton<SoundsManager>
 {
-    public enum SoundChannel
+    public enum ChannelType
     {
         Music = 0,
         Ambience = 1,
@@ -12,7 +12,7 @@ public class SoundsManager : GameSingleton<SoundsManager>
         SFX2 = 3
     }
 
-    private Dictionary<SoundChannel, AudioSource> _channels = new Dictionary<SoundChannel, AudioSource>();
+    private Dictionary<ChannelType, AudioSource> _channels = new Dictionary<ChannelType, AudioSource>();
     private Coroutine _fadeCoroutine;
 
     [SerializeField]
@@ -22,7 +22,7 @@ public class SoundsManager : GameSingleton<SoundsManager>
     {
         for (int i = 0; i < 4; i++)
         {
-            _channels[(SoundChannel)i] = _audioChannels[i];
+            _channels[(ChannelType)i] = _audioChannels[i];
         }
     }
 
@@ -32,8 +32,8 @@ public class SoundsManager : GameSingleton<SoundsManager>
         request.completed += (operation) =>
         {
             AudioClip clip = request.asset as AudioClip;
-            _channels[SoundChannel.Music].clip = clip;
-            _channels[SoundChannel.Music].Play();
+            _channels[ChannelType.Music].clip = clip;
+            _channels[ChannelType.Music].Play();
         };
     }
 
@@ -44,27 +44,39 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _fadeCoroutine = StartCoroutine(FadeOutMusic());
     }
 
-    public void Play(AudioClip clip, SoundChannel channel)
+    public void Play(AudioClip clip, ChannelType channelType)
     {
-        _channels[channel].clip = clip;
-        _channels[channel].Play();
+        _channels[channelType].clip = clip;
+        _channels[channelType].Play();
     }
 
-    public void Stop(SoundChannel channel)
+    public void Stop(ChannelType channelType)
     {
-        _channels[channel].Stop();
+        _channels[channelType].Stop();
+        _channels[channelType].clip = null;
     }
 
     public void PlayMusic(AudioClip clip)
     {
-        _channels[SoundChannel.Music].clip = clip;
-        _channels[SoundChannel.Music].Play();
+        _channels[ChannelType.Music].clip = clip;
+        _channels[ChannelType.Music].Play();
     }
 
     public void PlayAmbience(AudioClip clip)
     {
-        _channels[SoundChannel.Ambience].clip = clip;
-        _channels[SoundChannel.Ambience].Play();
+        _channels[ChannelType.Ambience].clip = clip;
+        _channels[ChannelType.Ambience].Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        if (!_channels[ChannelType.SFX1].isPlaying)
+        {
+            _channels[ChannelType.SFX1].PlayOneShot(clip);
+            return;
+        }
+
+        _channels[ChannelType.SFX2].PlayOneShot(clip);
     }
 
     private IEnumerator FadeOutMusic()
@@ -73,11 +85,11 @@ public class SoundsManager : GameSingleton<SoundsManager>
         while (currentVolume > 0)
         {
             currentVolume -= 0.5f * Time.deltaTime;
-            _channels[SoundChannel.Music].volume = currentVolume;
+            _channels[ChannelType.Music].volume = currentVolume;
             yield return null;
         }
-        Stop(SoundChannel.Music);
-        _channels[SoundChannel.Music].volume = 1;
+        Stop(ChannelType.Music);
+        _channels[ChannelType.Music].volume = 1;
         _fadeCoroutine = null;
     }
 }

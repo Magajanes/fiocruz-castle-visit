@@ -48,6 +48,8 @@ public class ArtifactInfoPanel : MonoBehaviour
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
     private Inventory _playerInventory;
+    private AudioClip _pageRightSound;
+    private AudioClip _pageLeftSound;
 
     public void Initialize(InitArgs args)
     {
@@ -81,6 +83,14 @@ public class ArtifactInfoPanel : MonoBehaviour
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
         scrollRect.verticalNormalizedPosition = 1;
+        if (_pageLeftSound == null)
+        {
+            _pageLeftSound = Resources.Load<AudioClip>("SFX/Livro/page_1");
+        }
+        if (_pageRightSound == null)
+        {
+            _pageRightSound = Resources.Load<AudioClip>("SFX/Livro/page_2");
+        }
 
         ArtifactSpriteHelper.LoadArtifactSprite(
             _currentInfo.ImagePath,
@@ -109,6 +119,8 @@ public class ArtifactInfoPanel : MonoBehaviour
             _currentInfo = nextInfo;
             SetPanel();
         }
+
+        SoundsManager.Instance.PlaySFX(_pageRightSound);
     }
 
     public void ShowPreviousCollectedArtifact()
@@ -127,6 +139,8 @@ public class ArtifactInfoPanel : MonoBehaviour
             _currentInfo = nextInfo;
             SetPanel();
         }
+
+        SoundsManager.Instance.PlaySFX(_pageLeftSound);
     }
 
     public void Collect()

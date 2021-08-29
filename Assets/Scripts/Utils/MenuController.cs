@@ -6,6 +6,9 @@ public class MenuController : MonoBehaviour
 {
     private bool _inputLock = true;
     private bool _isAtStartScreen = true;
+
+    private AudioClip _clickSound;
+    private AudioClip _clickBackSound;
     
     [Header("References")]
     [SerializeField]
@@ -32,7 +35,9 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         SoundsManager.Instance.PlayIntro();
-        
+        _clickSound = Resources.Load<AudioClip>("SFX/click_1");
+        _clickBackSound = Resources.Load<AudioClip>("SFX/click_back");
+
         UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
@@ -61,6 +66,7 @@ public class MenuController : MonoBehaviour
                 menu,
                 ShowMenu
             );
+            SoundsManager.Instance.PlaySFX(_clickSound);
         }
     }
 
@@ -93,6 +99,7 @@ public class MenuController : MonoBehaviour
             optionsPanel,
             UnlockInput
         );
+        SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
     public void ShowInventory()
@@ -109,6 +116,7 @@ public class MenuController : MonoBehaviour
             inventoryPanel, 
             UnlockInput
         );
+        SoundsManager.Instance.PlaySFX(_clickSound);
 
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
         inventory.Initialize();
@@ -127,6 +135,7 @@ public class MenuController : MonoBehaviour
             inventoryPanel,
             UnlockInput
         );
+        SoundsManager.Instance.PlaySFX(_clickSound);
 
         var artifactInfoPanel = artifactInfo.GetComponent<ArtifactInfoPanel>();
         artifactInfoPanel.Initialize(artifactId);
@@ -145,6 +154,7 @@ public class MenuController : MonoBehaviour
             mainMenu,
             ShowStartScreen
         );
+        SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     public void BackToMenu()
@@ -167,6 +177,7 @@ public class MenuController : MonoBehaviour
             currentPanel.SetActive(false);
             UnlockInput();
         }
+        SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     public void BackToInventory()
@@ -186,6 +197,7 @@ public class MenuController : MonoBehaviour
             artifactInfo.SetActive(false);
             UnlockInput();
         }
+        SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     private void LockInput()
@@ -205,6 +217,7 @@ public class MenuController : MonoBehaviour
 
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
+        SoundsManager.Instance.PlaySFX(_clickSound);
         SoundsManager.Instance.StopIntro();
     }
 
