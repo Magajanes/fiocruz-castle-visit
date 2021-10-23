@@ -35,20 +35,24 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        ResourceRequest request = Resources.LoadAsync<SoundsBundle>(MenuConstants.MAIN_MENU_SOUNDS_BUNDLE_PATH);
-        request.completed += operation =>
-        {
-            _soundsBundle = request.asset as SoundsBundle;
-            SoundsManager.Instance.PlayMusic(_soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID));
-            _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
-            _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
-        };
+        SoundsManager.LoadSoundsBundle(
+            MenuConstants.MAIN_MENU_SOUNDS_BUNDLE_PATH,
+            OnSoundsLoaded
+        );
         
         UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
             0.5f
         );
+
+        void OnSoundsLoaded(SoundsBundle bundle)
+        {
+            _soundsBundle = bundle;
+            SoundsManager.Instance.PlayMusic(_soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID));
+            _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
+            _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
+        }
 
         void OnFadeFinish()
         {
@@ -231,9 +235,14 @@ public class MenuController : MonoBehaviour
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
         SoundsManager.Instance.PlaySFX(_clickSound);
-        SoundsManager.Instance.FadeOutMusic(
-            () => Resources.UnloadAsset(_soundsBundle)
-        );
+        SoundsManager.Instance.FadeOutMusic(ClearSoundAssets);
+
+        void ClearSoundAssets()
+        {
+            _clickSound = null;
+            _clickBackSound = null;
+            Resources.UnloadAsset(_soundsBundle);
+        }
     }
 
     public void ExitGame()

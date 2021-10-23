@@ -54,10 +54,12 @@ public class ArtifactInfoPanel : MonoBehaviour
     public void Initialize(InitArgs args)
     {
         _playerInventory = InventoryManager.PlayerInventory;
-        int artifactId = args.ArtifactId;
         _entryPoint = args.EntryPoint;
+
+        int artifactId = args.ArtifactId;
         bool showCollectButton = _entryPoint == UIState.Inactive && !_playerInventory.HasArtifact(artifactId);
         bool showArrowsPanel = _playerInventory.HasArtifact(artifactId);
+
         collectButton.SetActive(showCollectButton);
         arrowsPanel.SetActive(showArrowsPanel);
         _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
@@ -70,12 +72,12 @@ public class ArtifactInfoPanel : MonoBehaviour
     {
         _playerInventory = InventoryManager.PlayerInventory;
         bool showArrowsPanel = _playerInventory.HasArtifact(artifactId);
+
         collectButton.SetActive(false);
         arrowsPanel.SetActive(showArrowsPanel);
         _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
 
-        if (_currentInfo != null)
-            SetPanel();
+        if (_currentInfo != null) SetPanel();
     }
 
     private void SetPanel()
@@ -83,23 +85,26 @@ public class ArtifactInfoPanel : MonoBehaviour
         title.text = _currentInfo.Name;
         description.text = _currentInfo.Description;
         scrollRect.verticalNormalizedPosition = 1;
-        if (_pageLeftSound == null)
-        {
-            _pageLeftSound = Resources.Load<AudioClip>("SFX/Livro/page_1");
-        }
-        if (_pageRightSound == null)
-        {
-            _pageRightSound = Resources.Load<AudioClip>("SFX/Livro/page_2");
-        }
 
         ArtifactSpriteHelper.LoadArtifactSprite(
             _currentInfo.ImagePath,
             SetSprite
         );
 
+        SoundsManager.LoadSoundsBundle(
+            ArtifactInfoPanelConstants.ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH,
+            OnSoundsLoaded
+        );
+
         void SetSprite(Sprite sprite)
         {
             image.sprite = sprite;
+        }
+
+        void OnSoundsLoaded(SoundsBundle bundle)
+        {
+            _pageRightSound = bundle.GetAudioClipById(ArtifactInfoPanelConstants.PAGE_RIGHT_ID);
+            _pageLeftSound = bundle.GetAudioClipById(ArtifactInfoPanelConstants.PAGE_LEFT_ID);
         }
     }
 
@@ -149,4 +154,11 @@ public class ArtifactInfoPanel : MonoBehaviour
         collectButton.SetActive(false);
         arrowsPanel.SetActive(true);
     }
+}
+
+public static class ArtifactInfoPanelConstants
+{
+    public const string ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH = "SoundBundles/ArtifactPanelSounds";
+    public const string PAGE_RIGHT_ID = "page_right";
+    public const string PAGE_LEFT_ID = "page_left";
 }

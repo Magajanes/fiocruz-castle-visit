@@ -27,6 +27,16 @@ public class SoundsManager : GameSingleton<SoundsManager>
         }
     }
 
+    public static void LoadSoundsBundle(string path, Action<SoundsBundle> onLoadFinish)
+    {
+        ResourceRequest request = Resources.LoadAsync<SoundsBundle>(path);
+        request.completed += operation =>
+        {
+            var bundle = request.asset as SoundsBundle;
+            onLoadFinish?.Invoke(bundle);
+        };
+    }
+
     public void FadeOutMusic(Action onFadeFinish)
     {
         if (_fadeCoroutine != null) return;
