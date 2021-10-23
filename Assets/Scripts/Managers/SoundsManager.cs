@@ -37,11 +37,11 @@ public class SoundsManager : GameSingleton<SoundsManager>
         };
     }
 
-    public void FadeOutMusic(Action onFadeFinish)
+    public void FadeOutMusic(ChannelType channelType, Action onFadeFinish)
     {
         if (_fadeCoroutine != null) return;
 
-        _fadeCoroutine = StartCoroutine(FadeOutCoroutine(onFadeFinish));
+        _fadeCoroutine = StartCoroutine(FadeOutCoroutine(channelType, onFadeFinish));
     }
 
     public void Play(AudioClip clip, ChannelType channelType)
@@ -103,18 +103,18 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _channels[channelType].Stop();
     }
 
-    private IEnumerator FadeOutCoroutine(Action onFadeFinish)
+    private IEnumerator FadeOutCoroutine(ChannelType channelType, Action onFadeFinish)
     {
         float currentVolume = 1;
         while (currentVolume > 0)
         {
             currentVolume -= 0.5f * Time.deltaTime;
-            _channels[ChannelType.Music].volume = currentVolume;
+            _channels[channelType].volume = currentVolume;
             yield return null;
         }
 
-        Stop(ChannelType.Music);
-        _channels[ChannelType.Music].volume = 1;
+        Stop(channelType);
+        _channels[channelType].volume = 1;
         _fadeCoroutine = null;
 
         onFadeFinish?.Invoke();

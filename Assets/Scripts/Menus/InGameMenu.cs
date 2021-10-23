@@ -290,7 +290,7 @@ public class InGameMenu : MonoBehaviour
         SetMenuButtonsInteractive(false);
         ScenesController.Instance.BackToMainMenu();
         SoundsManager.Instance.PlaySFX(_clickBackSound);
-        SoundsManager.Instance.FadeOutMusic(ClearSoundAssets);
+        SoundsManager.Instance.FadeOutMusic(SoundsManager.ChannelType.Ambience, ClearSoundAssets);
 
         void ClearSoundAssets()
         {

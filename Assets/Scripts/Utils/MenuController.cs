@@ -236,7 +236,7 @@ public class MenuController : MonoBehaviour
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
         SoundsManager.Instance.PlaySFX(_clickSound);
-        SoundsManager.Instance.FadeOutMusic(ClearSoundAssets);
+        SoundsManager.Instance.FadeOutMusic(SoundsManager.ChannelType.Music, ClearSoundAssets);
 
         void ClearSoundAssets()
         {
