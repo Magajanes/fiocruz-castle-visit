@@ -29,6 +29,11 @@ public class InitArgs
 
 public class ArtifactInfoPanel : MonoBehaviour
 {
+    public const string ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH = "SoundBundles/ArtifactPanelSounds";
+    public const string PAGE_RIGHT_ID = "page_right";
+    public const string PAGE_LEFT_ID = "page_left";
+    public const string COLLECT_ARTIFACT_ID = "artifact_collected";
+
     [Header("Components")]
     [SerializeField]
     private TextMeshProUGUI title;
@@ -48,8 +53,22 @@ public class ArtifactInfoPanel : MonoBehaviour
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
     private Inventory _playerInventory;
+
     private AudioClip _pageRightSound;
     private AudioClip _pageLeftSound;
+    private AudioClip _collectArtifactSound;
+
+    private void Start()
+    {
+        SoundsManager.LoadSoundsBundle(ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH, OnSoundsLoaded);
+
+        void OnSoundsLoaded(SoundsBundle bundle)
+        {
+            _pageRightSound = bundle.GetAudioClipById(PAGE_RIGHT_ID);
+            _pageLeftSound = bundle.GetAudioClipById(PAGE_LEFT_ID);
+            _collectArtifactSound = bundle.GetAudioClipById(COLLECT_ARTIFACT_ID);
+        }
+    }
 
     public void Initialize(InitArgs args)
     {
@@ -91,20 +110,9 @@ public class ArtifactInfoPanel : MonoBehaviour
             SetSprite
         );
 
-        SoundsManager.LoadSoundsBundle(
-            ArtifactInfoPanelConstants.ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH,
-            OnSoundsLoaded
-        );
-
         void SetSprite(Sprite sprite)
         {
             image.sprite = sprite;
-        }
-
-        void OnSoundsLoaded(SoundsBundle bundle)
-        {
-            _pageRightSound = bundle.GetAudioClipById(ArtifactInfoPanelConstants.PAGE_RIGHT_ID);
-            _pageLeftSound = bundle.GetAudioClipById(ArtifactInfoPanelConstants.PAGE_LEFT_ID);
         }
     }
 
@@ -153,12 +161,6 @@ public class ArtifactInfoPanel : MonoBehaviour
         _playerInventory.AddArtifact(_currentInfo.Id);
         collectButton.SetActive(false);
         arrowsPanel.SetActive(true);
+        SoundsManager.Instance.PlaySFX(_collectArtifactSound);
     }
-}
-
-public static class ArtifactInfoPanelConstants
-{
-    public const string ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH = "SoundBundles/ArtifactPanelSounds";
-    public const string PAGE_RIGHT_ID = "page_right";
-    public const string PAGE_LEFT_ID = "page_left";
 }

@@ -4,7 +4,12 @@ using UnityEngine.UI;
 public class InGameMenu : MonoBehaviour
 {
     public const float IN_GAME_MENU_FADE_RATE = 1.5f;
-    
+    public const string IN_GAME_MENU_SOUNDS_BUNDLE_PATH = "SoundBundles/InGameMenuSounds";
+    public const string IN_GAME_AMBIENCE_ID = "in_game_ambience";
+    public const string MENU_CLICK_ID = "click";
+    public const string MENU_CLICK_BACK_ID = "click_back";
+    public const string OPEN_BOOK_ID = "open_book";
+
     [Header("Menu objects")]
     [SerializeField]
     private GameObject _inGameMenuPanel;
@@ -44,17 +49,17 @@ public class InGameMenu : MonoBehaviour
     private void Start()
     {
         SetMenuButtonsInteractive(false);
-        SoundsManager.LoadSoundsBundle(
-            InGameMenuConstants.IN_GAME_MENU_SOUNDS_BUNDLE_PATH,
-            OnSoundsLoaded
-        );
+        SoundsManager.LoadSoundsBundle(IN_GAME_MENU_SOUNDS_BUNDLE_PATH,OnSoundsLoaded);
 
         void OnSoundsLoaded(SoundsBundle bundle)
         {
             _soundsBundle = bundle;
-            _clickSound = _soundsBundle.GetAudioClipById(InGameMenuConstants.MENU_CLICK_ID);
-            _clickBackSound = _soundsBundle.GetAudioClipById(InGameMenuConstants.MENU_CLICK_BACK_ID);
-            _openBookSound = _soundsBundle.GetAudioClipById(InGameMenuConstants.OPEN_BOOK_ID);
+            var ambience = _soundsBundle.GetAudioClipById(IN_GAME_AMBIENCE_ID);
+            SoundsManager.Instance.PlayAmbience(ambience, true);
+
+            _clickSound = _soundsBundle.GetAudioClipById(MENU_CLICK_ID);
+            _clickBackSound = _soundsBundle.GetAudioClipById(MENU_CLICK_BACK_ID);
+            _openBookSound = _soundsBundle.GetAudioClipById(OPEN_BOOK_ID);
         }
     }
 
@@ -285,14 +290,14 @@ public class InGameMenu : MonoBehaviour
         SetMenuButtonsInteractive(false);
         ScenesController.Instance.BackToMainMenu();
         SoundsManager.Instance.PlaySFX(_clickBackSound);
-        ClearSoundAssets();
-    }
+        SoundsManager.Instance.FadeOutMusic(ClearSoundAssets);
 
-    private void ClearSoundAssets()
-    {
-        _clickSound = null;
-        _clickBackSound = null;
-        Resources.UnloadAsset(_soundsBundle);
+        void ClearSoundAssets()
+        {
+            _clickSound = null;
+            _clickBackSound = null;
+            Resources.UnloadAsset(_soundsBundle);
+        }
     }
 
     public void OnBackButtonClick()
@@ -305,12 +310,3 @@ public class InGameMenu : MonoBehaviour
         Application.Quit();
     }
 }
-
-public static class InGameMenuConstants
-{
-    public const string IN_GAME_MENU_SOUNDS_BUNDLE_PATH = "SoundBundles/InGameMenuSounds";
-    public const string MENU_CLICK_ID = "click";
-    public const string MENU_CLICK_BACK_ID = "click_back";
-    public const string OPEN_BOOK_ID = "open_book";
-}
-

@@ -19,3 +19,5 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: d380539baa86e9046b5122e30f64543c, type: 3}
   - Id: open_book
     Clip: {fileID: 8300000, guid: ff4fe2d45cd443449b0c703566a5a104, type: 3}
+  - Id: in_game_ambience
+    Clip: {fileID: 8300000, guid: 14b92a41eb9934246aca78c0bc5c496a, type: 3}
