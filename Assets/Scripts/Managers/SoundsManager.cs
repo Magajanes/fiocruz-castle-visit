@@ -56,16 +56,18 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _channels[channelType].clip = null;
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip, bool loop)
     {
         _channels[ChannelType.Music].clip = clip;
         _channels[ChannelType.Music].Play();
+        _channels[ChannelType.Music].loop = loop;
     }
 
-    public void PlayAmbience(AudioClip clip)
+    public void PlayAmbience(AudioClip clip, bool loop)
     {
         _channels[ChannelType.Ambience].clip = clip;
         _channels[ChannelType.Ambience].Play();
+        _channels[ChannelType.Ambience].loop = loop;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -77,6 +79,28 @@ public class SoundsManager : GameSingleton<SoundsManager>
         }
 
         _channels[ChannelType.SFX2].PlayOneShot(clip);
+    }
+
+    public void PlaySFXLoop(AudioClip clip, out ChannelType channelType)
+    {
+        if (!_channels[ChannelType.SFX1].isPlaying)
+        {
+            channelType = ChannelType.SFX1;
+            _channels[channelType].clip = clip;
+            _channels[channelType].Play();
+            _channels[channelType].loop = true;
+            return;
+        }
+
+        channelType = ChannelType.SFX2;
+        _channels[channelType].clip = clip;
+        _channels[channelType].Play();
+        _channels[channelType].loop = true;
+    }
+
+    public void StopSFXLoop(ChannelType channelType)
+    {
+        _channels[channelType].Stop();
     }
 
     private IEnumerator FadeOutCoroutine(Action onFadeFinish)

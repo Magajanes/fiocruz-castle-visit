@@ -49,7 +49,8 @@ public class MenuController : MonoBehaviour
         void OnSoundsLoaded(SoundsBundle bundle)
         {
             _soundsBundle = bundle;
-            SoundsManager.Instance.PlayMusic(_soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID));
+            var music = _soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID);
+            SoundsManager.Instance.PlayMusic(music, true);
             _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
             _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
         }

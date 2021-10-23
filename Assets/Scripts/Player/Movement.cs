@@ -2,6 +2,9 @@
 
 public class Movement : MonoBehaviour
 {
+    public const string CHARACTER_SOUNDS_BUNDLE_PATH = "SoundBundles/CharacterSounds";
+    public const string STEP_SOUND_ID = "step";
+    
     private Vector3 _walkDirection;
     private Vector3 _strafeDirection;
     private Vector3 _verticalDirection;
@@ -21,6 +24,11 @@ public class Movement : MonoBehaviour
 
     public static Movement Instance;
     private bool _lockMovement;
+    private bool _isMoving;
+
+    private SoundsManager.ChannelType _currentChannel;
+    private SoundsBundle _soundsBundle;
+    private AudioClip _stepSound;
 
     private void Awake()
     {
@@ -30,10 +38,28 @@ public class Movement : MonoBehaviour
         InputController.OnTurnInput += TurnHeadTowards;
     }
 
+    private void Start()
+    {
+        SoundsManager.LoadSoundsBundle(CHARACTER_SOUNDS_BUNDLE_PATH, OnSoundsLoaded);
+
+        void OnSoundsLoaded(SoundsBundle bundle)
+        {
+            _soundsBundle = bundle;
+            _stepSound = _soundsBundle.GetAudioClipById(STEP_SOUND_ID);
+        }
+    }
+
     private void OnDestroy()
     {
         InputController.OnMoveInput -= MoveTowards;
         InputController.OnTurnInput -= TurnHeadTowards;
+        ClearSoundAssets();
+
+        void ClearSoundAssets()
+        {
+            _stepSound = null;
+            Resources.UnloadAsset(_soundsBundle);
+        }
     }
 
     private void MoveTowards(Vector2 inputDirection)
@@ -48,6 +74,19 @@ public class Movement : MonoBehaviour
 
         _moveDirection = _walkDirection + _strafeDirection + _verticalDirection;
         characterController.Move(_moveDirection * speed * Time.deltaTime);
+
+        if (!_isMoving && characterController.velocity.magnitude > 0)
+        {
+            _isMoving = true;
+            SoundsManager.Instance.PlaySFXLoop(_stepSound, out _currentChannel);
+            return;
+        }
+
+        if (_isMoving && characterController.velocity.magnitude < 0.1f)
+        {
+            _isMoving = false;
+            SoundsManager.Instance.StopSFXLoop(_currentChannel);
+        }
     }
 
     private void CalculateGravity()
