@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class SoundsManager : GameSingleton<SoundsManager>
 {
@@ -26,22 +27,11 @@ public class SoundsManager : GameSingleton<SoundsManager>
         }
     }
 
-    public void PlayIntro()
-    {
-        ResourceRequest request = Resources.LoadAsync("Music/full");
-        request.completed += (operation) =>
-        {
-            AudioClip clip = request.asset as AudioClip;
-            _channels[ChannelType.Music].clip = clip;
-            _channels[ChannelType.Music].Play();
-        };
-    }
-
-    public void StopIntro()
+    public void FadeOutMusic(Action onFadeFinish)
     {
         if (_fadeCoroutine != null) return;
 
-        _fadeCoroutine = StartCoroutine(FadeOutMusic());
+        _fadeCoroutine = StartCoroutine(FadeOutCoroutine(onFadeFinish));
     }
 
     public void Play(AudioClip clip, ChannelType channelType)
@@ -79,7 +69,7 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _channels[ChannelType.SFX2].PlayOneShot(clip);
     }
 
-    private IEnumerator FadeOutMusic()
+    private IEnumerator FadeOutCoroutine(Action onFadeFinish)
     {
         float currentVolume = 1;
         while (currentVolume > 0)
@@ -88,8 +78,11 @@ public class SoundsManager : GameSingleton<SoundsManager>
             _channels[ChannelType.Music].volume = currentVolume;
             yield return null;
         }
+
         Stop(ChannelType.Music);
         _channels[ChannelType.Music].volume = 1;
         _fadeCoroutine = null;
+
+        onFadeFinish?.Invoke();
     }
 }

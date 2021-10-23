@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour
     private bool _inputLock = true;
     private bool _isAtStartScreen = true;
 
+    private SoundsBundle _soundsBundle;
     private AudioClip _clickSound;
     private AudioClip _clickBackSound;
     
@@ -34,10 +35,15 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        SoundsManager.Instance.PlayIntro();
-        _clickSound = Resources.Load<AudioClip>("SFX/click_1");
-        _clickBackSound = Resources.Load<AudioClip>("SFX/click_back");
-
+        ResourceRequest request = Resources.LoadAsync<SoundsBundle>(MenuConstants.MAIN_MENU_SOUNDS_BUNDLE_PATH);
+        request.completed += operation =>
+        {
+            _soundsBundle = request.asset as SoundsBundle;
+            SoundsManager.Instance.PlayMusic(_soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID));
+            _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
+            _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
+        };
+        
         UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
@@ -66,6 +72,7 @@ public class MenuController : MonoBehaviour
                 menu,
                 ShowMenu
             );
+
             SoundsManager.Instance.PlaySFX(_clickSound);
         }
     }
@@ -99,6 +106,7 @@ public class MenuController : MonoBehaviour
             optionsPanel,
             UnlockInput
         );
+
         SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
@@ -116,6 +124,7 @@ public class MenuController : MonoBehaviour
             inventoryPanel, 
             UnlockInput
         );
+
         SoundsManager.Instance.PlaySFX(_clickSound);
 
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
@@ -135,6 +144,7 @@ public class MenuController : MonoBehaviour
             inventoryPanel,
             UnlockInput
         );
+
         SoundsManager.Instance.PlaySFX(_clickSound);
 
         var artifactInfoPanel = artifactInfo.GetComponent<ArtifactInfoPanel>();
@@ -154,6 +164,7 @@ public class MenuController : MonoBehaviour
             mainMenu,
             ShowStartScreen
         );
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
@@ -177,6 +188,7 @@ public class MenuController : MonoBehaviour
             currentPanel.SetActive(false);
             UnlockInput();
         }
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
@@ -197,6 +209,7 @@ public class MenuController : MonoBehaviour
             artifactInfo.SetActive(false);
             UnlockInput();
         }
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
@@ -218,7 +231,9 @@ public class MenuController : MonoBehaviour
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
         SoundsManager.Instance.PlaySFX(_clickSound);
-        SoundsManager.Instance.StopIntro();
+        SoundsManager.Instance.FadeOutMusic(
+            () => Resources.UnloadAsset(_soundsBundle)
+        );
     }
 
     public void ExitGame()
@@ -231,4 +246,12 @@ public class MenuController : MonoBehaviour
         PlayerPrefsService.ApplySavedPlayerPrefs(out bool invertY);
         toggle.isOn = invertY;
     }
+}
+
+public static class MenuConstants
+{
+    public const string MAIN_MENU_SOUNDS_BUNDLE_PATH = "SoundBundles/MainMenuSounds";
+    public const string INTRO_MUSIC_ID = "intro_music";
+    public const string MENU_CLICK_ID = "click";
+    public const string MENU_CLICK_BACK_ID = "click_back";
 }
