@@ -5,11 +5,19 @@ public class SelectionMenu : MonoBehaviour
     public enum SelectionMenuState
     {
         NONE = 0,
-        OPTIONS = 1,
-        CREDITS = 2
+        BOOK = 1,
+        OPTIONS = 2,
+        CREDITS = 3
     }
 
     private SelectionMenuState _currentState = SelectionMenuState.NONE;
+
+    public void OnBookButtonClick()
+    {
+        if (_currentState == SelectionMenuState.BOOK) return;
+
+        MenuController.Instance.ShowInventory(() => _currentState = SelectionMenuState.BOOK);
+    }
 
     public void OnOptionsButtonClick()
     {

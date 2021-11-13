@@ -28,4 +28,9 @@ public class InventorySlot : MonoBehaviour
             (sprite) => artifactImage.sprite = sprite
         );
     }
+
+    public void OnSlotClick()
+    {
+        MenuController.Instance.ShowArtifactInfo(_artifactInfo.Id);
+    }
 }

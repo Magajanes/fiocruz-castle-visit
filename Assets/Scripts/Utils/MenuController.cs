@@ -158,18 +158,32 @@ public class MenuController : Singleton<MenuController>
         SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
-    public void ShowInventory()
+    public void ShowInventory(Action onComplete)
     {
         if (_isAtStartScreen || _inputLock)
             return;
 
         LockInput();
         inventoryPanel.SetActive(true);
-        UIFader.FadeOut(selectionMenu);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
 
         UIFader.FadeIn(
             inventoryPanel, 
-            () => _inputLock = false
+            () => 
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = inventoryPanel;
+                onComplete?.Invoke();
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -196,6 +210,27 @@ public class MenuController : Singleton<MenuController>
 
         var artifactInfoPanel = artifactInfo.GetComponent<ArtifactInfoPanel>();
         artifactInfoPanel.Initialize(artifactId);
+    }
+
+    public void BackToInventory()
+    {
+        if (_inputLock)
+            return;
+
+        LockInput();
+        UIFader.FadeIn(inventoryPanel);
+        UIFader.FadeOut(
+            artifactInfo,
+            CloseArtifactInfo
+        );
+
+        void CloseArtifactInfo()
+        {
+            artifactInfo.SetActive(false);
+            _inputLock = false;
+        }
+
+        SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     public void BackToStartScreen()
@@ -233,27 +268,6 @@ public class MenuController : Singleton<MenuController>
             _currentPanel = null;
             _inputLock = false;
             onComplete?.Invoke();
-        }
-
-        SoundsManager.Instance.PlaySFX(_clickBackSound);
-    }
-
-    public void BackToInventory()
-    {
-        if (_inputLock)
-            return;
-
-        LockInput();
-        UIFader.FadeIn(inventoryPanel);
-        UIFader.FadeOut(
-            artifactInfo,
-            CloseArtifactInfo
-        );
-
-        void CloseArtifactInfo()
-        {
-            artifactInfo.SetActive(false);
-            _inputLock = false;
         }
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
