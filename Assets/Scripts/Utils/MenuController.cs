@@ -103,15 +103,23 @@ public class MenuController : Singleton<MenuController>
 
         LockInput();
         ApplySavedPlayerPrefs();
-
         optionsPanel.SetActive(true);
-        if (_currentPanel != null) UIFader.FadeOut(_currentPanel);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
 
         UIFader.FadeIn(
             optionsPanel,
             () => 
             {
                 _inputLock = false;
+                _currentPanel?.SetActive(false);
                 _currentPanel = optionsPanel;
                 onComplete?.Invoke();
             }
@@ -125,15 +133,23 @@ public class MenuController : Singleton<MenuController>
             return;
 
         LockInput();
-
         creditsPanel.SetActive(true);
-        if (_currentPanel != null) UIFader.FadeOut(_currentPanel);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
 
         UIFader.FadeIn(
             creditsPanel,
             () =>
             {
                 _inputLock = false;
+                _currentPanel?.SetActive(false);
                 _currentPanel = creditsPanel;
                 onComplete?.Invoke();
             }
@@ -204,8 +220,8 @@ public class MenuController : Singleton<MenuController>
             return;
 
         LockInput();
-        UIFader.FadeIn(selectionMenu);
 
+        UIFader.FadeOut(selectionMenu);
         UIFader.FadeOut(
             _currentPanel,
             CloseCurrentPanel

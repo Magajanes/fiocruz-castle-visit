@@ -283,9 +283,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6110395687300743066}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &690930016 stripped
+--- !u!1 &544464700 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6110395687332793885, guid: 6c490f7bea9689f42a57765716e5aaf9,
+  m_CorrespondingSourceObject: {fileID: 5869620231779391582, guid: 6c490f7bea9689f42a57765716e5aaf9,
     type: 3}
   m_PrefabInstance: {fileID: 6110395687300743066}
   m_PrefabAsset: {fileID: 0}
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   mainMenu: {fileID: 2094682387}
   mainText: {fileID: 1969125358}
   menu: {fileID: 1643954611}
-  selectionMenu: {fileID: 690930016}
+  selectionMenu: {fileID: 544464700}
   optionsPanel: {fileID: 1916627644}
   creditsPanel: {fileID: 542054108}
   inventoryPanel: {fileID: 6110395687300743067}
@@ -1662,6 +1662,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 106161651742101304, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 153789931686228983, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1876,6 +1881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1047
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001927338043633140, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1024601376961775331, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
@@ -2766,6 +2776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869620231779391582, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6005119554676375232, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
