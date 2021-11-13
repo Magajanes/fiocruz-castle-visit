@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+public class MenuController : Singleton<MenuController>
 {
     private bool _inputLock = true;
     private bool _isAtStartScreen = true;
@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     private SoundsBundle _soundsBundle;
     private AudioClip _clickSound;
     private AudioClip _clickBackSound;
+
+    private GameObject _currentPanel;
     
     [Header("References")]
     [SerializeField]
@@ -26,6 +28,8 @@ public class MenuController : MonoBehaviour
     private GameObject selectionMenu;
     [SerializeField]
     private GameObject optionsPanel;
+    [SerializeField]
+    private GameObject creditsPanel;
     [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
@@ -57,7 +61,7 @@ public class MenuController : MonoBehaviour
         {
             UIFader.FadeIn(
                 mainText,
-                UnlockInput
+                () => _inputLock = false
             );
         }
     }
@@ -82,17 +86,17 @@ public class MenuController : MonoBehaviour
 
     private void ShowStartScreen()
     {
-        UnlockInput();
+        _inputLock = false;
         _isAtStartScreen = true;
     }
 
     private void ShowMenu()
     {
-        UnlockInput();
+        _inputLock = false;
         _isAtStartScreen = false;
     }
 
-    public void ShowOptionsPanel()
+    public void ShowOptionsPanel(Action onComplete)
     {
         if (_isAtStartScreen || _inputLock)
             return;
@@ -101,11 +105,38 @@ public class MenuController : MonoBehaviour
         ApplySavedPlayerPrefs();
 
         optionsPanel.SetActive(true);
-        UIFader.FadeOut(selectionMenu);
+        if (_currentPanel != null) UIFader.FadeOut(_currentPanel);
 
         UIFader.FadeIn(
             optionsPanel,
-            UnlockInput
+            () => 
+            {
+                _inputLock = false;
+                _currentPanel = optionsPanel;
+                onComplete?.Invoke();
+            }
+        );
+
+        SoundsManager.Instance.PlaySFX(_clickSound);
+    }
+    public void ShowCreditsPanel(Action onComplete)
+    {
+        if (_isAtStartScreen || _inputLock)
+            return;
+
+        LockInput();
+
+        creditsPanel.SetActive(true);
+        if (_currentPanel != null) UIFader.FadeOut(_currentPanel);
+
+        UIFader.FadeIn(
+            creditsPanel,
+            () =>
+            {
+                _inputLock = false;
+                _currentPanel = creditsPanel;
+                onComplete?.Invoke();
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -122,7 +153,7 @@ public class MenuController : MonoBehaviour
 
         UIFader.FadeIn(
             inventoryPanel, 
-            UnlockInput
+            () => _inputLock = false
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -142,7 +173,7 @@ public class MenuController : MonoBehaviour
 
         UIFader.FadeOut(
             inventoryPanel,
-            UnlockInput
+            () => _inputLock = false
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -167,7 +198,7 @@ public class MenuController : MonoBehaviour
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
-    public void BackToMenu()
+    public void BackToMenu(Action onComplete)
     {
         if (_inputLock)
             return;
@@ -175,16 +206,17 @@ public class MenuController : MonoBehaviour
         LockInput();
         UIFader.FadeIn(selectionMenu);
 
-        GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
         UIFader.FadeOut(
-            currentPanel,
+            _currentPanel,
             CloseCurrentPanel
         );
 
         void CloseCurrentPanel()
         {
-            currentPanel.SetActive(false);
-            UnlockInput();
+            _currentPanel.SetActive(false);
+            _currentPanel = null;
+            _inputLock = false;
+            onComplete?.Invoke();
         }
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
@@ -205,7 +237,7 @@ public class MenuController : MonoBehaviour
         void CloseArtifactInfo()
         {
             artifactInfo.SetActive(false);
-            UnlockInput();
+            _inputLock = false;
         }
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
@@ -216,11 +248,6 @@ public class MenuController : MonoBehaviour
         _inputLock = true;
     }
     
-    private void UnlockInput()
-    {
-        _inputLock = false;
-    }
-
     public void StartGame()
     {
         if (_isAtStartScreen || _inputLock)
