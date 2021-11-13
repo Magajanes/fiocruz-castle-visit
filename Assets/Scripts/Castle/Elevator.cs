@@ -50,6 +50,11 @@ public class Elevator : MonoBehaviour
         InputController.OnElevatorButtonPress += GoToFloor;
     }
 
+    private void OnDestroy()
+    {
+        InputController.OnElevatorButtonPress -= GoToFloor;
+    }
+
     public void CallToFloor(int floor)
     {
         if (moveCoroutine != null || currentFloor == floor)
