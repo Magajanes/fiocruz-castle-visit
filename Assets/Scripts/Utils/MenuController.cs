@@ -31,8 +31,6 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject artifactInfo;
 
-    public static event Action<bool> OnSelectionMenuFade;
-
     private void Start()
     {
         SoundsManager.LoadSoundsBundle(
@@ -92,7 +90,6 @@ public class MenuController : MonoBehaviour
     {
         UnlockInput();
         _isAtStartScreen = false;
-        OnSelectionMenuFade?.Invoke(true);
     }
 
     public void ShowOptionsPanel()
@@ -105,7 +102,6 @@ public class MenuController : MonoBehaviour
 
         optionsPanel.SetActive(true);
         UIFader.FadeOut(selectionMenu);
-        OnSelectionMenuFade?.Invoke(false);
 
         UIFader.FadeIn(
             optionsPanel,
@@ -123,7 +119,6 @@ public class MenuController : MonoBehaviour
         LockInput();
         inventoryPanel.SetActive(true);
         UIFader.FadeOut(selectionMenu);
-        OnSelectionMenuFade?.Invoke(false);
 
         UIFader.FadeIn(
             inventoryPanel, 
@@ -163,7 +158,6 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         UIFader.FadeOut(menu);
-        OnSelectionMenuFade?.Invoke(false);
 
         UIFader.FadeIn(
             mainMenu,
@@ -180,7 +174,6 @@ public class MenuController : MonoBehaviour
 
         LockInput();
         UIFader.FadeIn(selectionMenu);
-        OnSelectionMenuFade?.Invoke(true);
 
         GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
         UIFader.FadeOut(
