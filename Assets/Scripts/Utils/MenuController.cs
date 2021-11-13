@@ -199,11 +199,20 @@ public class MenuController : Singleton<MenuController>
 
         LockInput();
         artifactInfo.SetActive(true);
-        UIFader.FadeIn(artifactInfo);
 
-        UIFader.FadeOut(
-            inventoryPanel,
-            () => _inputLock = false
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+
+        UIFader.FadeIn(
+            artifactInfo,
+            () =>
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = artifactInfo;
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -218,15 +227,18 @@ public class MenuController : Singleton<MenuController>
             return;
 
         LockInput();
-        UIFader.FadeIn(inventoryPanel);
-        UIFader.FadeOut(
-            artifactInfo,
+        inventoryPanel.SetActive(true);
+
+        UIFader.FadeOut(_currentPanel);
+        UIFader.FadeIn(
+            inventoryPanel,
             CloseArtifactInfo
         );
 
         void CloseArtifactInfo()
         {
-            artifactInfo.SetActive(false);
+            _currentPanel?.SetActive(false);
+            _currentPanel = inventoryPanel;
             _inputLock = false;
         }
 

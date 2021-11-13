@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InGameMenu : MonoBehaviour
@@ -40,10 +41,24 @@ public class InGameMenu : MonoBehaviour
 
     private void Awake()
     {
+        AddListeners();
+    }
+
+    private void AddListeners()
+    {
+        RemoveListeners();
         InputController.OnInGameMenuOpen += OpenMenu;
         InputController.OnInventoryButtonPress += OpenInventoryImediate;
         InputController.OnBackButtonPress += OnBackButtonClick;
         Artifact.OnInteraction += OpenArtifactInfoImediate;
+    }
+
+    private void RemoveListeners()
+    {
+        InputController.OnInGameMenuOpen -= OpenMenu;
+        InputController.OnInventoryButtonPress -= OpenInventoryImediate;
+        InputController.OnBackButtonPress -= OnBackButtonClick;
+        Artifact.OnInteraction -= OpenArtifactInfoImediate;
     }
 
     private void Start()
@@ -65,10 +80,7 @@ public class InGameMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputController.OnInGameMenuOpen -= OpenMenu;
-        InputController.OnInventoryButtonPress -= OpenInventoryImediate;
-        InputController.OnBackButtonPress -= OnBackButtonClick;
-        Artifact.OnInteraction -= OpenArtifactInfoImediate;
+        RemoveListeners();
     }
 
     private void SetMenuButtonsInteractive(bool interactive)

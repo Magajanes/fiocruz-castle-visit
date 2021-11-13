@@ -18,6 +18,7 @@ public class Door : MonoBehaviour
             return;
 
         TutorialController.Instance.ShowTutorial(TutorialSubject.Door);
+        InputController.OnDoorInteractionPress -= OpenDoor;
         InputController.OnDoorInteractionPress += OpenDoor;
     }
 

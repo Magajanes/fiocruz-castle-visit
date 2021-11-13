@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum TutorialSubject
@@ -22,10 +23,7 @@ public class TutorialController : Singleton<TutorialController>
     protected override void Awake()
     {
         base.Awake();
-        Door.OnDoorOpen += () => CompleteTutorial(TutorialSubject.Door);
-        Artifact.OnInteraction += (args) => CompleteTutorial(TutorialSubject.ArtifactInteraction);
-        Elevator.OnElevatorCalled += () => CompleteTutorial(TutorialSubject.ElevatorCall);
-        Elevator.OnElevatorMoved += () => CompleteTutorial(TutorialSubject.ElevatorMove);
+        AddListeners();
     }
 
     private void Start()
@@ -36,10 +34,24 @@ public class TutorialController : Singleton<TutorialController>
 
     private void OnDestroy()
     {
-        Door.OnDoorOpen -= () => CompleteTutorial(TutorialSubject.Door);
-        Artifact.OnInteraction -= (args) => CompleteTutorial(TutorialSubject.ArtifactInteraction);
-        Elevator.OnElevatorCalled -= () => CompleteTutorial(TutorialSubject.ElevatorCall);
-        Elevator.OnElevatorMoved -= () => CompleteTutorial(TutorialSubject.ElevatorMove);
+        RemoveListeners();
+    }
+
+    private void RemoveListeners()
+    {
+        Door.OnDoorOpen -= CompleteDoorTutorial;
+        Artifact.OnInteraction -= CompleteArtifactInteractionTutorial;
+        Elevator.OnElevatorCalled -= CompleteElevatorCallTutorial;
+        Elevator.OnElevatorMoved -= CompleteElevatorMoveTutorial;
+    }
+
+    private void AddListeners()
+    {
+        RemoveListeners();
+        Door.OnDoorOpen += CompleteDoorTutorial;
+        Artifact.OnInteraction += CompleteArtifactInteractionTutorial;
+        Elevator.OnElevatorCalled += CompleteElevatorCallTutorial;
+        Elevator.OnElevatorMoved += CompleteElevatorMoveTutorial;
     }
 
     private void InitializeTutorialConfigDictionary(TutorialConfig config)
@@ -69,6 +81,27 @@ public class TutorialController : Singleton<TutorialController>
         _tutorialPanel.Close();
         _tutorialPanel.SetMessage(string.Empty);
     }
+
+    private void CompleteDoorTutorial()
+    {
+        CompleteTutorial(TutorialSubject.Door);
+    }
+
+    private void CompleteArtifactInteractionTutorial(InitArgs args)
+    {
+        CompleteTutorial(TutorialSubject.ArtifactInteraction);
+    }
+
+    private void CompleteElevatorCallTutorial()
+    {
+        CompleteTutorial(TutorialSubject.ElevatorCall);
+    }
+
+    private void CompleteElevatorMoveTutorial()
+    {
+        CompleteTutorial(TutorialSubject.ElevatorMove);
+    }
+
 
     public void CompleteTutorial(TutorialSubject subject)
     {

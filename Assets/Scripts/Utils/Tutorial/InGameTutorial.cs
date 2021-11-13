@@ -18,10 +18,16 @@ public class InGameTutorial : Singleton<InGameTutorial>
     #region DoorTutorial
     private void ShowOpenDoorTutorial()
     {
+        Door.OnDoorOpen -= CompleteDoorTutorial;
         Door.OnDoorOpen += CompleteDoorTutorial;
 
         UIFader.FadeIn(_openDoorTutorial, null, 2);
         StartCoroutine(OpenDoorTutorial());
+    }
+
+    private void OnDestroy()
+    {
+        Door.OnDoorOpen -= CompleteDoorTutorial;
     }
 
     private void CompleteDoorTutorial()
