@@ -51,9 +51,11 @@ public class MenuController : Singleton<MenuController>
         void OnSoundsLoaded(SoundsBundle bundle)
         {
             _soundsBundle = bundle;
-            var music = _soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID);
+            AudioClip music = _soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID);
+
             SoundsManager.Instance.StopAllSounds();
             SoundsManager.Instance.PlayMusic(music, true);
+
             _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
             _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
         }
