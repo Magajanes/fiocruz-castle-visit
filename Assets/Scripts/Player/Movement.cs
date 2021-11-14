@@ -33,8 +33,11 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
+
+        InputController.OnMoveInput -= MoveTowards;
         InputController.OnMoveInput += MoveTowards;
+
+        InputController.OnTurnInput -= TurnHeadTowards;
         InputController.OnTurnInput += TurnHeadTowards;
     }
 
@@ -53,13 +56,10 @@ public class Movement : MonoBehaviour
     {
         InputController.OnMoveInput -= MoveTowards;
         InputController.OnTurnInput -= TurnHeadTowards;
-        ClearSoundAssets();
 
-        void ClearSoundAssets()
-        {
-            _stepSound = null;
-            Resources.UnloadAsset(_soundsBundle);
-        }
+        //Clear sound assets
+        _stepSound = null;
+        Resources.UnloadAsset(_soundsBundle);
     }
 
     private void MoveTowards(Vector2 inputDirection)

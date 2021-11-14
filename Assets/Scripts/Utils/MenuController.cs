@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+public class MenuController : Singleton<MenuController>
 {
     private bool _inputLock = true;
     private bool _isAtStartScreen = true;
@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     private SoundsBundle _soundsBundle;
     private AudioClip _clickSound;
     private AudioClip _clickBackSound;
+
+    private GameObject _currentPanel;
     
     [Header("References")]
     [SerializeField]
@@ -27,11 +29,11 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject optionsPanel;
     [SerializeField]
+    private GameObject creditsPanel;
+    [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
     private GameObject artifactInfo;
-
-    public static event Action<bool> OnSelectionMenuFade;
 
     private void Start()
     {
@@ -49,8 +51,11 @@ public class MenuController : MonoBehaviour
         void OnSoundsLoaded(SoundsBundle bundle)
         {
             _soundsBundle = bundle;
-            var music = _soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID);
+            AudioClip music = _soundsBundle.GetAudioClipById(MenuConstants.INTRO_MUSIC_ID);
+
+            SoundsManager.Instance.StopAllSounds();
             SoundsManager.Instance.PlayMusic(music, true);
+
             _clickSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_ID);
             _clickBackSound = _soundsBundle.GetAudioClipById(MenuConstants.MENU_CLICK_BACK_ID);
         }
@@ -59,7 +64,7 @@ public class MenuController : MonoBehaviour
         {
             UIFader.FadeIn(
                 mainText,
-                UnlockInput
+                () => _inputLock = false
             );
         }
     }
@@ -75,59 +80,105 @@ public class MenuController : MonoBehaviour
             UIFader.FadeOut(mainMenu);
             UIFader.FadeIn(
                 menu,
-                ShowMenu
+                () =>
+                {
+                    _inputLock = false;
+                    _isAtStartScreen = false;
+                }
             );
 
             SoundsManager.Instance.PlaySFX(_clickSound);
         }
     }
 
-    private void ShowStartScreen()
-    {
-        UnlockInput();
-        _isAtStartScreen = true;
-    }
-
-    private void ShowMenu()
-    {
-        UnlockInput();
-        _isAtStartScreen = false;
-        OnSelectionMenuFade?.Invoke(true);
-    }
-
-    public void ShowOptionsPanel()
+    public void ShowOptionsPanel(Action onComplete)
     {
         if (_isAtStartScreen || _inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         ApplySavedPlayerPrefs();
-
         optionsPanel.SetActive(true);
-        UIFader.FadeOut(selectionMenu);
-        OnSelectionMenuFade?.Invoke(false);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
 
         UIFader.FadeIn(
             optionsPanel,
-            UnlockInput
+            () => 
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = optionsPanel;
+                onComplete?.Invoke();
+            }
+        );
+
+        SoundsManager.Instance.PlaySFX(_clickSound);
+    }
+    public void ShowCreditsPanel(Action onComplete)
+    {
+        if (_isAtStartScreen || _inputLock)
+            return;
+
+        _inputLock = true;
+        creditsPanel.SetActive(true);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
+
+        UIFader.FadeIn(
+            creditsPanel,
+            () =>
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = creditsPanel;
+                onComplete?.Invoke();
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
-    public void ShowInventory()
+    public void ShowInventory(Action onComplete)
     {
         if (_isAtStartScreen || _inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         inventoryPanel.SetActive(true);
-        UIFader.FadeOut(selectionMenu);
-        OnSelectionMenuFade?.Invoke(false);
+
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+        else
+        {
+            UIFader.FadeIn(selectionMenu);
+        }
 
         UIFader.FadeIn(
             inventoryPanel, 
-            UnlockInput
+            () => 
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = inventoryPanel;
+                onComplete?.Invoke();
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -141,13 +192,22 @@ public class MenuController : MonoBehaviour
         if (!InventoryManager.PlayerInventory.HasArtifact(artifactId))
             return;
 
-        LockInput();
+        _inputLock = true;
         artifactInfo.SetActive(true);
-        UIFader.FadeIn(artifactInfo);
 
-        UIFader.FadeOut(
-            inventoryPanel,
-            UnlockInput
+        if (_currentPanel != null)
+        {
+            UIFader.FadeOut(_currentPanel);
+        }
+
+        UIFader.FadeIn(
+            artifactInfo,
+            () =>
+            {
+                _inputLock = false;
+                _currentPanel?.SetActive(false);
+                _currentPanel = artifactInfo;
+            }
         );
 
         SoundsManager.Instance.PlaySFX(_clickSound);
@@ -156,76 +216,52 @@ public class MenuController : MonoBehaviour
         artifactInfoPanel.Initialize(artifactId);
     }
 
-    public void BackToStartScreen()
-    {
-        if (_inputLock)
-            return;
-
-        LockInput();
-        UIFader.FadeOut(menu);
-        OnSelectionMenuFade?.Invoke(false);
-
-        UIFader.FadeIn(
-            mainMenu,
-            ShowStartScreen
-        );
-
-        SoundsManager.Instance.PlaySFX(_clickBackSound);
-    }
-
-    public void BackToMenu()
-    {
-        if (_inputLock)
-            return;
-
-        LockInput();
-        UIFader.FadeIn(selectionMenu);
-        OnSelectionMenuFade?.Invoke(true);
-
-        GameObject currentPanel = inventoryPanel.activeInHierarchy ? inventoryPanel : optionsPanel;
-        UIFader.FadeOut(
-            currentPanel,
-            CloseCurrentPanel
-        );
-
-        void CloseCurrentPanel()
-        {
-            currentPanel.SetActive(false);
-            UnlockInput();
-        }
-
-        SoundsManager.Instance.PlaySFX(_clickBackSound);
-    }
-
     public void BackToInventory()
     {
         if (_inputLock)
             return;
 
-        LockInput();
-        UIFader.FadeIn(inventoryPanel);
-        UIFader.FadeOut(
-            artifactInfo,
+        _inputLock = true;
+        inventoryPanel.SetActive(true);
+
+        UIFader.FadeOut(_currentPanel);
+        UIFader.FadeIn(
+            inventoryPanel,
             CloseArtifactInfo
         );
 
         void CloseArtifactInfo()
         {
-            artifactInfo.SetActive(false);
-            UnlockInput();
+            _currentPanel?.SetActive(false);
+            _currentPanel = inventoryPanel;
+            _inputLock = false;
         }
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
-    private void LockInput()
+    public void BackToMenu(Action onComplete)
     {
+        if (_inputLock)
+            return;
+
         _inputLock = true;
-    }
-    
-    private void UnlockInput()
-    {
-        _inputLock = false;
+
+        UIFader.FadeOut(selectionMenu);
+        UIFader.FadeOut(
+            _currentPanel,
+            CloseCurrentPanel
+        );
+
+        void CloseCurrentPanel()
+        {
+            _currentPanel.SetActive(false);
+            _currentPanel = null;
+            _inputLock = false;
+            onComplete?.Invoke();
+        }
+
+        SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     public void StartGame()

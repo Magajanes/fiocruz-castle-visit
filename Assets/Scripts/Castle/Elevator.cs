@@ -47,7 +47,13 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
+        InputController.OnElevatorButtonPress -= GoToFloor;
         InputController.OnElevatorButtonPress += GoToFloor;
+    }
+
+    private void OnDestroy()
+    {
+        InputController.OnElevatorButtonPress -= GoToFloor;
     }
 
     public void CallToFloor(int floor)

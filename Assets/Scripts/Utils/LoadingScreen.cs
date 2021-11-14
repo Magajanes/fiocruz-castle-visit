@@ -8,7 +8,7 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
     [SerializeField]
     private CanvasGroup _canvasGroup;
     [SerializeField]
-    private Slider _loadingProgressSlider;
+    private Image _loadingBarImage;
 
     [Header("Panels")]
     [SerializeField]
@@ -59,6 +59,6 @@ public class LoadingScreen : GameSingleton<LoadingScreen>
 
     public void SetProgress(float progress)
     {
-        _loadingProgressSlider.value = progress * _loadingProgressSlider.maxValue;
+        _loadingBarImage.fillAmount = progress;
     }
 }

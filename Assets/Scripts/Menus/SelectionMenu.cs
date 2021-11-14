@@ -1,26 +1,42 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class SelectionMenu : MonoBehaviour
 {
-    [SerializeField]
-    private Button[] _menuButtons;
-
-    private void Awake()
+    public enum SelectionMenuState
     {
-        MenuController.OnSelectionMenuFade += SetButtonsInteractive;
+        NONE = 0,
+        BOOK = 1,
+        OPTIONS = 2,
+        CREDITS = 3
     }
 
-    private void OnDestroy()
+    private SelectionMenuState _currentState = SelectionMenuState.NONE;
+
+    public void OnBookButtonClick()
     {
-        MenuController.OnSelectionMenuFade -= SetButtonsInteractive;
+        if (_currentState == SelectionMenuState.BOOK) return;
+
+        MenuController.Instance.ShowInventory(() => _currentState = SelectionMenuState.BOOK);
     }
 
-    public void SetButtonsInteractive(bool isInteractive)
+    public void OnOptionsButtonClick()
     {
-        foreach (Button button in _menuButtons)
-        {
-            button.interactable = isInteractive;
-        }
+        if (_currentState == SelectionMenuState.OPTIONS) return;
+        
+        MenuController.Instance.ShowOptionsPanel(() => _currentState = SelectionMenuState.OPTIONS);
+    }
+
+    public void OnCreditsButtonClick()
+    {
+        if (_currentState == SelectionMenuState.CREDITS) return;
+
+        MenuController.Instance.ShowCreditsPanel(() => _currentState = SelectionMenuState.CREDITS);
+    }
+
+    public void OnBackButtonClick()
+    {
+        if (_currentState == SelectionMenuState.NONE) return;
+
+        MenuController.Instance.BackToMenu(() => _currentState = SelectionMenuState.NONE);
     }
 }

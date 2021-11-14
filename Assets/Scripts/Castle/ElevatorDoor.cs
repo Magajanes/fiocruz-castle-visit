@@ -12,8 +12,14 @@ public class ElevatorDoor : MonoBehaviour
         elevator.CallToFloor(floorNumber);
     }
 
+    private void OnDestroy()
+    {
+        InputController.OnElevatorCall -= CallElevator;
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
+        InputController.OnElevatorCall -= CallElevator;
         InputController.OnElevatorCall += CallElevator;
 
         InputController.Instance.ElevatorMode(true);

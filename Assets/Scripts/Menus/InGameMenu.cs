@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InGameMenu : MonoBehaviour
@@ -12,7 +13,11 @@ public class InGameMenu : MonoBehaviour
 
     [Header("Menu objects")]
     [SerializeField]
+    private GameObject _playerHUD;
+    [SerializeField]
     private GameObject _inGameMenuPanel;
+    [SerializeField]
+    private GameObject _selectionMenu;
     [SerializeField]
     private OptionsMenu _inGameOptionsPanel;
     [SerializeField]
@@ -40,10 +45,24 @@ public class InGameMenu : MonoBehaviour
 
     private void Awake()
     {
+        AddListeners();
+    }
+
+    private void AddListeners()
+    {
+        RemoveListeners();
         InputController.OnInGameMenuOpen += OpenMenu;
         InputController.OnInventoryButtonPress += OpenInventoryImediate;
         InputController.OnBackButtonPress += OnBackButtonClick;
         Artifact.OnInteraction += OpenArtifactInfoImediate;
+    }
+
+    private void RemoveListeners()
+    {
+        InputController.OnInGameMenuOpen -= OpenMenu;
+        InputController.OnInventoryButtonPress -= OpenInventoryImediate;
+        InputController.OnBackButtonPress -= OnBackButtonClick;
+        Artifact.OnInteraction -= OpenArtifactInfoImediate;
     }
 
     private void Start()
@@ -65,10 +84,7 @@ public class InGameMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputController.OnInGameMenuOpen -= OpenMenu;
-        InputController.OnInventoryButtonPress -= OpenInventoryImediate;
-        InputController.OnBackButtonPress -= OnBackButtonClick;
-        Artifact.OnInteraction -= OpenArtifactInfoImediate;
+        RemoveListeners();
     }
 
     private void SetMenuButtonsInteractive(bool interactive)
@@ -77,21 +93,6 @@ public class InGameMenu : MonoBehaviour
         {
             button.interactable = interactive;
         }
-    }
-
-    private void SetInGameMenuInputScheme()
-    {
-        InputController.Instance.SetInputScheme(UIState.InGameMenu);
-    }
-
-    private void SetIndexInputScheme()
-    {
-        InputController.Instance.SetInputScheme(UIState.InventoryPanel);
-    }
-
-    private void SetInactiveInputScheme()
-    {
-        InputController.Instance.SetInputScheme(UIState.Inactive);
     }
 
     private void CloseCurrentPanel()
@@ -106,8 +107,12 @@ public class InGameMenu : MonoBehaviour
 
     private void OpenMenu()
     {
-        SetInGameMenuInputScheme();
+        InputController.Instance.SetInputScheme(UIState.InGameMenu);
+        OnBackButtonDelegate = ResumeGame;
+
         UIFader.FadeIn(_inGameMenuPanel, () => SetMenuButtonsInteractive(true), IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
@@ -116,7 +121,13 @@ public class InGameMenu : MonoBehaviour
         SetMenuButtonsInteractive(false);
         OnBackButtonDelegate = null;
 
-        UIFader.FadeOut(_inGameMenuPanel, SetInactiveInputScheme, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeIn(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(
+            _inGameMenuPanel,
+            () => InputController.Instance.SetInputScheme(UIState.Inactive),
+            IN_GAME_MENU_FADE_RATE
+        );
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
@@ -130,9 +141,15 @@ public class InGameMenu : MonoBehaviour
         _currentPanel = _inGameOptionsPanel.gameObject;
 
         SetMenuButtonsInteractive(false);
+        OnBackButtonDelegate = BackToMenu;
 
-        UIFader.FadeOut(_inGameMenuPanel, null, IN_GAME_MENU_FADE_RATE);
-        UIFader.FadeIn(_inGameOptionsPanel.gameObject, () => _isFading = false, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(_selectionMenu, null, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeIn(
+            _inGameOptionsPanel.gameObject,
+            () => _isFading = false,
+            IN_GAME_MENU_FADE_RATE
+        );
+
         SoundsManager.Instance.PlaySFX(_clickSound);
     }
 
@@ -148,8 +165,9 @@ public class InGameMenu : MonoBehaviour
 
         SetMenuButtonsInteractive(false);
 
-        UIFader.FadeOut(_inGameMenuPanel, null, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(_selectionMenu, null, IN_GAME_MENU_FADE_RATE);
         UIFader.FadeIn(_indexPanel.gameObject, () => _isFading = false, IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_openBookSound);
     }
 
@@ -158,14 +176,19 @@ public class InGameMenu : MonoBehaviour
         if (_isFading) return;
 
         _isImediateIndex = true;
-        SetIndexInputScheme();
+        InputController.Instance.SetInputScheme(UIState.InventoryPanel);
         OnBackButtonDelegate = CloseInventoryImediate;
 
         _isFading = true;
         _indexPanel.gameObject.SetActive(true);
         _indexPanel.Initialize();
 
+        UIFader.FadeIn(_inGameMenuPanel, rate: IN_GAME_MENU_FADE_RATE);
+        _selectionMenu.SetActive(false);
+
         UIFader.FadeIn(_indexPanel.gameObject, () => _isFading = false, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_openBookSound);
     }
 
@@ -176,12 +199,20 @@ public class InGameMenu : MonoBehaviour
         _isFading = true;
         OnBackButtonDelegate = null;
 
+        UIFader.FadeIn(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_indexPanel.gameObject, ReturnToGameFromIndex, IN_GAME_MENU_FADE_RATE);
+
+        UIFader.FadeOut(
+            _inGameMenuPanel,
+            () => _selectionMenu.SetActive(true),
+            IN_GAME_MENU_FADE_RATE
+        );
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
 
         void ReturnToGameFromIndex()
         {
-            SetInactiveInputScheme();
+            InputController.Instance.SetInputScheme(UIState.Inactive);
             _indexPanel.gameObject.SetActive(false);
 
             _isImediateIndex = false;
@@ -203,6 +234,7 @@ public class InGameMenu : MonoBehaviour
 
         UIFader.FadeOut(_indexPanel.gameObject, null, IN_GAME_MENU_FADE_RATE);
         UIFader.FadeIn(_artifactInfoPanel.gameObject, CloseIndexPanel, IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_clickSound);
 
         void CloseIndexPanel()
@@ -216,14 +248,19 @@ public class InGameMenu : MonoBehaviour
     {
         if (_isFading) return;
 
-        SetIndexInputScheme();
+        InputController.Instance.SetInputScheme(UIState.InventoryPanel);
         OnBackButtonDelegate = CloseArtifactInfoImediate;
 
         _isFading = true;
         _artifactInfoPanel.gameObject.SetActive(true);
         _artifactInfoPanel.Initialize(args);
 
+        UIFader.FadeIn(_inGameMenuPanel, rate: IN_GAME_MENU_FADE_RATE);
+        _selectionMenu.SetActive(false);
+
         UIFader.FadeIn(_artifactInfoPanel.gameObject, () => _isFading = false, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeOut(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_openBookSound);
     }
 
@@ -234,12 +271,21 @@ public class InGameMenu : MonoBehaviour
         _isFading = true;
         OnBackButtonDelegate = null;
 
+        UIFader.FadeIn(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_artifactInfoPanel.gameObject, ReturnToGameFromArtifactInfo, IN_GAME_MENU_FADE_RATE);
+
+        UIFader.FadeOut(
+            _inGameMenuPanel,
+            () => _selectionMenu.SetActive(true),
+            IN_GAME_MENU_FADE_RATE
+        );
+
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
 
         void ReturnToGameFromArtifactInfo()
         {
-            SetInactiveInputScheme();
+            InputController.Instance.SetInputScheme(UIState.Inactive);
             _artifactInfoPanel.gameObject.SetActive(false);
             _isFading = false;
         }
@@ -264,6 +310,7 @@ public class InGameMenu : MonoBehaviour
 
         UIFader.FadeIn(_indexPanel.gameObject, null, IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_artifactInfoPanel.gameObject, CloseArtifactInfoPanel, IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
 
         void CloseArtifactInfoPanel()
@@ -278,19 +325,21 @@ public class InGameMenu : MonoBehaviour
         if (_isFading) return;
 
         _isFading = true;
-        OnBackButtonDelegate = null;
+        OnBackButtonDelegate = ResumeGame;
 
-        UIFader.FadeIn(_inGameMenuPanel, null, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeIn(_selectionMenu, null, IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_currentPanel, CloseCurrentPanel, IN_GAME_MENU_FADE_RATE);
+
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
     public void BackToMainMenu()
     {
         SetMenuButtonsInteractive(false);
+
         ScenesController.Instance.BackToMainMenu();
         SoundsManager.Instance.PlaySFX(_clickBackSound);
-        SoundsManager.Instance.FadeOutMusic(SoundsManager.ChannelType.Ambience, ClearSoundAssets);
+        SoundsManager.Instance.BackToMainMenu(ClearSoundAssets);
 
         void ClearSoundAssets()
         {
