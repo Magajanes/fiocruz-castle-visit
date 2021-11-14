@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b1d99eb8ab42c44296ed20a1d95b425, type: 3}
-  m_Name: GameArtifacts
+  m_Name: GameArtifacts_v2
   m_EditorClassIdentifier: 
   Artifacts:
   - Id: 1
@@ -28,6 +28,8 @@ MonoBehaviour:
       do medo e desconhecimento da popula\xE7\xE3o, em 1908, uma nova epidemia de
       var\xEDola levou a popula\xE7\xE3o espontaneamente aos postos de vacina\xE7\xE3o
       e, assim o Brasil finalmente reconhecia o valor do sanitarista. "
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/busto_oswaldo_cruz
   - Id: 2
     Name: Mureta da escada
@@ -43,6 +45,8 @@ MonoBehaviour:
       O castelo foi projetado pelo arquiteto portugu\xEAs Luiz Moraes J\xFAnior e
       tombado pelo Instituto do Patrim\xF4nio Hist\xF3rico e Art\xEDstico Nacional
       (Iphan) em 1981."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/mureta_escada
   - Id: 3
     Name: "Placa na Pra\xE7a Pasteur"
@@ -52,15 +56,10 @@ MonoBehaviour:
       a Cavalari\xE7a, o Pavilh\xE3o do Rel\xF3gio ou da Peste, o Pombal ou Biot\xE9rio
       para Pequenos Animais, o Hospital Evandro Chagas, a Casa de Ch\xE1 e o Castelo
       Mourisco, principal arquitetura e s\xEDmbolo da Fiocruz."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/fundos_castelo
   - Id: 4
-    Name: Porta da sala de Adolpho Lutz
-    Description: "Adolfo Lutz (1855 - 1940) foi o primeiro cientista latino-americano
-      a estudar e confirmar os mecanismos de transmiss\xE3o da febre amarela pelo
-      Aedes aegypti, foi convidado por Oswaldo Cruz para trabalhar no Instituto Oswaldo
-      Cruz, onde permaneceu at\xE9 a sua morte em 1940."
-    ImagePath: Sprites/porta_adolpho_lutz
-  - Id: 5
     Name: Foto do pesquisador Costa Lima
     Description: "\xC2ngelo Moreira da Costa Lima (1887-1964), considerado patrono
       dos estudos sobre insetos no Brasil. No in\xEDcio do s\xE9culo XX estudou na
@@ -74,9 +73,11 @@ MonoBehaviour:
       A cole\xE7\xE3o possui grande parte das esp\xE9cies de insetos pesquisadas
       por Costa Lima, sendo at\xE9 hoje material de estudo de entom\xF3logos, al\xE9m
       de um bel\xEDssimo trabalho de divulga\xE7\xE3o cient\xEDfica."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_costa_lima
-  - Id: 6
-    Name: "Itens da cole\xE7\xE3o Entomol\xF3gica"
+  - Id: 5
+    Name: "Itens da Cole\xE7\xE3o Entomol\xF3gica"
     Description: "Uma das maneiras encontradas por Costa Lima para exterminar as
       larvas do mosquito foi a utiliza\xE7\xE3o de peixes e larvas carn\xEDvoras
       para devor\xE1-las. Seu trabalho est\xE1 acess\xEDvel na Fiocruz, a institui\xE7\xE3o
@@ -86,8 +87,10 @@ MonoBehaviour:
       Exposi\xE7\xE3o Entomol\xF3gica Costa Lima do IOC, aberta ao p\xFAblico. A
       Sala fica no segundo andar do Castelo Mourisco e integra o circuito de visita\xE7\xE3o
       do Museu da Vida."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/colecao_entomologica
-  - Id: 7
+  - Id: 6
     Name: Termocontrolador
     Description: "Este curioso equipamento com mais de dois metros de altura, composto
       por um painel formado por diversos dispositivos e mostradores, \xE9 um exemplar
@@ -96,15 +99,19 @@ MonoBehaviour:
       a temperatura de parte dos equipamentos dos laborat\xF3rios do Instituto Oswaldo
       Cruz. Isso acontecia por meio de term\xF4metros capazes de converter os valores
       da corrente el\xE9trica em informa\xE7\xF5es de varia\xE7\xE3o de temperatura."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/termocontrolador
-  - Id: 8
+  - Id: 7
     Name: "Porta do elevador hist\xF3rico"
     Description: "Elevador decorado em padr\xE3o geom\xE9trico do estilo mourisco
       como o restante da decora\xE7\xE3o do castelo. Instalado em 1909, est\xE1 em
       funcionamento at\xE9 os dias atuais, \xE9 considerado o elevador em funcionamento
       mais antigo do Rio de Janeiro."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_elevador
-  - Id: 9
+  - Id: 8
     Name: Sala Oswaldo Cruz e Carlos Chagas
     Description: "Essas duas salas que comp\xF5em o trajeto de visita\xE7\xE3o do
       Museu da Vida, est\xE3o expostos equipamentos e instrumentos como: microsc\xF3pio,
@@ -117,8 +124,10 @@ MonoBehaviour:
       - evitando contamina\xE7\xE3o. Assim como, as mudan\xE7as tecnol\xF3gicas e
       hist\xF3ricas no processo de imuniza\xE7\xE3o, t\xE3o importante para a sa\xFAde,
       preven\xE7\xE3o de doen\xE7as."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/sala_carlos_chagas
-  - Id: 10
+  - Id: 9
     Name: "Equipamentos antigos de vacina\xE7\xE3o"
     Description: "Inventada em 1950, a pistola de vacina\xE7\xE3o faz parte de um
       avan\xE7o tecnol\xF3gico: foi um objeto importante na campanha mundial de erradica\xE7\xE3o
@@ -126,8 +135,10 @@ MonoBehaviour:
       ar comprimido, que, quando acionado por um pedal, proporcionava uma poderosa
       fonte de press\xE3o. Sem o uso de agulha, a administra\xE7\xE3o percut\xE2nea
       da vacina se dava atrav\xE9s de um fluxo de alta press\xE3o."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/equipamentos_vacinacao
-  - Id: 11
+  - Id: 10
     Name: 'Foto de Carlos Chagas '
     Description: "Carlos Chagas (1878 - 1934) foi um bi\xF3logo, m\xE9dico sanitarista,
       infectologista e bacteriologista brasileiro. Destacou-se ao descobrir o protozo\xE1rio
@@ -136,9 +147,11 @@ MonoBehaviour:
       na hist\xF3ria da medicina a descrever completamente uma doen\xE7a infecciosa:
       o pat\xF3geno, o vetor (Triatominae), os hospedeiros, as manifesta\xE7\xF5es
       cl\xEDnicas e a epidemiologia."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_carlos_chagas
-  - Id: 12
-    Name: "Microsc\xF3pio usado por Carlos Chagas"
+  - Id: 11
+    Name: "Microsc\xF3pio de Carlos Chagas"
     Description: "Em 1909 a doen\xE7a de Chagas foi descoberta pelo sanitarista brasileiro
       Carlos Chagas que, na ocasi\xE3o, combatia a mal\xE1ria no interior de Minas
       Gerais. O vetor da doen\xE7a \xE9 o protozo\xE1rio Trypanosoma cruzi \u2013
@@ -152,33 +165,11 @@ MonoBehaviour:
       No Brasil, foram registrados casos da infec\xE7\xE3o transmitida, por via oral,
       em pessoas que consumiram caldo de cana ou a\xE7a\xED contaminados por esses
       insetos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/microscopio_carlos_chagas
-  - Id: 13
-    Name: Porta da Biblioteca de Obras Raras
-    Description: "A Biblioteca de Obras Raras A. Overmeer faz parte do acervo da
-      Biblioteca de Manguinhos e est\xE1 situado no Pavilh\xE3o Mourisco. A cole\xE7\xE3o
-      de obras conta com um diversificado acervo bibliogr\xE1fico (livros, peri\xF3dicos,
-      teses, folhetos etc.) que remonta ao s\xE9culo XVII. A bibliografia cobre variadas
-      \xE1reas do conhecimento cient\xEDfico, destacando-se as Ci\xEAncias Biol\xF3gicas,
-      na Medicina e na Hist\xF3ria Natural. O setor de Obras Raras \xE9 nomeado em
-      homenagem \xE0 Assuerus Hippolytus Overmeer primeiro bibliotec\xE1rio-chefe
-      da institui\xE7\xE3o e possui 601 t\xEDtulos de revistas cient\xEDficas internacionais
-      e nacionais de reconhecido valor hist\xF3rico. Est\xE3o guardados nesse conjunto
-      importantes peri\xF3dicos brasileiros dos s\xE9culos XIX e XX."
-    ImagePath: Sprites/porta_biblioteca_obras_raras
-  - Id: 14
-    Name: "Foto de S\xE9rgio Arouca"
-    Description: "O sanitarista foi um dos principais te\xF3ricos e l\xEDderes do
-      chamado \"movimento sanitarista\", que mudou o tratamento da sa\xFAde p\xFAblica
-      no Brasil. Foi presidente da Fiocruz em 1985, professor concursado da Escola
-      Nacional de Sa\xFAde P\xFAblica (Ensp/Fiocruz), al\xE9m de chefe do Departamento
-      de Planejamento da Escola. Sua contribui\xE7\xE3o para a compreens\xE3o e cr\xEDtica
-      da medicina preventiva, forneceu fundamentos te\xF3ricos estruturantes para
-      a constitui\xE7\xE3o da base conceitual da sa\xFAde coletiva e a cria\xE7\xE3o
-      do SUS."
-    ImagePath: Sprites/foto_sergio_arouca
-  - Id: 15
-    Name: "Mobili\xE1rio com explica\xE7\xF5es sobre detalhes do acervo"
+  - Id: 12
+    Name: Biblioteca de Obras Raras
     Description: "Entre as obras mais antigas do acervo, encontra-se o primeiro tratado
       sobre Hist\xF3ria Natural do Brasil, de autoria de Willem Piso e Georg Marggraf,
       denominado Historia Naturalis Brasiliae (1648). Outra obra, um manuscrito jesu\xEDta
@@ -187,31 +178,11 @@ MonoBehaviour:
       Um conjunto documental do s\xE9culo XIX \xE9 atribu\xEDdo aos viajantes que
       percorreram as terras brasileiras e americanas, deixando in\xFAmeras anota\xE7\xF5es
       e iconografias sobre as paisagens e os costumes dos povos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/mobiliario_acervo
-  - Id: 16
-    Name: "Exposi\xE7\xE3o Insetos Ilustrados"
-    Description: "Caixas expositivas com informa\xE7\xE3o dos insetos e equipamentos
-      de observa\xE7\xE3o \u2013 A exposi\xE7\xE3o Insetos ilustrados aborda a tem\xE1tica
-      ilustra\xE7\xE3o cient\xEDfica entomol\xF3gica nos livros raros da Funda\xE7\xE3o
-      Oswaldo Cruz, mostrando ao p\xFAblico uma parte da cole\xE7\xE3o de insetos
-      e, tamb\xE9m, obras preciosas de ilustra\xE7\xE3o cient\xEDfica. O desenho
-      \xE9 uma ferramenta valiosa de trabalho, essa pr\xE1tica permite representar,
-      com muitos detalhes, animais e plantas, por exemplo. A ilustra\xE7\xE3o cient\xEDfica
-      \xE9 tema dessa exposi\xE7\xE3o da Fiocruz e da Folguedo, em parceria com o
-      Museu da Vida. A mostra conta com audiodescri\xE7\xE3o, v\xEDdeos e pain\xE9is
-      na L\xEDngua Brasileira de Sinais e, mediante agendamento pode ser disponibilizada
-      visita guiada com int\xE9rprete de Libras."
-    ImagePath: Sprites/exposicao_insetos
-  - Id: 17
-    Name: "Porta da Sala de Exposi\xE7\xF5es tempor\xE1rias"
-    Description: "Nesse espa\xE7o s\xE3o realizadas exposi\xE7\xF5es e amostrar variadas
-      de curta e m\xE9dia dura\xE7\xE3o. Atualmente, conta com a presen\xE7a da a
-      mostra \u201CCastelo de Inspira\xE7\xF5es\u201D, que conta a hist\xF3ria do
-      Castelo Mourisco e explora os simbolismos e as curiosidades do edif\xEDcio
-      \xEDcone da ci\xEAncia brasileira, que completou cem anos em 2018."
-    ImagePath: Sprites/porta_exposicoes_temporarias
-  - Id: 18
-    Name: "R\xE9plica feita em impressora 3D do Castelo"
+  - Id: 13
+    Name: "R\xE9plica 3D do Castelo"
     Description: "A exposi\xE7\xE3o come\xE7a levando o visitante por um T\xFAnel
       do Tempo com filme aos moldes do cinema mudo e convida o visitante a percorrer
       o Rio de Janeiro do in\xEDcio do s\xE9culo 20. Em seguida, no m\xF3dulo hist\xF3rico,
@@ -228,8 +199,10 @@ MonoBehaviour:
       inspirados no monumento, a mostra convida o visitante a soltar a imagina\xE7\xE3o
       e aprender brincando. Quebra-cabe\xE7a, jogo dos sete erros e brincadeiras
       com o uso de espelhos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/replica_3d
-  - Id: 19
+  - Id: 14
     Name: "Lumin\xE1ria no Hall da Presid\xEAncia"
     Description: "O quinto pavimento do pr\xE9dio \xE9 \xE1rea reservada a Presid\xEAncia
       da Fiocruz e acesso a entrada das Torres do Castelo, essa \xE1rea externa \xE9
@@ -238,8 +211,10 @@ MonoBehaviour:
       ligadas a presid\xEAncia. A decora\xE7\xE3o e arquitetura do Hall favorece
       a ilumina\xE7\xE3o natural captada pelo vitral superior com o objetivo de iluminar
       todos os pavimentos inferiores do Castelo."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/luminaria_hall_presidencia
-  - Id: 20
+  - Id: 15
     Name: "Porta da Sala da Presid\xEAncia "
     Description: "A Presid\xEAncia, atualmente cargo ocupado pela cientista social
       e soci\xF3loga N\xEDsia Trindade de Lima, primeira mulher eleita presidente
@@ -253,9 +228,11 @@ MonoBehaviour:
       da Institui\xE7\xE3o e coordenar, implementar e avaliar os programas horizontais
       integrados de pesquisa, ensino, desenvolvimento tecnol\xF3gico, produ\xE7\xE3o,
       servi\xE7os, informa\xE7\xE3o em sa\xFAde e desenvolvimento institucional."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_sala_presidencia
-  - Id: 21
-    Name: Foto do Oswaldo Cruz
+  - Id: 16
+    Name: Foto de Oswaldo Cruz
     Description: "Oswaldo Cruz, foi o primeiro presidente da institui\xE7\xE3o e
       chamava seu sonho de \"O Pal\xE1cio da Ci\xEAncia\", um sonho que se tornou
       realidade e viria a ser sede da Funda\xE7\xE3o Oswaldo Cruz (FIOCRUZ). Constru\xEDdo
@@ -269,8 +246,10 @@ MonoBehaviour:
       \xE1rabe. O castelo foi projetado pelo arquiteto portugu\xEAs Luiz Moraes J\xFAnior
       e tombado pelo Instituto do Patrim\xF4nio Hist\xF3rico e Art\xEDstico Nacional
       (Iphan) em 1981."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_oswaldo_cruz_presdiencia
-  - Id: 22
+  - Id: 17
     Name: "Foto hist\xF3rica do Castelo"
     Description: "Considerado o maior s\xEDmbolo da Funda\xE7\xE3o Oswaldo Cruz,
       o Castelo que completou 100 anos em 2018, foi idealizado pelo pr\xF3prio cientista
@@ -295,18 +274,22 @@ MonoBehaviour:
       o Castelo de Alhambra, em Granada, Espanha; A terceira, e principal influ\xEAncia,
       foi a sinagoga de Berlim, que inspirou outras sinagogas ao redor do mundo e
       tamb\xE9m as torres do Castelo do ent\xE3o Instituto Oswaldo Cruz."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_castelo_presidencia
-  - Id: 23
-    Name: "Acesso \xE0s torres do Castelo"
+  - Id: 18
+    Name: Torres do Castelo
     Description: "As Torres do Castelo s\xE3o inspiradas na sinagoga de Berlim, enquanto
       as escava\xE7\xF5es para o alicerce do edif\xEDcio central foram iniciadas
       em 1905, o terra\xE7o e suas torres come\xE7aram a serem finalizados a partir
       de 1910, e mesmo com as obras em andamento nesse ano, o castelo j\xE1 era ocupado
       pelos pesquisadores. As torres s\xE3o o ponto mais alto da institui\xE7\xE3o
       e oferecem vis\xE3o em 360\xBA de todo o campus e al\xE9m."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/acesso_torres
-  - Id: 24
-    Name: Pisos e Ladrilhos dos pavimentos
+  - Id: 19
+    Name: Pisos e Ladrilhos
     Description: "Na distante fazenda de Manguinhos, situada na freguesia de Inha\xFAma,
       aos 30 anos e \xE0 frente do ent\xE3o Instituto Soroter\xE1pico Federal, Oswaldo
       Cruz (1872 \u2013 1917) n\xE3o mediu esfor\xE7os para materializar um sonho
@@ -327,4 +310,6 @@ MonoBehaviour:
       importados da Europa. A maior parte do material chegava de barco, por meio
       de um cais instalado na Ba\xEDa de Guanabara, cujas \xE1guas chegavam at\xE9,
       onde hoje est\xE1 a Avenida Brasil, inaugurada apenas em 1947."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/pisos_ladrilhos
