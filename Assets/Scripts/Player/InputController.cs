@@ -88,7 +88,7 @@ public class InputController : GameSingleton<InputController>
         if (Input.GetKeyDown(KeyCode.C))
             OnElevatorCall?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.M))
             OnInGameMenuOpen?.Invoke();
 
         if (!_elevatorMode)
@@ -131,7 +131,7 @@ public class InputController : GameSingleton<InputController>
                 break;
             case UIState.InGameMenu:
                 Cursor.lockState = CursorLockMode.None;
-                RunInputScheme = null;
+                RunInputScheme = RunUiInputScheme;
                 break;
             default:
                 break;

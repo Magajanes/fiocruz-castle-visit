@@ -103,6 +103,23 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _channels[channelType].Stop();
     }
 
+    public void StopAllSounds()
+    {
+        foreach (AudioSource channel in _channels.Values)
+        {
+            if (channel.clip != null)
+            {
+                channel.Stop();
+                channel.clip = null;
+            }
+        }
+    }
+
+    public void BackToMainMenu(Action onFadeFinish)
+    {
+        FadeOutMusic(ChannelType.Ambience, onFadeFinish);
+    }
+
     private IEnumerator FadeOutCoroutine(ChannelType channelType, Action onFadeFinish)
     {
         float currentVolume = 1;
