@@ -1030,11 +1030,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866668450537484725, guid: f27530549b2095f4ab3edcf63240c2e0,
         type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866668450537484725, guid: f27530549b2095f4ab3edcf63240c2e0,
-        type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
       objectReference: {fileID: 0}

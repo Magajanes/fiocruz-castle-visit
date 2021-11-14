@@ -77,23 +77,15 @@ public class MenuController : Singleton<MenuController>
             UIFader.FadeOut(mainMenu);
             UIFader.FadeIn(
                 menu,
-                ShowMenu
+                () =>
+                {
+                    _inputLock = false;
+                    _isAtStartScreen = false;
+                }
             );
 
             SoundsManager.Instance.PlaySFX(_clickSound);
         }
-    }
-
-    private void ShowStartScreen()
-    {
-        _inputLock = false;
-        _isAtStartScreen = true;
-    }
-
-    private void ShowMenu()
-    {
-        _inputLock = false;
-        _isAtStartScreen = false;
     }
 
     public void ShowOptionsPanel(Action onComplete)
@@ -101,7 +93,7 @@ public class MenuController : Singleton<MenuController>
         if (_isAtStartScreen || _inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         ApplySavedPlayerPrefs();
         optionsPanel.SetActive(true);
 
@@ -132,7 +124,7 @@ public class MenuController : Singleton<MenuController>
         if (_isAtStartScreen || _inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         creditsPanel.SetActive(true);
 
         if (_currentPanel != null)
@@ -163,7 +155,7 @@ public class MenuController : Singleton<MenuController>
         if (_isAtStartScreen || _inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         inventoryPanel.SetActive(true);
 
         if (_currentPanel != null)
@@ -197,7 +189,7 @@ public class MenuController : Singleton<MenuController>
         if (!InventoryManager.PlayerInventory.HasArtifact(artifactId))
             return;
 
-        LockInput();
+        _inputLock = true;
         artifactInfo.SetActive(true);
 
         if (_currentPanel != null)
@@ -226,7 +218,7 @@ public class MenuController : Singleton<MenuController>
         if (_inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
         inventoryPanel.SetActive(true);
 
         UIFader.FadeOut(_currentPanel);
@@ -245,28 +237,12 @@ public class MenuController : Singleton<MenuController>
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
-    public void BackToStartScreen()
-    {
-        if (_inputLock)
-            return;
-
-        LockInput();
-        UIFader.FadeOut(menu);
-
-        UIFader.FadeIn(
-            mainMenu,
-            ShowStartScreen
-        );
-
-        SoundsManager.Instance.PlaySFX(_clickBackSound);
-    }
-
     public void BackToMenu(Action onComplete)
     {
         if (_inputLock)
             return;
 
-        LockInput();
+        _inputLock = true;
 
         UIFader.FadeOut(selectionMenu);
         UIFader.FadeOut(
@@ -285,11 +261,6 @@ public class MenuController : Singleton<MenuController>
         SoundsManager.Instance.PlaySFX(_clickBackSound);
     }
 
-    private void LockInput()
-    {
-        _inputLock = true;
-    }
-    
     public void StartGame()
     {
         if (_isAtStartScreen || _inputLock)
