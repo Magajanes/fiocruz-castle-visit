@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b1d99eb8ab42c44296ed20a1d95b425, type: 3}
-  m_Name: GameArtifacts
+  m_Name: GameArtifacts_old
   m_EditorClassIdentifier: 
   Artifacts:
   - Id: 1
@@ -28,6 +28,8 @@ MonoBehaviour:
       do medo e desconhecimento da popula\xE7\xE3o, em 1908, uma nova epidemia de
       var\xEDola levou a popula\xE7\xE3o espontaneamente aos postos de vacina\xE7\xE3o
       e, assim o Brasil finalmente reconhecia o valor do sanitarista. "
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/busto_oswaldo_cruz
   - Id: 2
     Name: Mureta da escada
@@ -43,6 +45,8 @@ MonoBehaviour:
       O castelo foi projetado pelo arquiteto portugu\xEAs Luiz Moraes J\xFAnior e
       tombado pelo Instituto do Patrim\xF4nio Hist\xF3rico e Art\xEDstico Nacional
       (Iphan) em 1981."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/mureta_escada
   - Id: 3
     Name: "Placa na Pra\xE7a Pasteur"
@@ -52,6 +56,8 @@ MonoBehaviour:
       a Cavalari\xE7a, o Pavilh\xE3o do Rel\xF3gio ou da Peste, o Pombal ou Biot\xE9rio
       para Pequenos Animais, o Hospital Evandro Chagas, a Casa de Ch\xE1 e o Castelo
       Mourisco, principal arquitetura e s\xEDmbolo da Fiocruz."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/fundos_castelo
   - Id: 4
     Name: Porta da sala de Adolpho Lutz
@@ -59,6 +65,8 @@ MonoBehaviour:
       a estudar e confirmar os mecanismos de transmiss\xE3o da febre amarela pelo
       Aedes aegypti, foi convidado por Oswaldo Cruz para trabalhar no Instituto Oswaldo
       Cruz, onde permaneceu at\xE9 a sua morte em 1940."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_adolpho_lutz
   - Id: 5
     Name: Foto do pesquisador Costa Lima
@@ -74,6 +82,8 @@ MonoBehaviour:
       A cole\xE7\xE3o possui grande parte das esp\xE9cies de insetos pesquisadas
       por Costa Lima, sendo at\xE9 hoje material de estudo de entom\xF3logos, al\xE9m
       de um bel\xEDssimo trabalho de divulga\xE7\xE3o cient\xEDfica."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_costa_lima
   - Id: 6
     Name: "Itens da cole\xE7\xE3o Entomol\xF3gica"
@@ -86,6 +96,8 @@ MonoBehaviour:
       Exposi\xE7\xE3o Entomol\xF3gica Costa Lima do IOC, aberta ao p\xFAblico. A
       Sala fica no segundo andar do Castelo Mourisco e integra o circuito de visita\xE7\xE3o
       do Museu da Vida."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/colecao_entomologica
   - Id: 7
     Name: Termocontrolador
@@ -96,6 +108,8 @@ MonoBehaviour:
       a temperatura de parte dos equipamentos dos laborat\xF3rios do Instituto Oswaldo
       Cruz. Isso acontecia por meio de term\xF4metros capazes de converter os valores
       da corrente el\xE9trica em informa\xE7\xF5es de varia\xE7\xE3o de temperatura."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/termocontrolador
   - Id: 8
     Name: "Porta do elevador hist\xF3rico"
@@ -103,6 +117,8 @@ MonoBehaviour:
       como o restante da decora\xE7\xE3o do castelo. Instalado em 1909, est\xE1 em
       funcionamento at\xE9 os dias atuais, \xE9 considerado o elevador em funcionamento
       mais antigo do Rio de Janeiro."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_elevador
   - Id: 9
     Name: Sala Oswaldo Cruz e Carlos Chagas
@@ -117,6 +133,8 @@ MonoBehaviour:
       - evitando contamina\xE7\xE3o. Assim como, as mudan\xE7as tecnol\xF3gicas e
       hist\xF3ricas no processo de imuniza\xE7\xE3o, t\xE3o importante para a sa\xFAde,
       preven\xE7\xE3o de doen\xE7as."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/sala_carlos_chagas
   - Id: 10
     Name: "Equipamentos antigos de vacina\xE7\xE3o"
@@ -126,6 +144,8 @@ MonoBehaviour:
       ar comprimido, que, quando acionado por um pedal, proporcionava uma poderosa
       fonte de press\xE3o. Sem o uso de agulha, a administra\xE7\xE3o percut\xE2nea
       da vacina se dava atrav\xE9s de um fluxo de alta press\xE3o."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/equipamentos_vacinacao
   - Id: 11
     Name: 'Foto de Carlos Chagas '
@@ -136,6 +156,8 @@ MonoBehaviour:
       na hist\xF3ria da medicina a descrever completamente uma doen\xE7a infecciosa:
       o pat\xF3geno, o vetor (Triatominae), os hospedeiros, as manifesta\xE7\xF5es
       cl\xEDnicas e a epidemiologia."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_carlos_chagas
   - Id: 12
     Name: "Microsc\xF3pio usado por Carlos Chagas"
@@ -152,6 +174,8 @@ MonoBehaviour:
       No Brasil, foram registrados casos da infec\xE7\xE3o transmitida, por via oral,
       em pessoas que consumiram caldo de cana ou a\xE7a\xED contaminados por esses
       insetos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/microscopio_carlos_chagas
   - Id: 13
     Name: Porta da Biblioteca de Obras Raras
@@ -165,6 +189,8 @@ MonoBehaviour:
       da institui\xE7\xE3o e possui 601 t\xEDtulos de revistas cient\xEDficas internacionais
       e nacionais de reconhecido valor hist\xF3rico. Est\xE3o guardados nesse conjunto
       importantes peri\xF3dicos brasileiros dos s\xE9culos XIX e XX."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_biblioteca_obras_raras
   - Id: 14
     Name: "Foto de S\xE9rgio Arouca"
@@ -176,6 +202,8 @@ MonoBehaviour:
       da medicina preventiva, forneceu fundamentos te\xF3ricos estruturantes para
       a constitui\xE7\xE3o da base conceitual da sa\xFAde coletiva e a cria\xE7\xE3o
       do SUS."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_sergio_arouca
   - Id: 15
     Name: "Mobili\xE1rio com explica\xE7\xF5es sobre detalhes do acervo"
@@ -187,6 +215,8 @@ MonoBehaviour:
       Um conjunto documental do s\xE9culo XIX \xE9 atribu\xEDdo aos viajantes que
       percorreram as terras brasileiras e americanas, deixando in\xFAmeras anota\xE7\xF5es
       e iconografias sobre as paisagens e os costumes dos povos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/mobiliario_acervo
   - Id: 16
     Name: "Exposi\xE7\xE3o Insetos Ilustrados"
@@ -201,6 +231,8 @@ MonoBehaviour:
       Museu da Vida. A mostra conta com audiodescri\xE7\xE3o, v\xEDdeos e pain\xE9is
       na L\xEDngua Brasileira de Sinais e, mediante agendamento pode ser disponibilizada
       visita guiada com int\xE9rprete de Libras."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/exposicao_insetos
   - Id: 17
     Name: "Porta da Sala de Exposi\xE7\xF5es tempor\xE1rias"
@@ -209,6 +241,8 @@ MonoBehaviour:
       mostra \u201CCastelo de Inspira\xE7\xF5es\u201D, que conta a hist\xF3ria do
       Castelo Mourisco e explora os simbolismos e as curiosidades do edif\xEDcio
       \xEDcone da ci\xEAncia brasileira, que completou cem anos em 2018."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_exposicoes_temporarias
   - Id: 18
     Name: "R\xE9plica feita em impressora 3D do Castelo"
@@ -228,6 +262,8 @@ MonoBehaviour:
       inspirados no monumento, a mostra convida o visitante a soltar a imagina\xE7\xE3o
       e aprender brincando. Quebra-cabe\xE7a, jogo dos sete erros e brincadeiras
       com o uso de espelhos."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/replica_3d
   - Id: 19
     Name: "Lumin\xE1ria no Hall da Presid\xEAncia"
@@ -238,6 +274,8 @@ MonoBehaviour:
       ligadas a presid\xEAncia. A decora\xE7\xE3o e arquitetura do Hall favorece
       a ilumina\xE7\xE3o natural captada pelo vitral superior com o objetivo de iluminar
       todos os pavimentos inferiores do Castelo."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/luminaria_hall_presidencia
   - Id: 20
     Name: "Porta da Sala da Presid\xEAncia "
@@ -253,6 +291,8 @@ MonoBehaviour:
       da Institui\xE7\xE3o e coordenar, implementar e avaliar os programas horizontais
       integrados de pesquisa, ensino, desenvolvimento tecnol\xF3gico, produ\xE7\xE3o,
       servi\xE7os, informa\xE7\xE3o em sa\xFAde e desenvolvimento institucional."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/porta_sala_presidencia
   - Id: 21
     Name: Foto do Oswaldo Cruz
@@ -269,6 +309,8 @@ MonoBehaviour:
       \xE1rabe. O castelo foi projetado pelo arquiteto portugu\xEAs Luiz Moraes J\xFAnior
       e tombado pelo Instituto do Patrim\xF4nio Hist\xF3rico e Art\xEDstico Nacional
       (Iphan) em 1981."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_oswaldo_cruz_presdiencia
   - Id: 22
     Name: "Foto hist\xF3rica do Castelo"
@@ -295,6 +337,8 @@ MonoBehaviour:
       o Castelo de Alhambra, em Granada, Espanha; A terceira, e principal influ\xEAncia,
       foi a sinagoga de Berlim, que inspirou outras sinagogas ao redor do mundo e
       tamb\xE9m as torres do Castelo do ent\xE3o Instituto Oswaldo Cruz."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/foto_castelo_presidencia
   - Id: 23
     Name: "Acesso \xE0s torres do Castelo"
@@ -304,6 +348,8 @@ MonoBehaviour:
       de 1910, e mesmo com as obras em andamento nesse ano, o castelo j\xE1 era ocupado
       pelos pesquisadores. As torres s\xE3o o ponto mais alto da institui\xE7\xE3o
       e oferecem vis\xE3o em 360\xBA de todo o campus e al\xE9m."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/acesso_torres
   - Id: 24
     Name: Pisos e Ladrilhos dos pavimentos
@@ -327,4 +373,6 @@ MonoBehaviour:
       importados da Europa. A maior parte do material chegava de barco, por meio
       de um cais instalado na Ba\xEDa de Guanabara, cujas \xE1guas chegavam at\xE9,
       onde hoje est\xE1 a Avenida Brasil, inaugurada apenas em 1947."
+    StylizedImagePath: 
+    ThumbnailImagePath: 
     ImagePath: Sprites/pisos_ladrilhos

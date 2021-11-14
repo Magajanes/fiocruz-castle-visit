@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _origin: {fileID: 11400000, guid: b54b99fac0ffffb4a96ceb0b7b4bf068, type: 2}
   _overrided: {fileID: 11400000, guid: 725aff93e95d70c449b9c81a77fae544, type: 2}
-  _itemsToRemove: 040000000d0000000e0000001000000011000000
+  _itemsToRemove: 040000000d0000000e000000100000001100000006000000
 --- !u!4 &945985293
 Transform:
   m_ObjectHideFlags: 0

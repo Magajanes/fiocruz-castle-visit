@@ -19,18 +19,19 @@ public class InventorySlot : MonoBehaviour
     {
         _artifactInfo = ArtifactsService.GetArtifactInfoById(artifactId);
 
-        if (_artifactInfo == null)
-            return;
+        if (_artifactInfo == null) return;
 
         artifactImage.color = collectedColor;
         ArtifactSpriteHelper.LoadArtifactSprite(
-            _artifactInfo.ImagePath,
+            _artifactInfo.ThumbnailImagePath,
             (sprite) => artifactImage.sprite = sprite
         );
     }
 
     public void OnSlotClick()
     {
+        if (_artifactInfo == null) return;
+
         MenuController.Instance.ShowArtifactInfo(_artifactInfo.Id);
     }
 }
