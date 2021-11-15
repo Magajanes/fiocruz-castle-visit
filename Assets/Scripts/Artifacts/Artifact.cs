@@ -82,9 +82,7 @@ public class ArtifactInfo
     public int Id;
     public string Name;
     public string Description;
-    public string StylizedImagePath;
-    public string ThumbnailImagePath;
-    public string ImagePath;
+    public string ImageName;
 
     public static ArtifactInfo Copy(ArtifactInfo artifactInfo)
     {
@@ -92,9 +90,7 @@ public class ArtifactInfo
         newArtifactInfo.Id = artifactInfo.Id;
         newArtifactInfo.Name = artifactInfo.Name;
         newArtifactInfo.Description = artifactInfo.Description;
-        newArtifactInfo.StylizedImagePath = artifactInfo.StylizedImagePath;
-        newArtifactInfo.ThumbnailImagePath = artifactInfo.ThumbnailImagePath;
-        newArtifactInfo.ImagePath = artifactInfo.ImagePath;
+        newArtifactInfo.ImageName = artifactInfo.ImageName;
         return newArtifactInfo;
     }
 
@@ -104,9 +100,7 @@ public class ArtifactInfo
         newArtifactInfo.Id = newId;
         newArtifactInfo.Name = artifactInfo.Name;
         newArtifactInfo.Description = artifactInfo.Description;
-        newArtifactInfo.StylizedImagePath = artifactInfo.StylizedImagePath;
-        newArtifactInfo.ThumbnailImagePath = artifactInfo.ThumbnailImagePath;
-        newArtifactInfo.ImagePath = artifactInfo.ImagePath;
+        newArtifactInfo.ImageName = artifactInfo.ImageName;
         return newArtifactInfo;
     }
 }

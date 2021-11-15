@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+    public const string ICON_IMAGE_PATH = "Sprites/Icons/{0}";
+    
     [Header("Colors")]
     [SerializeField]
     private Color notCollectedColor;
@@ -23,7 +25,7 @@ public class InventorySlot : MonoBehaviour
 
         artifactImage.color = collectedColor;
         ArtifactSpriteHelper.LoadArtifactSprite(
-            _artifactInfo.ThumbnailImagePath,
+            string.Format(ICON_IMAGE_PATH, _artifactInfo.ImageName),
             (sprite) => artifactImage.sprite = sprite
         );
     }

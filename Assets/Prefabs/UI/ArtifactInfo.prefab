@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 8721802794063059030}
   - component: {fileID: 841509741513992831}
   m_Layer: 0
-  m_Name: Image
+  m_Name: BackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280556643
+    rgba: 4278191383
   m_fontColor: {r: 0.09019608, g: 0.019607844, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 9135940906557864186}
   description: {fileID: 9135940907592359518}
-  image: {fileID: 9135940907900321717}
+  image: {fileID: 841509741513992831}
   scrollRect: {fileID: 3582980927619263710}
   collectButton: {fileID: 4485222877327781775}
   arrowsPanel: {fileID: 11008386439381167}
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280556643
+    rgba: 4278191383
   m_fontColor: {r: 0.09019608, g: 0.019607844, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1906,7 +1906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9135940907689060281
 RectTransform:
   m_ObjectHideFlags: 0

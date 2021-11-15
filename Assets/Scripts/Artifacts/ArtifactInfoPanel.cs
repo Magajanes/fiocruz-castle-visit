@@ -30,6 +30,7 @@ public class InitArgs
 public class ArtifactInfoPanel : MonoBehaviour
 {
     public const string ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH = "SoundBundles/ArtifactPanelSounds";
+    public const string ARTIFACT_IMAGE_PATH = "Sprites/Page/{0}";
     public const string PAGE_RIGHT_ID = "page_right";
     public const string PAGE_LEFT_ID = "page_left";
     public const string COLLECT_ARTIFACT_ID = "artifact_collected";
@@ -106,7 +107,7 @@ public class ArtifactInfoPanel : MonoBehaviour
         scrollRect.verticalNormalizedPosition = 1;
 
         ArtifactSpriteHelper.LoadArtifactSprite(
-            _currentInfo.ImagePath,
+            string.Format(ARTIFACT_IMAGE_PATH,_currentInfo.ImageName),
             SetSprite
         );
 
