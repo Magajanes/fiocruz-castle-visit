@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 3956708505714946319, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: _atifactId
-      value: 23
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3956708505714946320, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
