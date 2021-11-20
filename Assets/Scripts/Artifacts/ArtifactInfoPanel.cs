@@ -50,10 +50,15 @@ public class ArtifactInfoPanel : MonoBehaviour
     private GameObject collectButton;
     [SerializeField]
     private GameObject arrowsPanel;
+    [SerializeField]
+    private GameObject leftArrow;
+    [SerializeField]
+    private GameObject rightArrow;
 
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
     private Inventory _playerInventory;
+    private List<int> _collectedArtifactsIds;
 
     private AudioClip _pageRightSound;
     private AudioClip _pageLeftSound;
@@ -74,6 +79,7 @@ public class ArtifactInfoPanel : MonoBehaviour
     public void Initialize(InitArgs args)
     {
         _playerInventory = InventoryManager.PlayerInventory;
+        _collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
         _entryPoint = args.EntryPoint;
 
         int artifactId = args.ArtifactId;
@@ -85,19 +91,27 @@ public class ArtifactInfoPanel : MonoBehaviour
         _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
 
         if (_currentInfo != null)
+        {
             SetPanel();
+            SetArrowsPanel(showArrowsPanel, _currentInfo.Id);
+        }
     }
 
     public void Initialize(int artifactId)
     {
         _playerInventory = InventoryManager.PlayerInventory;
+        _collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
+
         bool showArrowsPanel = _playerInventory.HasArtifact(artifactId);
 
         collectButton.SetActive(false);
-        arrowsPanel.SetActive(showArrowsPanel);
         _currentInfo = ArtifactsService.GetArtifactInfoById(artifactId);
 
-        if (_currentInfo != null) SetPanel();
+        if (_currentInfo != null)
+        {
+            SetPanel();
+            SetArrowsPanel(showArrowsPanel, _currentInfo.Id);
+        }
     }
 
     private void SetPanel()
@@ -117,16 +131,27 @@ public class ArtifactInfoPanel : MonoBehaviour
         }
     }
 
+    private void SetArrowsPanel(bool showArrowsPanel, int artifactId)
+    {
+        arrowsPanel.SetActive(showArrowsPanel);
+
+        if (showArrowsPanel)
+        {
+            leftArrow.SetActive(artifactId != _collectedArtifactsIds[0]);
+            rightArrow.SetActive(artifactId != _collectedArtifactsIds[_collectedArtifactsIds.Count - 1]);
+        }
+    }
+
     public void ShowNextCollectedArtifact()
     {
-        List<int> collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
-        int index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
+        int index = _collectedArtifactsIds.IndexOf(_currentInfo.Id);
+        rightArrow.SetActive(index < _collectedArtifactsIds.Count - 2);
 
-        if (index == collectedArtifactsIds.Count - 1)
-            return;
+        if (!leftArrow.activeInHierarchy) 
+            leftArrow.SetActive(true);
 
         index++;
-        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(collectedArtifactsIds[index]);
+        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(_collectedArtifactsIds[index]);
 
         if (nextInfo != null)
         {
@@ -139,14 +164,14 @@ public class ArtifactInfoPanel : MonoBehaviour
 
     public void ShowPreviousCollectedArtifact()
     {
-        List<int> collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
-        int index = collectedArtifactsIds.IndexOf(_currentInfo.Id);
+        int index = _collectedArtifactsIds.IndexOf(_currentInfo.Id);
+        leftArrow.SetActive(index > 1);
 
-        if (index <= 0)
-            return;
+        if (!rightArrow.activeInHierarchy)
+            rightArrow.SetActive(true);
 
         index--;
-        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(collectedArtifactsIds[index]);
+        ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(_collectedArtifactsIds[index]);
 
         if (nextInfo != null)
         {
@@ -160,8 +185,9 @@ public class ArtifactInfoPanel : MonoBehaviour
     public void Collect()
     {
         _playerInventory.AddArtifact(_currentInfo.Id);
+        _collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
         collectButton.SetActive(false);
-        arrowsPanel.SetActive(true);
+        SetArrowsPanel(true, _currentInfo.Id);
         SoundsManager.Instance.PlaySFX(_collectArtifactSound);
     }
 }
