@@ -325,9 +325,9 @@ public class InGameMenu : MonoBehaviour
         if (_isFading) return;
 
         _isFading = true;
-        OnBackButtonDelegate = ResumeGame;
+        OnBackButtonDelegate = null;
 
-        UIFader.FadeIn(_selectionMenu, null, IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeIn(_selectionMenu, () => OnBackButtonDelegate = ResumeGame, IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_currentPanel, CloseCurrentPanel, IN_GAME_MENU_FADE_RATE);
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
