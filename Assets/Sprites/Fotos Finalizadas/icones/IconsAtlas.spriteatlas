@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IconsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d3be6d2e605dda948aea36e0d6632650, type: 3}
+    - {fileID: 2800000, guid: b76a722cc9350d24081c65ad5f4eb1f1, type: 3}
+    - {fileID: 2800000, guid: beb0dd8dadb7f5d4a9ebf5fe8e3e42e0, type: 3}
+    - {fileID: 2800000, guid: 5b631d1280836d64489010788e382ec8, type: 3}
+    - {fileID: 2800000, guid: fae53d2faa9be4d4aa2517e6f2170d44, type: 3}
+    - {fileID: 2800000, guid: 590b155944c8cbe4a8dbe69f827d7f16, type: 3}
+    - {fileID: 2800000, guid: 98426ac87d8070342965dd6a2d0351d2, type: 3}
+    - {fileID: 2800000, guid: 431e3afa80cc0a648a4b8f03e2e70127, type: 3}
+    - {fileID: 2800000, guid: 5948ef80bfe75ab4797ad9c61a48bcfa, type: 3}
+    - {fileID: 2800000, guid: eb1b081097bed354c9a0d099dcecf3fd, type: 3}
+    - {fileID: 2800000, guid: 13984cadafdad8c46977b3c3a345ad70, type: 3}
+    - {fileID: 2800000, guid: 06bac60f33ebf1c48b98652b5824aa5a, type: 3}
+    - {fileID: 2800000, guid: 22f1bd4ae7f5eb541942e85e0293f74e, type: 3}
+    - {fileID: 2800000, guid: d87d314c5114c2c499446053eeaad841, type: 3}
+    - {fileID: 2800000, guid: d63bfda6691925a4e8aa22b7dc6cf063, type: 3}
+    - {fileID: 2800000, guid: 8aac82caa647d0a4d8e75fdea1f50e8a, type: 3}
+    - {fileID: 2800000, guid: 716089a8e0734bd40a94740f00981029, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
+  m_Tag: IconsAtlas
+  m_IsVariant: 0

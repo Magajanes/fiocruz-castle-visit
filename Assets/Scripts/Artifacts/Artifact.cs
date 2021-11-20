@@ -82,5 +82,25 @@ public class ArtifactInfo
     public int Id;
     public string Name;
     public string Description;
-    public string ImagePath;
+    public string ImageName;
+
+    public static ArtifactInfo Copy(ArtifactInfo artifactInfo)
+    {
+        var newArtifactInfo = new ArtifactInfo();
+        newArtifactInfo.Id = artifactInfo.Id;
+        newArtifactInfo.Name = artifactInfo.Name;
+        newArtifactInfo.Description = artifactInfo.Description;
+        newArtifactInfo.ImageName = artifactInfo.ImageName;
+        return newArtifactInfo;
+    }
+
+    public static ArtifactInfo CopyAndOverrideId(ArtifactInfo artifactInfo, int newId)
+    {
+        var newArtifactInfo = new ArtifactInfo();
+        newArtifactInfo.Id = newId;
+        newArtifactInfo.Name = artifactInfo.Name;
+        newArtifactInfo.Description = artifactInfo.Description;
+        newArtifactInfo.ImageName = artifactInfo.ImageName;
+        return newArtifactInfo;
+    }
 }
