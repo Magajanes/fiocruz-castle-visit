@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameMenu : MonoBehaviour
+public class InGameMenu : Singleton<InGameMenu>
 {
     public const float IN_GAME_MENU_FADE_RATE = 1.5f;
     public const string IN_GAME_MENU_SOUNDS_BUNDLE_PATH = "SoundBundles/InGameMenuSounds";
@@ -43,8 +43,9 @@ public class InGameMenu : MonoBehaviour
     public delegate void BackButtonAction();
     public BackButtonAction OnBackButtonDelegate;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         AddListeners();
     }
 

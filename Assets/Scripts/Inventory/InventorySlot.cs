@@ -36,4 +36,11 @@ public class InventorySlot : MonoBehaviour
 
         MenuController.Instance.ShowArtifactInfo(_artifactInfo.Id);
     }
+
+    public void OnInGameSlotClick()
+    {
+        if (_artifactInfo == null) return;
+
+        InGameMenu.Instance.ShowArtifactInfo(_artifactInfo.Id);
+    }
 }
