@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc31c23dc5fad446be81a8c3e4da662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resetInventory: 0
+  _resetInventory: 1
 --- !u!4 &2077818441
 Transform:
   m_ObjectHideFlags: 0

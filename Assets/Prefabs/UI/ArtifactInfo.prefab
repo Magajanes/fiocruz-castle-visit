@@ -211,7 +211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7221185827889324646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1374,7 +1374,6 @@ MonoBehaviour:
   description: {fileID: 9135940907592359518}
   image: {fileID: 841509741513992831}
   scrollRect: {fileID: 3582980927619263710}
-  collectButton: {fileID: 4485222877327781775}
   arrowsPanel: {fileID: 11008386439381167}
   leftArrow: {fileID: 7137662200567081766}
   rightArrow: {fileID: 8525842468606643483}
