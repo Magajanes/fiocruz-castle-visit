@@ -267,7 +267,7 @@ public class InGameMenu : Singleton<InGameMenu>
 
     private void CloseArtifactInfoImediate()
     {
-        if (_isFading) return;
+        if (_isFading || _artifactInfoPanel.IsCollectedArtifactPanelActive) return;
 
         _isFading = true;
         OnBackButtonDelegate = null;
@@ -280,7 +280,6 @@ public class InGameMenu : Singleton<InGameMenu>
             () => _selectionMenu.SetActive(true),
             IN_GAME_MENU_FADE_RATE
         );
-
 
         SoundsManager.Instance.PlaySFX(_clickBackSound);
 

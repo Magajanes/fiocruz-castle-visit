@@ -53,6 +53,10 @@ public class ArtifactInfoPanel : MonoBehaviour
     [SerializeField]
     private GameObject rightArrow;
 
+    [Header("Gameobject References")]
+    [SerializeField]
+    private CollectedArtifactPanel _collectedArtifactPanel;
+
     private ArtifactInfo _currentInfo;
     private UIState _entryPoint;
     private Inventory _playerInventory;
@@ -64,6 +68,8 @@ public class ArtifactInfoPanel : MonoBehaviour
 
     private delegate void SoundLoadAction();
     private SoundLoadAction OnSoundsLoadFinish;
+
+    public bool IsCollectedArtifactPanelActive => _collectedArtifactPanel.gameObject.activeInHierarchy;
 
     private void Start()
     {
@@ -121,13 +127,8 @@ public class ArtifactInfoPanel : MonoBehaviour
 
         ArtifactSpriteHelper.LoadArtifactSprite(
             string.Format(ARTIFACT_PAGE_IMAGE_PATH,_currentInfo.ImageName),
-            SetSprite
+            (sprite) => image.sprite = sprite
         );
-
-        void SetSprite(Sprite sprite)
-        {
-            image.sprite = sprite;
-        }
     }
 
     private void SetArrowsPanel(bool showArrowsPanel, int artifactId)
@@ -185,6 +186,10 @@ public class ArtifactInfoPanel : MonoBehaviour
     {
         _playerInventory.AddArtifact(_currentInfo.Id);
         _collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
+
+        _collectedArtifactPanel?.gameObject.SetActive(true);
+        _collectedArtifactPanel?.Initialize(_currentInfo);
+
         SetArrowsPanel(true, _currentInfo.Id);
 
         if (_collectArtifactSound == null)
@@ -195,6 +200,7 @@ public class ArtifactInfoPanel : MonoBehaviour
             };
             return;
         }
+
         SoundsManager.Instance.PlaySFX(_collectArtifactSound);
     }
 }
