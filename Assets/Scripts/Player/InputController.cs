@@ -119,18 +119,22 @@ public class InputController : GameSingleton<InputController>
         {
             case UIState.Inactive:
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 RunInputScheme = RunCastleVisitInputScheme;
                 break;
             case UIState.ArtifactInfo:
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 RunInputScheme = RunUiInputScheme;
                 break;
             case UIState.InventoryPanel:
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 RunInputScheme = RunUiInputScheme;
                 break;
             case UIState.InGameMenu:
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 RunInputScheme = RunUiInputScheme;
                 break;
             default:
