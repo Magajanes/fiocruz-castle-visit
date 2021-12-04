@@ -5,6 +5,8 @@ public class CollectedArtifactPanel : MonoBehaviour
 {
     private const string STYLIZED_PICTURE_PATH = "Sprites/Stylized/{0}";
     private const string PICTURE_PATH = "Sprites/Final/{0}";
+    private const float STYLE_TRANSITION_DELAY = 1;
+    private const float STYLE_TRANSITION_TIME = 0.5f;
     
     [Header("Picture objects")]
     [SerializeField]
@@ -28,7 +30,6 @@ public class CollectedArtifactPanel : MonoBehaviour
 
     private bool _stylizedSpriteLoaded = false;
     private bool _pictureSpriteLoaded = false;
-    private bool _waitingForInput = false;
 
     public void Initialize(ArtifactInfo artifactInfo)
     {
@@ -70,8 +71,8 @@ public class CollectedArtifactPanel : MonoBehaviour
 
             UIFader.FadeOut(
                 _flashObject, 
-                () => Invoke("ShowStylizedPicture", 1),
-                0.5f
+                () => Invoke("ShowStylizedPicture", STYLE_TRANSITION_DELAY),
+                STYLE_TRANSITION_TIME
             );
         }
     }
@@ -80,19 +81,17 @@ public class CollectedArtifactPanel : MonoBehaviour
     {
         UIFader.FadeIn(
             _stylizedPicture,
-            () => _waitingForInput = true
+            () => Invoke("CloseStylizedPicture", STYLE_TRANSITION_DELAY)
         );
     }
 
-    private void Update()
+    private void CloseStylizedPicture()
     {
-        if (!_waitingForInput) return;
-
-        if (Input.anyKeyDown)
-        {
-            _waitingForInput = false;
-            UIFader.FadeOut(gameObject, Clean, 0.5f);
-        }
+        UIFader.FadeOut(
+            gameObject,
+            Clean,
+            STYLE_TRANSITION_TIME
+        );
     }
 
     public void Clean()
