@@ -88,7 +88,7 @@ public class InputController : GameSingleton<InputController>
         if (Input.GetKeyDown(KeyCode.C))
             OnElevatorCall?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape))
             OnInGameMenuOpen?.Invoke();
 
         if (!_elevatorMode)
@@ -100,16 +100,16 @@ public class InputController : GameSingleton<InputController>
     private void RunElevatorInputMode()
     {
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
             OnElevatorButtonPress?.Invoke(1);
 
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
             OnElevatorButtonPress?.Invoke(2);
 
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
             OnElevatorButtonPress?.Invoke(3);
 
-        if (Input.GetKeyDown(KeyCode.F4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
             OnElevatorButtonPress?.Invoke(4);
     }
 

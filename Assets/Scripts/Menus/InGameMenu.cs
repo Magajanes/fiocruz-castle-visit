@@ -108,10 +108,18 @@ public class InGameMenu : Singleton<InGameMenu>
 
     private void OpenMenu()
     {
-        InputController.Instance.SetInputScheme(UIState.InGameMenu);
         OnBackButtonDelegate = ResumeGame;
+        InputController.Instance.LockInputs(true);
 
-        UIFader.FadeIn(_inGameMenuPanel, () => SetMenuButtonsInteractive(true), IN_GAME_MENU_FADE_RATE);
+        UIFader.FadeIn(
+            _inGameMenuPanel,
+            () => 
+            {
+                SetMenuButtonsInteractive(true);
+                InputController.Instance.LockInputs(false);
+                InputController.Instance.SetInputScheme(UIState.InGameMenu);
+            },
+            IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);
 
         SoundsManager.Instance.PlaySFX(_clickSound);
