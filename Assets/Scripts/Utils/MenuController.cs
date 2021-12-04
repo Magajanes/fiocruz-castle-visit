@@ -282,7 +282,7 @@ public class MenuController : Singleton<MenuController>
         }
     }
 
-    public void ExitGame()
+    public void ExitGame() 
     {
         Application.Quit();
     }

@@ -2423,6 +2423,11 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2858913533640665629, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1620185819}
     - target: {fileID: 3175514617576440009, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_AnchorMax.y
