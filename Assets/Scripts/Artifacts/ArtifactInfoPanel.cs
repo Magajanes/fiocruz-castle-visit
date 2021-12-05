@@ -96,6 +96,7 @@ public class ArtifactInfoPanel : MonoBehaviour
         if (_currentInfo != null)
         {
             SetPanel();
+            SetArrowsPanel(true, _currentInfo.Id);
         }
 
         if (_entryPoint == UIState.Inactive && !_playerInventory.HasArtifact(artifactId))
