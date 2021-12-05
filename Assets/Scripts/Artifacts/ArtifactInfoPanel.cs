@@ -134,6 +134,8 @@ public class ArtifactInfoPanel : MonoBehaviour
 
     private void SetArrowsPanel(bool showArrowsPanel, int artifactId)
     {
+        if (_collectedArtifactsIds == null || _collectedArtifactsIds.Count == 0) return;
+        
         arrowsPanel.SetActive(showArrowsPanel);
 
         if (showArrowsPanel)

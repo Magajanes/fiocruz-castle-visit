@@ -110,6 +110,7 @@ public class InGameMenu : Singleton<InGameMenu>
     {
         OnBackButtonDelegate = ResumeGame;
         InputController.Instance.LockInputs(true);
+        SoundsManager.Instance.StopAllSFXSounds();
 
         UIFader.FadeIn(
             _inGameMenuPanel,
@@ -170,6 +171,7 @@ public class InGameMenu : Singleton<InGameMenu>
         _indexPanel.gameObject.SetActive(true);
         _indexPanel.Initialize();
         _currentPanel = _indexPanel.gameObject;
+        SoundsManager.Instance.StopAllSFXSounds();
         OnBackButtonDelegate = BackToMenu;
 
         SetMenuButtonsInteractive(false);
@@ -186,6 +188,7 @@ public class InGameMenu : Singleton<InGameMenu>
 
         _isImediateIndex = true;
         InputController.Instance.SetInputScheme(UIState.InventoryPanel);
+        SoundsManager.Instance.StopAllSFXSounds();
         OnBackButtonDelegate = CloseInventoryImediate;
 
         _isFading = true;
@@ -258,6 +261,7 @@ public class InGameMenu : Singleton<InGameMenu>
         if (_isFading) return;
 
         InputController.Instance.SetInputScheme(UIState.InventoryPanel);
+        SoundsManager.Instance.StopAllSFXSounds();
         OnBackButtonDelegate = CloseArtifactInfoImediate;
 
         _isFading = true;

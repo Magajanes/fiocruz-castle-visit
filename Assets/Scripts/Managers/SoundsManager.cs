@@ -103,6 +103,12 @@ public class SoundsManager : GameSingleton<SoundsManager>
         _channels[channelType].Stop();
     }
 
+    public void StopAllSFXSounds()
+    {
+        _channels[ChannelType.SFX1].Stop();
+        _channels[ChannelType.SFX2].Stop();
+    }
+
     public void StopAllSounds()
     {
         foreach (AudioSource channel in _channels.Values)
