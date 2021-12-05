@@ -3,18 +3,24 @@
 public class SpecialLightTrigger : LightTrigger, ILightTrigger
 {
     [SerializeField]
-    private GameObject _light;
+    private GameObject[] _lights;
     
     public void Initialize()
     {
         OnLightTriggerEnter += () =>
         {
-            _light.SetActive(false);
+            foreach (GameObject light in _lights)
+            {
+                light.SetActive(false);
+            }
         };
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _light.SetActive(true);
+        foreach (GameObject light in _lights)
+        {
+            light.SetActive(true);
+        }
     }
 }
