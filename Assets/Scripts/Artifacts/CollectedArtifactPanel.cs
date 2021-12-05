@@ -51,6 +51,7 @@ public class CollectedArtifactPanel : MonoBehaviour
         {
             _stylizedSpriteLoaded = true;
             _stylizedImage.sprite = sprite;
+            _stylizedImage.type = Image.Type.Simple;
             _stylizedImage.preserveAspect = true;
 
             ShowCollectedArtifactPanel();
@@ -60,6 +61,7 @@ public class CollectedArtifactPanel : MonoBehaviour
         {
             _pictureSpriteLoaded = true;
             _pictureImage.sprite = sprite;
+            _pictureImage.type = Image.Type.Simple;
             _pictureImage.preserveAspect = true;
 
             ShowCollectedArtifactPanel();
