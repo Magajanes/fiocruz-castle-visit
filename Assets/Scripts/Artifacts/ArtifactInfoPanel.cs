@@ -190,9 +190,7 @@ public class ArtifactInfoPanel : MonoBehaviour
         _playerInventory.AddArtifact(_currentInfo.Id);
         _collectedArtifactsIds = _playerInventory.GetSortedCollectedArtifactsIds();
 
-        _collectedArtifactPanel?.gameObject.SetActive(true);
-        _collectedArtifactPanel?.Initialize(_currentInfo);
-
+        ActivateCollectedArtifactPanel();
         SetArrowsPanel(true, _currentInfo.Id);
 
         if (_collectArtifactSound == null)
@@ -205,5 +203,13 @@ public class ArtifactInfoPanel : MonoBehaviour
         }
 
         SoundsManager.Instance.PlaySFX(_collectArtifactSound);
+    }
+
+    public void ActivateCollectedArtifactPanel()
+    {
+        if (_collectedArtifactPanel == null) return;
+        
+        _collectedArtifactPanel.gameObject.SetActive(true);
+        _collectedArtifactPanel.Initialize(_currentInfo);
     }
 }
