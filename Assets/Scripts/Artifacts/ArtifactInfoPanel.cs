@@ -31,8 +31,7 @@ public class ArtifactInfoPanel : MonoBehaviour
 {
     public const string ARTIFACT_INFO_PANEL_SOUNDS_BUNDLE_PATH = "SoundBundles/ArtifactPanelSounds";
     public const string ARTIFACT_PAGE_IMAGE_PATH = "Sprites/Page/{0}";
-    public const string PAGE_RIGHT_ID = "page_right";
-    public const string PAGE_LEFT_ID = "page_left";
+    public const string PAGE_SOUND_ID = "page_left";
     public const string COLLECT_ARTIFACT_ID = "artifact_collected";
 
     [Header("Components")]
@@ -62,8 +61,7 @@ public class ArtifactInfoPanel : MonoBehaviour
     private Inventory _playerInventory;
     private List<int> _collectedArtifactsIds;
 
-    private AudioClip _pageRightSound;
-    private AudioClip _pageLeftSound;
+    private AudioClip _pageSound;
     private AudioClip _collectArtifactSound;
 
     private delegate void SoundLoadAction();
@@ -77,8 +75,7 @@ public class ArtifactInfoPanel : MonoBehaviour
 
         void OnSoundsLoaded(SoundsBundle bundle)
         {
-            _pageRightSound = bundle.GetAudioClipById(PAGE_RIGHT_ID);
-            _pageLeftSound = bundle.GetAudioClipById(PAGE_LEFT_ID);
+            _pageSound = bundle.GetAudioClipById(PAGE_SOUND_ID);
             _collectArtifactSound = bundle.GetAudioClipById(COLLECT_ARTIFACT_ID);
             OnSoundsLoadFinish?.Invoke();
         }
@@ -162,7 +159,7 @@ public class ArtifactInfoPanel : MonoBehaviour
             SetPanel();
         }
 
-        SoundsManager.Instance.PlaySFX(_pageRightSound);
+        SoundsManager.Instance.PlaySFX(_pageSound);
     }
 
     public void ShowPreviousCollectedArtifact()
@@ -182,7 +179,7 @@ public class ArtifactInfoPanel : MonoBehaviour
             SetPanel();
         }
 
-        SoundsManager.Instance.PlaySFX(_pageLeftSound);
+        SoundsManager.Instance.PlaySFX(_pageSound);
     }
 
     public void Collect()
