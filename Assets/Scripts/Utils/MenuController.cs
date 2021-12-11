@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuController : Singleton<MenuController>
 {
@@ -35,13 +36,27 @@ public class MenuController : Singleton<MenuController>
     [SerializeField]
     private GameObject artifactInfo;
 
+    [Header("Button Objects")]
+    [SerializeField]
+    private Button _startButton;
+    [SerializeField]
+    private Button _firstArtifact;
+    [SerializeField]
+    private Toggle _firstOption;
+    [SerializeField]
+    private Button _leftArrow;
+    [SerializeField]
+    private Button _rightArrow;
+
+
     private void Start()
     {
         SoundsManager.LoadSoundsBundle(
             MenuConstants.MAIN_MENU_SOUNDS_BUNDLE_PATH,
             OnSoundsLoaded
         );
-        
+
+
         UIFader.FadeIn(
             mainMenu,
             OnFadeFinish,
@@ -73,22 +88,27 @@ public class MenuController : Singleton<MenuController>
     {
         if (_inputLock)
             return;
-        
-        if (_isAtStartScreen && Input.anyKeyDown)
+
+        if (!_isAtStartScreen)
+            return;
+
+        if (Input.anyKeyDown)
         {
             _inputLock = true;
+
             UIFader.FadeOut(mainMenu);
-            UIFader.FadeIn(
-                menu,
-                () =>
-                {
-                    _inputLock = false;
-                    _isAtStartScreen = false;
-                }
-            );
+            UIFader.FadeIn(menu, ShowMainMenu);
 
             SoundsManager.Instance.PlaySFX(_clickSound);
         }
+    }
+
+    private void ShowMainMenu()
+    {
+        _inputLock = false;
+        _isAtStartScreen = false;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_startButton.gameObject);
     }
 
     public void ShowOptionsPanel(Action onComplete)
@@ -97,6 +117,8 @@ public class MenuController : Singleton<MenuController>
             return;
 
         _inputLock = true;
+        _startButton.interactable = false;
+
         ApplySavedPlayerPrefs();
         optionsPanel.SetActive(true);
 
@@ -109,18 +131,18 @@ public class MenuController : Singleton<MenuController>
             UIFader.FadeIn(selectionMenu);
         }
 
-        UIFader.FadeIn(
-            optionsPanel,
-            () => 
-            {
-                _inputLock = false;
-                _currentPanel?.SetActive(false);
-                _currentPanel = optionsPanel;
-                onComplete?.Invoke();
-            }
-        );
-
+        UIFader.FadeIn(optionsPanel, OnComplete);
         SoundsManager.Instance.PlaySFX(_clickSound);
+
+        void OnComplete()
+        {
+            _inputLock = false;
+            _currentPanel?.SetActive(false);
+            _currentPanel = optionsPanel;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_firstOption.gameObject);
+            onComplete?.Invoke();
+        }
     }
     public void ShowCreditsPanel(Action onComplete)
     {
@@ -128,6 +150,7 @@ public class MenuController : Singleton<MenuController>
             return;
 
         _inputLock = true;
+        _startButton.interactable = false;
         creditsPanel.SetActive(true);
 
         if (_currentPanel != null)
@@ -159,6 +182,7 @@ public class MenuController : Singleton<MenuController>
             return;
 
         _inputLock = true;
+        _startButton.interactable = false;
         inventoryPanel.SetActive(true);
 
         if (_currentPanel != null)
@@ -170,21 +194,21 @@ public class MenuController : Singleton<MenuController>
             UIFader.FadeIn(selectionMenu);
         }
 
-        UIFader.FadeIn(
-            inventoryPanel, 
-            () => 
-            {
-                _inputLock = false;
-                _currentPanel?.SetActive(false);
-                _currentPanel = inventoryPanel;
-                onComplete?.Invoke();
-            }
-        );
-
+        UIFader.FadeIn(inventoryPanel, OnComplete);
         SoundsManager.Instance.PlaySFX(_clickSound);
 
         var inventory = inventoryPanel.GetComponent<InventoryPanel>();
         inventory.Initialize();
+
+        void OnComplete()
+        {
+            _inputLock = false;
+            _currentPanel?.SetActive(false);
+            _currentPanel = inventoryPanel;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_firstArtifact.gameObject);
+            onComplete?.Invoke();
+        }
     }
 
     public void ShowArtifactInfo(int artifactId)
@@ -245,7 +269,7 @@ public class MenuController : Singleton<MenuController>
         if (_inputLock)
             return;
 
-        _inputLock = true;
+        _inputLock = true;        
 
         UIFader.FadeOut(selectionMenu);
         UIFader.FadeOut(
@@ -258,6 +282,9 @@ public class MenuController : Singleton<MenuController>
             _currentPanel.SetActive(false);
             _currentPanel = null;
             _inputLock = false;
+            _startButton.interactable = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_startButton.gameObject);
             onComplete?.Invoke();
         }
 
@@ -269,6 +296,7 @@ public class MenuController : Singleton<MenuController>
         if (_isAtStartScreen || _inputLock)
             return;
 
+        _startButton.interactable = false;
         ApplySavedPlayerPrefs();
         ScenesController.Instance.StartGame();
         SoundsManager.Instance.PlaySFX(_clickSound);

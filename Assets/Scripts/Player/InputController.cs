@@ -73,7 +73,11 @@ public class InputController : GameSingleton<InputController>
 
         _mouseInput.x += Input.GetAxis("Mouse X") * mouseSensitivity;
         _mouseInput.y += VerticalRotationSign * Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        _mouseInput.x += Input.GetAxis("RightStickHorizontal") * mouseSensitivity;
+        _mouseInput.y += VerticalRotationSign * Input.GetAxis("RightStickVertical") * mouseSensitivity;
         _mouseInput.y = Mathf.Clamp(_mouseInput.y, -verticalCameraClampValue, verticalCameraClampValue);
+
         OnTurnInput?.Invoke(_mouseInput);
 
         if (Input.GetKeyDown(KeyCode.Space))

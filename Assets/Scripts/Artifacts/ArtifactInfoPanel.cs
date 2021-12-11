@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InitArgs
@@ -139,7 +140,24 @@ public class ArtifactInfoPanel : MonoBehaviour
         {
             leftArrow.SetActive(artifactId != _collectedArtifactsIds[0]);
             rightArrow.SetActive(artifactId != _collectedArtifactsIds[_collectedArtifactsIds.Count - 1]);
+            SelectArrowButton();
         }
+    }
+
+    private void SelectArrowButton()
+    {
+        if (!leftArrow.gameObject.activeInHierarchy && !rightArrow.gameObject.activeInHierarchy)
+            return;
+
+        if (leftArrow.gameObject.activeInHierarchy)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(leftArrow.gameObject);
+            return;
+        }
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(rightArrow.gameObject);
     }
 
     public void ShowNextCollectedArtifact()
@@ -147,8 +165,11 @@ public class ArtifactInfoPanel : MonoBehaviour
         int index = _collectedArtifactsIds.IndexOf(_currentInfo.Id);
         rightArrow.SetActive(index < _collectedArtifactsIds.Count - 2);
 
-        if (!leftArrow.activeInHierarchy) 
+        if (!leftArrow.activeInHierarchy)
             leftArrow.SetActive(true);
+
+        if (!rightArrow.activeInHierarchy)
+            SelectArrowButton();
 
         index++;
         ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(_collectedArtifactsIds[index]);
@@ -169,6 +190,9 @@ public class ArtifactInfoPanel : MonoBehaviour
 
         if (!rightArrow.activeInHierarchy)
             rightArrow.SetActive(true);
+
+        if (!leftArrow.activeInHierarchy)
+            SelectArrowButton();
 
         index--;
         ArtifactInfo nextInfo = ArtifactsService.GetArtifactInfoById(_collectedArtifactsIds[index]);
