@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -12,6 +13,8 @@ public class OptionsMenu : MonoBehaviour
     {
         PlayerPrefsService.ApplySavedPlayerPrefs(out bool invertY);
         _invertYToggle.isOn = invertY;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_invertYToggle.gameObject);
     }
 
     public void SetInvertMouseY(bool active)

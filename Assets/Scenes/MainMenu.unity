@@ -1843,6 +1843,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44452165045442261, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: _invertYToggle
+      value: 
+      objectReference: {fileID: 268145268}
     - target: {fileID: 44727362618479421, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_AnchorMax.y

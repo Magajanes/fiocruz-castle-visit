@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InGameMenu : Singleton<InGameMenu>
@@ -30,6 +30,10 @@ public class InGameMenu : Singleton<InGameMenu>
     private Toggle _invertYToggle;
     [SerializeField]
     private Button[] _menuButtons;
+
+    [Header("Buttons")]
+    [SerializeField]
+    private GameObject _resumeButton;
 
     private bool _isFading;
     private bool _isImediateIndex;
@@ -101,6 +105,9 @@ public class InGameMenu : Singleton<InGameMenu>
         if (_currentPanel == null) return;
         
         SetMenuButtonsInteractive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_resumeButton);
+
         _currentPanel.SetActive(false);
         _currentPanel = null;
         _isFading = false;
@@ -119,6 +126,8 @@ public class InGameMenu : Singleton<InGameMenu>
                 SetMenuButtonsInteractive(true);
                 InputController.Instance.LockInputs(false);
                 InputController.Instance.SetInputScheme(UIState.InGameMenu);
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(_resumeButton);
             },
             IN_GAME_MENU_FADE_RATE);
         UIFader.FadeOut(_playerHUD, rate: IN_GAME_MENU_FADE_RATE);

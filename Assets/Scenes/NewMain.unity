@@ -1462,6 +1462,7 @@ MonoBehaviour:
   - {fileID: 817408954}
   - {fileID: 2027609548}
   - {fileID: 1664653562}
+  _resumeButton: {fileID: 1850463603}
 --- !u!1 &189256746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9030969409862737485, guid: 64b7bdc17f236b14ebb58da49939855c,
@@ -6652,7 +6653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
