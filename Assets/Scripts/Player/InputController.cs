@@ -60,7 +60,7 @@ public class InputController : GameSingleton<InputController>
         if (Input.GetKeyDown(KeyCode.Return))
             OnCollectButtonPress?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("XBoxB"))
             OnBackButtonPress?.Invoke();
     }
 
@@ -75,24 +75,24 @@ public class InputController : GameSingleton<InputController>
         _mouseInput.y += VerticalRotationSign * Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         _mouseInput.x += Input.GetAxis("RightStickHorizontal") * mouseSensitivity;
-        _mouseInput.y += VerticalRotationSign * Input.GetAxis("RightStickVertical") * mouseSensitivity;
+        _mouseInput.y -= VerticalRotationSign * Input.GetAxis("RightStickVertical") * mouseSensitivity;
         _mouseInput.y = Mathf.Clamp(_mouseInput.y, -verticalCameraClampValue, verticalCameraClampValue);
 
         OnTurnInput?.Invoke(_mouseInput);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("XBoxA"))
             OnInteractionButtonPress?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("XBoxBack"))
             OnInventoryButtonPress?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("XBoxX"))
             OnDoorInteractionPress?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("XBoxY"))
             OnElevatorCall?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("XBoxStart"))
             OnInGameMenuOpen?.Invoke();
 
         if (!_elevatorMode)
@@ -103,7 +103,6 @@ public class InputController : GameSingleton<InputController>
 
     private void RunElevatorInputMode()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
             OnElevatorButtonPress?.Invoke(1);
 
@@ -115,6 +114,12 @@ public class InputController : GameSingleton<InputController>
 
         if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
             OnElevatorButtonPress?.Invoke(4);
+
+        float axisInput = Input.GetAxisRaw("XBoxDpadVertical");
+        if (axisInput == 0) return;
+
+        int nextFloor = axisInput > 0 ? 4 : 1;
+        OnElevatorButtonPress?.Invoke(nextFloor);
     }
 
     public void SetInputScheme(UIState currentState)

@@ -599,18 +599,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833158736}
   m_CullTransparentMesh: 0
---- !u!114 &944592586 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4732450639755843716, guid: 6c490f7bea9689f42a57765716e5aaf9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6110395687300743066}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &987809935 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5195568913058698446, guid: 6c490f7bea9689f42a57765716e5aaf9,
@@ -1300,7 +1288,6 @@ MonoBehaviour:
   inventoryPanel: {fileID: 1882616681}
   artifactInfo: {fileID: 2015427842}
   _startButton: {fileID: 6110395687300743068}
-  _firstArtifact: {fileID: 944592586}
   _firstOption: {fileID: 268145268}
   _leftArrow: {fileID: 146517064}
   _rightArrow: {fileID: 1054539278}

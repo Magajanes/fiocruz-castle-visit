@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryPanel : MonoBehaviour
 {
+    [SerializeField]
+    private Button _firstArtifact;
+
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
@@ -14,5 +19,7 @@ public class InventoryPanel : MonoBehaviour
         {
             slots[id - 1].Initialize(id);
         }
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_firstArtifact.gameObject);
     }
 }

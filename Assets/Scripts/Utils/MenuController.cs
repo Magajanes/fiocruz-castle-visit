@@ -40,8 +40,6 @@ public class MenuController : Singleton<MenuController>
     [SerializeField]
     private Button _startButton;
     [SerializeField]
-    private Button _firstArtifact;
-    [SerializeField]
     private Toggle _firstOption;
     [SerializeField]
     private Button _leftArrow;
@@ -205,8 +203,6 @@ public class MenuController : Singleton<MenuController>
             _inputLock = false;
             _currentPanel?.SetActive(false);
             _currentPanel = inventoryPanel;
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(_firstArtifact.gameObject);
             onComplete?.Invoke();
         }
     }
