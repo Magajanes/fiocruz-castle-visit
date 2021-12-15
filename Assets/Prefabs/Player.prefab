@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbcff393a12e3d449f13c7bf9b60f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
   gravityModifier: 1
   characterController: {fileID: 7664384075749495008}
   headTransform: {fileID: 7664384077109141757}
