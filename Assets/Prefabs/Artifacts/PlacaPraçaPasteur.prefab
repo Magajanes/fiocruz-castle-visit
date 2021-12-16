@@ -13504,12 +13504,27 @@ PrefabInstance:
     - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.28021964
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: 3.767443
       objectReference: {fileID: 0}
     - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
       value: 0.031319052
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: 3.767443
       objectReference: {fileID: 0}
     - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
@@ -13520,6 +13535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
       value: 0.031319052
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403112554486107061, guid: 04373a8db65ef8146911610f37bfd25f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.1141975
       objectReference: {fileID: 0}
     - target: {fileID: 3956708505714946319, guid: 04373a8db65ef8146911610f37bfd25f,
         type: 3}
