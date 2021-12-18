@@ -1,0 +1,260 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1d99eb8ab42c44296ed20a1d95b425, type: 3}
+  m_Name: GameArtifacts_EN_US
+  m_EditorClassIdentifier: 
+  Artifacts:
+  - Id: 1
+    Name: Bust of Oswaldo Cruz
+    Description: "Patron of the Oswaldo Cruz Foundation and creator of the Moorish
+      Castle, Oswaldo Cruz was a scientist with multiple skills and a specialist
+      in microbiology. He led the fight against yellow fever in Brazil, implemented
+      health and sanitation measures in the city of Rio de Janeiro, and waged a revolution
+      in public health in the city, organizing public health policies to fight urban
+      problems such as epidemics of bubonic plague, smallpox, and yellow fever. He
+      identified the transmissibility of diseases and the need for prevention through
+      the population\xB4s vaccination and immunization. Even in the face of widespread
+      protests, he organized vaccination campaigns in the early 20th century that
+      culminated in the \u201CVaccine Revolt\u201D in 1904. Despite the population\xB4s
+      fear and lack of knowledge, in 1908 a new smallpox epidemic led the population
+      to show up in droves at the vaccination posts, and Brazil finally acknowledged
+      the scientist as a national hero."
+    ImageName: busto
+  - Id: 2
+    Name: Front Stairway
+    Description: "Walls flanking the front stairway with details of the building.
+      Built from 1905 to 1918, the FIOCRUZ Castle is a symbol of Brazilian science
+      and health. The \u201CScience Palace\u201D, imagined by Oswaldo Cruz as the
+      headquarters for the institution that would be named after him, was created
+      in the image of the Pasteur Institute in Paris, combining the production of
+      vaccines and medicines, scientific research, and other public health activities.
+      Located on Rio\xB4s main thoroughfare called Avenida Brasil, the building is
+      also known as the Moorish Pavilion or Moorish Castle, due to its Neo-Moorish
+      architectural style and the beauty of the Portuguese tiles and mosaics, inspired
+      by Arabic tapestry. The Castle was designed by Portuguese architect Luiz Moraes
+      J\xFAnior and was listed in 1981 as a heritage stie by the Brazilian National
+      Institute of Historical and Artistic Heritage (IPHAN)."
+    ImageName: escada
+  - Id: 3
+    Name: Rear View of the Castle
+    Description: 'Plaque on Pasteur Square explaining the Manguinhos Historical and
+      Architectural Heritage Site (NAHM). The Heritage Site features a set of historical
+      buildings erected from 1905 to 1918: the Quinine Building or Figueiredo Vasconcellos
+      Pavilion, the Stable, the Clock or Plague Pavilion, the Dovecote or Small Animal
+      Vivarium, the Evandro Chagas Hospital, the Teahouse, and the Moorish Castle,
+      the main architectural structure and symbol of FIOCRUZ.'
+    ImageName: pasteur
+  - Id: 4
+    Name: Adolfo Lutz Room
+    Description: "Adolfo Lutz (1855-1940), the first Latin American scientist to
+      study and confirm the mechanisms of transmission of yellow fever by the mosquito
+      Aedes aegypti, was invited by Oswaldo Cruz to work at the Oswaldo Cruz Institute
+      (IOC), where Lutz remained until his death in 1940. \u201CThe room now occupied
+      by the Office of the Director of IOC was originally the laboratory of A. Lutz,
+      one of the most important and productive researchers during the institution\xB4s
+      early period. A series of photographs show the scientist and his daughter Berta
+      working in the laboratory. This environment was recreated digitally in the
+      past by the project I participated in together with F\xE1bio.\u201D Pedro Paulo
+      Soares (Historian/FIOCRUZ)"
+    ImageName: sala_adolpho
+  - Id: 5
+    Name: Temperature Controller
+    Description: "This curious equipment, more than two meters high, consists of
+      a panel with various devices and dials and is an example of advanced technology
+      in the early 20th century. The electric temperature controller\xB4s function
+      was to continuously record and control the temperature in part of the laboratory
+      equipment in the Oswaldo Cruz Institute. The thermometers converted the electric
+      current measurements into information on temperature variation."
+    ImageName: termocontrolador
+  - Id: 6
+    Name: Elevator Door
+    Description: Door to the oldest elevator currently in operation in Rio de Janeiro.
+      The elevator is decorated with the same Moorish-style geometric patterns as
+      the rest of the Castle. Installed in 1909, it is still in operation today,
+      as the oldest functioning elevator in Rio de Janeiro.
+    ImageName: elevador
+  - Id: 7
+    Name: Oswaldo Cruz and Carlos Chagas Rooms
+    Description: "Oswaldo Cruz and Carlos Chagas Rooms, laboratory coat and hat used
+      to take photos during the visit. These two rooms, as part of the visit to the
+      Museum of Life, display equipment and instruments such as a microscope, cell
+      counter, glass syringe, Oswaldo\xB4s doctoral thesis, scale, and a showcase
+      with instruments used to administer vaccines. Visitors have the freedom to
+      explore the room and the instruments, while listening to the importance of
+      vaccines (immunization) for vaccine-preventable diseases, and in which syringes
+      and needles are now disposable, avoiding contamination. Visitors can also hear
+      about the technological and historical changes in the immunization process,
+      so important for health and the prevention of diseases. \u201CThe lab coat
+      and hat did not actually belong to Oswaldo Cruz. They were purchased for interaction
+      with visitors to the exhibit.\u201D \u2013 Pedro Paulo Soares (Historian/FIOCRUZ)"
+    ImageName: sala_oswaldo
+  - Id: 8
+    Name: Historical vaccination equipment
+    Description: "Historical vaccination equipment used by Oswaldo Cruz. The vaccination
+      pistol was invented in 1950 and represented an important technological advancement
+      in the global smallpox eradication campaign. The portable instrument functioned
+      with a compressed air mechanism activated by a pedal and providing a power
+      source of pressure. Without the use of needles, the percutaneous vaccine administration
+      functioned through high-pressure flow. \u201CNone of the vaccination items
+      exhibited in the room date to Oswaldo Cruz\xB4 time, they all came later!!!
+      But the public backlash to smallpox vaccination was widespread in Oswaldo Cruz\xB4
+      time and is well depicted in the press cartoons from that period.\u201D \u2013
+      Pedro Paulo Soares (Historian/FIOCRUZ)"
+    ImageName: vacinacao
+  - Id: 9
+    Name: Photograph of Carlos Chagas
+    Description: 'Carlos CPhotograph of Carlos Chagas (1878-1934), Brazilian biologist,
+      public health physician, infectious disease expert, and bacteriologist. Carlos
+      Chagas was famous for discovering the protozoan Trypanosoma cruzi and the disease
+      it causes, American trypanosomiasis, known as Chagas disease. He was the first
+      scientist in history, and the only one to this day, to discover and describe
+      all the stages in a single infectious disease: the pathogen (T. cruzi), vector
+      (Triatominae), hosts, clinical manifestations, and epidemiology.'
+    ImageName: foto_carlos
+  - Id: 10
+    Name: Microscope used by Carlos Chagas
+    Description: "Microscope used by Carlos Chagas to study triatomine or kissing
+      bug number 1. In 1909, Chagas disease was discovered by the Brazilian public
+      health physician Carlos Chagas, who was working in the fight against malaria
+      at the time in the hinterlands of Minas Gerais state. The pathogen or etiological
+      agent of the disease is the protozoan Trypanosoma cruzi, so named by Carlos
+      Chagas as a tribute to the scientist Oswaldo Cruz. The disease vector is the
+      triatomine insect or kissing bug. The name \"kissing bug\" is because the insect
+      often bites people on the face. Chagas disease is not transmitted directly
+      to humans by the insect\xB4s bite. Transmission occurs when the person scratches
+      the bite and the feces eliminated by the bug penetrate the skin through the
+      wound. Transmission can also occur through transfusion of contaminated blood
+      and from mother to fetus during pregnancy. Brazil has also recorded cases of
+      infection by the oral route in persons that consumed sugar cane juice or a\xE7a\xED
+      contaminated by these insects. \u201CThe room used by Oswaldo Cruz as a laboratory
+      (currently housing an exhibit on Carlos Chagas) was also recreated digitally,
+      which also provides a virtual visit to another workplace dating to the institution\xB4s
+      early years.\u201D Pedro Paulo Soares (Historian/FIOCRUZ)"
+    ImageName: microscopio
+  - Id: 11
+    Name: Rare Works Library
+    Description: The oldest works in the collection feature the first treatise on
+      the Natural History of Brazil, by Willem Piso and Georg Marggraf, entitled
+      Historia Naturalis Brasiliae (1648). Another outstanding work is a Jesuit manuscript
+      from the year 1703 that contains the description of various herbs and recipes
+      used to treat diseases in the inhabitants of Brazil during the Colonial Period.
+      A collection of documents from the 19th century is attributed to travelers
+      who visited Brazil and other lands of the Americas, leaving numerous annotations
+      and illustrations of landscapes and the customs of various peoples.
+    ImageName: biblioteca
+  - Id: 12
+    Name: Costa Lima Exhibit Room
+    Description: " ngelo Moreira da Costa Lima (1887-1964) is considered the patron
+      of studies on insects in Brazil. In the early 20th century, he studied at the
+      School of Medicine of Rio de Janeiro and worked as an academic assistant at
+      the Yellow Fever Prophylaxis Service created by Oswaldo Cruz, the main purpose
+      of which was to fight the Aedes aegypti mosquito. In 1910, after concluding
+      his studies, Costa Lima worked in the fight against yellow fever in the state
+      of Par\xE1, where he conducted detailed studies on culicids, mosquitos found
+      in the region and that transmit the disease. From 1938 to 1962, the entomologist
+      produced his most important work, entitled Insetos do Brasil (Insects of Brazil).
+      The collection includes a major portion of the insect species studied by Costa
+      Lima and to this day serves as a research source for entomologists and as a
+      beautiful example of science dissemination."
+    ImageName: sala_costa
+  - Id: 13
+    Name: Hall of the Presidency
+    Description: "The current President of FIOCRUZ is social scientist and sociologist
+      N\xEDsia Trindade de Lima, the first woman elected to this position in the
+      Foundation\xB4s history. The executive body of FIOCRUZ consists of the President
+      and the Vice-Presidents of Research and Technological Development, Institutional
+      Development and Personnel Management, Teaching, Information, and Communication,
+      Reference Services and Environment, and Production and Innovation in Health.
+      The President is responsible for heading the Foundation\xB4s activities in
+      keeping with the guidelines set out by the institutional decision-making bodies.
+      The Vice-Presidents are responsible for advising the President in the institution\xB4s
+      administration and for coordinating, implementing, and assessing the integrated
+      horizontal programs in research, teaching, technological development and production,
+      services, health information, and institutional development. \u201CThe current
+      Office of the President was used as a bedroom where Oswaldo Cruz slept over,
+      and also features photographic references from that time.\u201D \u2013 Pedro
+      Paulo Soares (Historian/FIOCRUZ)"
+    ImageName: hall
+  - Id: 14
+    Name: Photograph of Oswaldo Cruz
+    Description: "Oswaldo Cruz was the first president of the institution and called
+      his dream the \"Science Palace\", a dream that came true and that became the
+      headquarters of the Oswaldo Cruz Foundation (FIOCRUZ). Built from 1905 to 1918,
+      the FIOCRUZ Castle is a symbol of science and health in Brazil, created under
+      the inspiration of the Pasteur Institute in Paris, dedicated to the production
+      of vaccines and medicines, scientific research, and other public health activities
+      in Brazil. Located next to Rio\xB4s main thoroughfare called Avenida Brasil,
+      the building is also known as the Moorish Pavilion or Moorish Castle because
+      of its Neo-Moorish style, with beautiful Portuguese tiles and mosaics inspired
+      by Arabic tapestry. The Castle was designed by Portuguese architect Luiz Moraes
+      J\xFAnior and was listed in 1981 as a heritage site by the National Institute
+      of Historical and Artistic Heritage (IPHAN)."
+    ImageName: foto_oswaldo
+  - Id: 15
+    Name: Lithograph of the Castle
+    Description: "Considered the key symbol of the Oswaldo Cruz Foundation, the Castle
+      that celebrated 100 years in 2018 was conceived by the scientist Oswaldo Cruz
+      himself, who drew the first sketches, and by Portuguese architect Luiz Moraes
+      J\xFAnior. The Moorish Castle celebrated its centennial having fulfilled its
+      mission as the icon of development of science and public health in Brazil.
+      The Castle has a total of 160,000 square feet of floor space, with materials
+      largely imported from Germany, France, England, and Portugal and the use of
+      modern building technique. Oswaldo Cruz (1872\u20131917) launched his scientific
+      mission and dream at 30 years of age on the former Manguinhos farm, situated
+      in the Inha\xFAma neighborhood on the outskirts of Rio, with the initial name
+      of Federal Serotherapeutic Institute. He spared no effort to fulfill an apparently
+      impossible dream to build a grand Castle to house Brazil\xB4s new and incipient
+      science. The Moorish Castle was built from 1905 to 1918 on a hillside on the
+      farm, facing Guanabara Bay, replacing the former improvised installations of
+      the Federal Serotherapeutic Institute, created on May 25, 1900. The architectural
+      style characterizing the Moorish Pavilion received three main influences: The
+      first was the Palais du Bardo in Parc Montsouris in Paris, which Oswaldo Cruz
+      visited when he was studying in France. The palace marked the presence of the
+      Neo-Moorish style, highly valued in late 19th-century Europe. The second influence
+      was the Alhambra Palace in Granada, Spain. The third and principal influence
+      was the New Synagogue in Berlin, which inspired other synagogues around the
+      world and the towers on the Castle of the Oswaldo Cruz Institute."
+    ImageName: gravura
+  - Id: 16
+    Name: Castle Tower
+    Description: "The Castle towers drew inspiration from the New Synagogue in Berlin.
+      While work began on the foundations of the central building in 1905, the terrace
+      and towers were only finalized starting in 1910, and even with the work still
+      under way that year, the Castle was already occupied by the researchers. The
+      towers are the highest point on the institution and provide a 360\xBA view
+      of the campus and beyond."
+    ImageName: torre
+  - Id: 17
+    Name: Wall and floor tiles
+    Description: "The construction materials for the Castle were imported from different
+      parts of the world. Oswaldo Cruz (1872\u20131917) launched his scientific mission
+      and dream at 30 years of age on the former Manguinhos farm, situated in the
+      Inha\xFAma neighborhood on the outskirts of Rio. The Moorish Castle was finalized
+      in 1918 on a hillside on the farm, facing Guanabara Bay, replacing the former
+      improvised installations of the Federal Serotherapeutic Institute, created
+      on May 25, 1900."
+    ImageName: piso_1
+  - Id: 18
+    Name: Floor tiles
+    Description: "The architectural style characterizing the Moorish Pavilion received
+      three main influences: The first was the Palais du Bardo in Parc Montsouris
+      in Paris, which Oswaldo Cruz visited when he was studying in France. The palace
+      marked the presence of the Neo-Moorish style, highly valued in late 19th-century
+      Europe. The second influence was the Alhambra Palace in Granada, Spain. The
+      third and principal influence was the New Synagogue in Berlin, which inspired
+      other synagogues around the world and the towers on the Castle of the Oswaldo
+      Cruz Institute. The construction of the Moorish Pavilion used glass panes,
+      rooftiles, furnishings, marble, ironwork, and lamps imported from Europe. Most
+      of the materials came by boat and were offloaded on a pier installed on Guanabara
+      Bay, which at the time reached what is now Rio\xB4s main thoroughfare called
+      Avenida Brasil, inaugurated in 1947."
+    ImageName: piso_2
