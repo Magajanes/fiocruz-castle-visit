@@ -493,6 +493,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2216511847632885485, guid: f27530549b2095f4ab3edcf63240c2e0,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216511847632885485, guid: f27530549b2095f4ab3edcf63240c2e0,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2315139190155589817, guid: f27530549b2095f4ab3edcf63240c2e0,
         type: 3}
       propertyPath: m_Navigation.m_Mode
