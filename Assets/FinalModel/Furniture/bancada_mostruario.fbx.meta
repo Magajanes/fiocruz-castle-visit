@@ -3,7 +3,27 @@ guid: 7239f1407ce8e9f46a2e7f0beeeea095
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: branco_bancada
+    second: {fileID: 2100000, guid: 012c71d599ec36548aff079107b9cfcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: display_bancada
+    second: {fileID: 2100000, guid: 84a2213cbb4058240b8a3f60fa6e77ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prata_escovada
+    second: {fileID: 2100000, guid: 39a75979262746a4ca2d414a4098114c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vidro_transparente
+    second: {fileID: 2100000, guid: 586466b0e24733947910e93d40907032, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

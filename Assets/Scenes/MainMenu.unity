@@ -2305,37 +2305,42 @@ PrefabInstance:
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_margin.w
-      value: 16
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_margin.x
-      value: 32
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_margin.y
-      value: 16
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_margin.z
-      value: 32
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
+        type: 3}
+      propertyPath: m_lineSpacing
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
@@ -2360,7 +2365,7 @@ PrefabInstance:
     - target: {fileID: 1203395396037002586, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 384
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1292594177787234105, guid: 6c490f7bea9689f42a57765716e5aaf9,
         type: 3}
