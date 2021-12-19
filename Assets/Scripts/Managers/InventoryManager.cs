@@ -15,20 +15,32 @@ public class InventoryManager : GameSingleton<InventoryManager>
 
     private void Initialize()
     {
-
         ArtifactsService.LoadGameArtifacts();
+        
+        if (_resetInventory)
+        {
+            ResetAndInitializeInventory();
+            return;
+        }
+
         InitializeInventory();
     }
 
     private void InitializeInventory()
     {
-        if (PlayerInventory != null) 
-            return;
-
-        if (_resetInventory)
-            PlayerPrefsService.DeletePlayerPrefs();
+        if (PlayerInventory != null) return;
 
         PlayerInventory = new Inventory();
+        PlayerInventory.Initialize();
+    }
+
+    private void ResetAndInitializeInventory()
+    {
+        PlayerPrefsService.ResetCollectedArtifacts();
+        if (PlayerInventory == null)
+        {
+            PlayerInventory = new Inventory();
+        }
         PlayerInventory.Initialize();
     }
 }

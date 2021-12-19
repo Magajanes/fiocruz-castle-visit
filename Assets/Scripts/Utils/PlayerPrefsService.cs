@@ -12,6 +12,11 @@ public class PlayerPrefsService
         PlayerPrefs.DeleteAll();
     }
 
+    public static void ResetCollectedArtifacts()
+    {
+        PlayerPrefs.DeleteKey(COLLECTED_ARTIFACTS_PLAYERPREFS_KEY);
+    }
+
     public static void SetBool(string key, bool value)
     {
         PlayerPrefs.SetInt(key, value ? 1 : 0);
