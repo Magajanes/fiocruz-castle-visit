@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialEntries:
   - Subject: 0
-    Message: Open Door - F
+    Message: Open Door - X
   - Subject: 1
-    Message: Interact - Space
+    Message: Interact - A
   - Subject: 2
     Message: Click button to learn
   - Subject: 3
-    Message: Call elevator - C
+    Message: Call elevator - Y
   - Subject: 4
-    Message: Press floor number to go (1 - 4)
+    Message: D-Pad Up/Down
