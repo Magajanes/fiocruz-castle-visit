@@ -58,13 +58,8 @@ MonoBehaviour:
     Description: "Adolfo Lutz (1855-1940), the first Latin American scientist to
       study and confirm the mechanisms of transmission of yellow fever by the mosquito
       Aedes aegypti, was invited by Oswaldo Cruz to work at the Oswaldo Cruz Institute
-      (IOC), where Lutz remained until his death in 1940. \u201CThe room now occupied
-      by the Office of the Director of IOC was originally the laboratory of A. Lutz,
-      one of the most important and productive researchers during the institution\xB4s
-      early period. A series of photographs show the scientist and his daughter Berta
-      working in the laboratory. This environment was recreated digitally in the
-      past by the project I participated in together with F\xE1bio.\u201D Pedro Paulo
-      Soares (Historian/FIOCRUZ)"
+      (IOC), where Lutz remained until his death in 1940. Lutz was one of the most
+      important and productive researchers during the institution\xB4s early period."
     ImageName: sala_adolpho
   - Id: 5
     Name: Temperature Controller
@@ -84,31 +79,23 @@ MonoBehaviour:
     ImageName: elevador
   - Id: 7
     Name: Oswaldo Cruz and Carlos Chagas Rooms
-    Description: "Oswaldo Cruz and Carlos Chagas Rooms, laboratory coat and hat used
-      to take photos during the visit. These two rooms, as part of the visit to the
-      Museum of Life, display equipment and instruments such as a microscope, cell
-      counter, glass syringe, Oswaldo\xB4s doctoral thesis, scale, and a showcase
-      with instruments used to administer vaccines. Visitors have the freedom to
-      explore the room and the instruments, while listening to the importance of
-      vaccines (immunization) for vaccine-preventable diseases, and in which syringes
-      and needles are now disposable, avoiding contamination. Visitors can also hear
-      about the technological and historical changes in the immunization process,
-      so important for health and the prevention of diseases. \u201CThe lab coat
-      and hat did not actually belong to Oswaldo Cruz. They were purchased for interaction
-      with visitors to the exhibit.\u201D \u2013 Pedro Paulo Soares (Historian/FIOCRUZ)"
+    Description: "These two rooms, part of the visit to the Museum of Life, display
+      equipment and instruments such as a microscope, cell counter, glass syringe,
+      Oswaldo\xB4s doctoral thesis, scale, and a showcase with instruments used to
+      administer vaccines. Visitors have the freedom to explore the room and the
+      instruments while listening to the importance of vaccines (immunization) for
+      vaccine-preventable diseases, and in which syringes and needles are now disposable,
+      avoiding contamination. Visitors can also hear about the technological and
+      historical changes in the immunization process, so important for health and
+      the prevention of diseases."
     ImageName: sala_oswaldo
   - Id: 8
     Name: Historical vaccination equipment
-    Description: "Historical vaccination equipment used by Oswaldo Cruz. The vaccination
-      pistol was invented in 1950 and represented an important technological advancement
-      in the global smallpox eradication campaign. The portable instrument functioned
-      with a compressed air mechanism activated by a pedal and providing a power
-      source of pressure. Without the use of needles, the percutaneous vaccine administration
-      functioned through high-pressure flow. \u201CNone of the vaccination items
-      exhibited in the room date to Oswaldo Cruz\xB4 time, they all came later!!!
-      But the public backlash to smallpox vaccination was widespread in Oswaldo Cruz\xB4
-      time and is well depicted in the press cartoons from that period.\u201D \u2013
-      Pedro Paulo Soares (Historian/FIOCRUZ)"
+    Description: The vaccination pistol was invented in 1950 and represented an important
+      technological advancement in the global smallpox eradication campaign. The
+      portable instrument functioned with a compressed air mechanism activated by
+      a pedal and provided a power source of pressure. Without the use of needles,
+      the percutaneous vaccine administration functioned through high-pressure flow.
     ImageName: vacinacao
   - Id: 9
     Name: Photograph of Carlos Chagas
@@ -122,23 +109,20 @@ MonoBehaviour:
     ImageName: foto_carlos
   - Id: 10
     Name: Microscope used by Carlos Chagas
-    Description: "Microscope used by Carlos Chagas to study triatomine or kissing
-      bug number 1. In 1909, Chagas disease was discovered by the Brazilian public
-      health physician Carlos Chagas, who was working in the fight against malaria
-      at the time in the hinterlands of Minas Gerais state. The pathogen or etiological
-      agent of the disease is the protozoan Trypanosoma cruzi, so named by Carlos
-      Chagas as a tribute to the scientist Oswaldo Cruz. The disease vector is the
-      triatomine insect or kissing bug. The name \"kissing bug\" is because the insect
-      often bites people on the face. Chagas disease is not transmitted directly
-      to humans by the insect\xB4s bite. Transmission occurs when the person scratches
-      the bite and the feces eliminated by the bug penetrate the skin through the
-      wound. Transmission can also occur through transfusion of contaminated blood
-      and from mother to fetus during pregnancy. Brazil has also recorded cases of
-      infection by the oral route in persons that consumed sugar cane juice or a\xE7a\xED
-      contaminated by these insects. \u201CThe room used by Oswaldo Cruz as a laboratory
-      (currently housing an exhibit on Carlos Chagas) was also recreated digitally,
-      which also provides a virtual visit to another workplace dating to the institution\xB4s
-      early years.\u201D Pedro Paulo Soares (Historian/FIOCRUZ)"
+    Description: "The microscope was used by Carlos Chagas to study triatomine or
+      kissing bug number 1. In 1909, Chagas disease was discovered by the Brazilian
+      public health physician Carlos Chagas, who was working in the fight against
+      malaria at the time in the hinterlands of Minas Gerais state. The pathogen
+      or etiological agent of the disease is the protozoan Trypanosoma cruzi, so
+      named by Carlos Chagas as a tribute to the scientist Oswaldo Cruz. The disease
+      vector is the triatomine insect or kissing bug. The name \"kissing bug\" is
+      because the insect often bites people on the face. Chagas disease is not transmitted
+      directly to humans by the insect\xB4s bite. Transmission occurs when the person
+      scratches the bite and the feces eliminated by the bug penetrate the skin through
+      the wound. Transmission can also occur through transfusion of contaminated
+      blood and from mother to fetus during pregnancy. Brazil has also recorded cases
+      of infection by the oral route in persons that consumed sugar cane juice or
+      a\xE7a\xED contaminated by these insects."
     ImageName: microscopio
   - Id: 11
     Name: Rare Works Library
@@ -153,7 +137,7 @@ MonoBehaviour:
     ImageName: biblioteca
   - Id: 12
     Name: Costa Lima Exhibit Room
-    Description: " ngelo Moreira da Costa Lima (1887-1964) is considered the patron
+    Description: "Angelo Moreira da Costa Lima (1887-1964) is considered the patron
       of studies on insects in Brazil. In the early 20th century, he studied at the
       School of Medicine of Rio de Janeiro and worked as an academic assistant at
       the Yellow Fever Prophylaxis Service created by Oswaldo Cruz, the main purpose
@@ -168,7 +152,7 @@ MonoBehaviour:
     ImageName: sala_costa
   - Id: 13
     Name: Hall of the Presidency
-    Description: "The current President of FIOCRUZ is social scientist and sociologist
+    Description: "The current President of FIOCRUZ is the social scientist and sociologist
       N\xEDsia Trindade de Lima, the first woman elected to this position in the
       Foundation\xB4s history. The executive body of FIOCRUZ consists of the President
       and the Vice-Presidents of Research and Technological Development, Institutional
@@ -179,10 +163,7 @@ MonoBehaviour:
       The Vice-Presidents are responsible for advising the President in the institution\xB4s
       administration and for coordinating, implementing, and assessing the integrated
       horizontal programs in research, teaching, technological development and production,
-      services, health information, and institutional development. \u201CThe current
-      Office of the President was used as a bedroom where Oswaldo Cruz slept over,
-      and also features photographic references from that time.\u201D \u2013 Pedro
-      Paulo Soares (Historian/FIOCRUZ)"
+      services, health information, and institutional development."
     ImageName: hall
   - Id: 14
     Name: Photograph of Oswaldo Cruz
